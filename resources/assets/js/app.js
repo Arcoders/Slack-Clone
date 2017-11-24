@@ -18,5 +18,10 @@ window.Vue = require('vue');
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    data: function () {
+        return {
+            welcome: 'Hola y bienvenido al chat'
+        }
+    }
 });

@@ -9,7 +9,7 @@
                         <div class="button minimize"></div>
                         <div class="button maximize"></div>
                     </div>
-                    <div class="title">Chat</div>
+                    <div class="title">@{{ welcome }}</div>
                 </div>
                 <ul class="messages"></ul>
                 <div class="bottom_wrapper clearfix">
