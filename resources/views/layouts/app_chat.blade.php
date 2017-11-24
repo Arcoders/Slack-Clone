@@ -96,27 +96,35 @@
                 <ul class="inbox-nav inbox-divider">
 
                     <li class="active">
-                        <a href="#">
+                        <router-link to="/addrooms">
                             <i class="fa fa-plus"></i>
                             Add Room
                             <span class="label label-success pull-right">7</span>
-                        </a>
+                        </router-link>
                     </li>
 
                     <li class="active">
-                        <a href="#">
-                            <i class="fa fa-comment"></i>
+                        <router-link to="/myrooms">
+                            <i class="fa fa-comments-o"></i>
                             My Rooms
                             <span class="label label-success pull-right">3</span>
-                        </a>
+                        </router-link>
                     </li>
 
                     <li class="active">
-                        <a href="#">
+                        <router-link to="/allrooms">
                             <i class="fa fa-globe"></i>
                             All Rooms
                             <span class="label label-success pull-right">7</span>
-                        </a>
+                        </router-link>
+                    </li>
+
+                    <li class="active">
+                        <router-link to="/chat">
+                            <i class="fa fa-comment"></i>
+                            Chat Box
+                            <span class="label label-success pull-right">7</span>
+                        </router-link>
                     </li>
 
                 </ul>
