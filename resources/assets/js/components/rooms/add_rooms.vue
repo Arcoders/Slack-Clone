@@ -85,7 +85,6 @@
                         this.text = 'Your room has been added!';
                         this.dismissCountDown = this.dismissSecs;
                         this.room_name = '';
-                        this.btnSubmit= true;
                     } else {
                         this.type = 'warning';
                         this.text = 'Your room can not added!';

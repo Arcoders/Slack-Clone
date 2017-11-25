@@ -1,7 +1,10 @@
 <template>
     <div id="all_rooms">
 
-        <h2>All Rooms</h2>
+        <ul class="list-group">
+            <li class="list-group-item list-group-item-info"><b>All Rooms</b> <span class="badge">{{ rooms.length }}</span></li>
+        </ul>
+
         <hr>
 
         <table class="table table-bordered">
@@ -15,8 +18,13 @@
             <tbody>
                 <tr v-for="room in rooms">
                     <td>{{ room.name }}</td>
-                    <td>{{ room.created_at }}</td>
+                    <td>{{ room.created_at | moment("from", "now") }}</td>
                     <td>{{ room.user.name }}</td>
+                </tr>
+                <tr v-if="isLoading">
+                    <td colspan="3">
+                        <vue-simple-spinner message="Loading..."></vue-simple-spinner>
+                    </td>
                 </tr>
             </tbody>
         </table>
@@ -31,6 +39,7 @@
         },
         data() {
             return {
+                isLoading: true,
                 rooms: []
             };
         },
@@ -40,6 +49,7 @@
                 this.$http.get('/getAllRooms').then(response => {
 
                     this.rooms = response.data;
+                    this.isLoading = false;
 
                 }, response => {
 
