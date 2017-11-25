@@ -66876,7 +66876,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     _this.room_name = '';
                 } else {
                     _this.type = 'warning';
-                    _this.text = 'Your room can not added!';
+                    _this.text = 'Your room can not be added!';
                     _this.dismissCountDown = _this.dismissSecs;
                 }
             }, function (response) {
@@ -67371,6 +67371,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     mounted: function mounted() {
@@ -67381,11 +67395,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             isLoading: true,
             notFound: false,
             error: false,
-            rooms: []
+            rooms: [],
+            type: '',
+            text: '',
+            dismissSecs: 4,
+            dismissCountDown: 0,
+            showDismissibleAlert: false
         };
     },
 
     methods: {
+        countDownChanged: function countDownChanged(dismissCountDown) {
+            this.dismissCountDown = dismissCountDown;
+        },
+
         getAllRooms: function getAllRooms() {
             var _this = this;
 
@@ -67403,6 +67426,33 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this.isLoading = false;
                 _this.error = true;
             });
+        },
+        deleteRoom: function deleteRoom(room_id, index) {
+            var _this2 = this;
+
+            this.isLoading = true;
+
+            this.$http.delete('/deleteRoom/' + room_id).then(function (response) {
+
+                _this2.isLoading = false;
+
+                if (response.body == 'done') {
+                    _this2.rooms.splice(index, 1);
+                    _this2.type = 'success';
+                    _this2.text = 'Your room has been deleted!';
+                    _this2.dismissCountDown = _this2.dismissSecs;
+                    _this2.getAllRooms();
+                } else {
+                    _this2.type = 'warning';
+                    _this2.text = 'Room can not be deleted!';
+                    _this2.dismissCountDown = _this2.dismissSecs;
+                }
+            }, function (response) {
+                _this2.isLoading = false;
+                _this2.type = 'danger';
+                _this2.text = 'Error in the request, sorry room can not added!';
+                _this2.dismissCountDown = _this2.dismissSecs;
+            });
         }
     }
 });
@@ -67415,74 +67465,141 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { attrs: { id: "all_rooms" } }, [
-    _c("ul", { staticClass: "list-group" }, [
-      _c("li", { staticClass: "list-group-item list-group-item-info" }, [
-        _c("b", [_vm._v("My Rooms")]),
-        _vm._v(" "),
-        _c("span", { staticClass: "badge" }, [_vm._v(_vm._s(_vm.rooms.length))])
-      ])
-    ]),
-    _vm._v(" "),
-    _c("hr"),
-    _vm._v(" "),
-    _c("table", { staticClass: "table table-bordered" }, [
-      _vm._m(0, false, false),
+  return _c(
+    "div",
+    { attrs: { id: "all_rooms" } },
+    [
+      _c("ul", { staticClass: "list-group" }, [
+        _c("li", { staticClass: "list-group-item list-group-item-info" }, [
+          _c("b", [_vm._v("My Rooms")]),
+          _vm._v(" "),
+          _c("span", { staticClass: "badge" }, [
+            _vm._v(_vm._s(_vm.rooms.length))
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("hr"),
       _vm._v(" "),
       _c(
-        "tbody",
+        "b-alert",
+        {
+          attrs: {
+            show: _vm.dismissCountDown,
+            dismissible: "",
+            variant: _vm.type
+          },
+          on: {
+            dismissed: function($event) {
+              _vm.dismissCountDown = 0
+            },
+            "dismiss-count-down": _vm.countDownChanged
+          }
+        },
         [
-          _vm._l(_vm.rooms, function(room) {
-            return _c("tr", [
-              _c("td", [_vm._v(_vm._s(room.name))]),
-              _vm._v(" "),
-              _c("td", [
-                _vm._v(_vm._s(_vm._f("moment")(room.created_at, "from", "now")))
-              ]),
-              _vm._v(" "),
-              _vm._m(1, true, false)
-            ])
-          }),
+          _c("p", [
+            _vm._v(
+              _vm._s(_vm.text) +
+                " " +
+                _vm._s(_vm.dismissCountDown) +
+                " seconds..."
+            )
+          ]),
           _vm._v(" "),
-          _vm.isLoading
-            ? _c("tr", [
-                _c(
-                  "td",
-                  { attrs: { colspan: "3" } },
-                  [
-                    _c("vue-simple-spinner", {
-                      attrs: { message: "Loading..." }
-                    })
-                  ],
-                  1
-                )
-              ])
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.notFound
-            ? _c("tr", [
-                _c(
-                  "td",
-                  { attrs: { colspan: "3" } },
-                  [
-                    _vm._v(
-                      "\n                No records found please\n                "
-                    ),
-                    _c("router-link", { attrs: { to: "/addrooms" } }, [
-                      _vm._v("\n                    Add Room\n                ")
-                    ])
-                  ],
-                  1
-                )
-              ])
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.error ? _c("tr", [_vm._m(2, false, false)]) : _vm._e()
+          _c("b-progress", {
+            attrs: {
+              variant: _vm.type,
+              max: _vm.dismissSecs,
+              value: _vm.dismissCountDown,
+              height: "4px"
+            }
+          })
         ],
-        2
-      )
-    ])
-  ])
+        1
+      ),
+      _vm._v(" "),
+      _c("table", { staticClass: "table table-bordered" }, [
+        _vm._m(0, false, false),
+        _vm._v(" "),
+        _c(
+          "tbody",
+          [
+            _vm._l(_vm.rooms, function(room, index) {
+              return _c("tr", [
+                _c("td", [_vm._v(_vm._s(room.name))]),
+                _vm._v(" "),
+                _c("td", [
+                  _vm._v(
+                    _vm._s(_vm._f("moment")(room.created_at, "from", "now"))
+                  )
+                ]),
+                _vm._v(" "),
+                _c("td", [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-danger btn-xs",
+                      attrs: { type: "button" },
+                      on: {
+                        click: function($event) {
+                          _vm.deleteRoom(room.id, index)
+                        }
+                      }
+                    },
+                    [
+                      _c("i", {
+                        staticClass: "fa fa-trash",
+                        attrs: { "aria-hidden": "true" }
+                      })
+                    ]
+                  )
+                ])
+              ])
+            }),
+            _vm._v(" "),
+            _vm.isLoading
+              ? _c("tr", [
+                  _c(
+                    "td",
+                    { attrs: { colspan: "3" } },
+                    [
+                      _c("vue-simple-spinner", {
+                        attrs: { message: "Loading..." }
+                      })
+                    ],
+                    1
+                  )
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.notFound
+              ? _c("tr", [
+                  _c(
+                    "td",
+                    { attrs: { colspan: "3" } },
+                    [
+                      _vm._v(
+                        "\n                No records found please\n                "
+                      ),
+                      _c("router-link", { attrs: { to: "/addrooms" } }, [
+                        _vm._v(
+                          "\n                    Add Room\n                "
+                        )
+                      ])
+                    ],
+                    1
+                  )
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.error ? _c("tr", [_vm._m(1, false, false)]) : _vm._e()
+          ],
+          2
+        )
+      ])
+    ],
+    1
+  )
 }
 var staticRenderFns = [
   function() {
@@ -67497,23 +67614,6 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("Action")])
       ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", [
-      _c(
-        "button",
-        { staticClass: "btn btn-danger btn-xs", attrs: { type: "button" } },
-        [
-          _c("i", {
-            staticClass: "fa fa-trash",
-            attrs: { "aria-hidden": "true" }
-          })
-        ]
-      )
     ])
   },
   function() {

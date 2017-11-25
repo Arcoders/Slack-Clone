@@ -33,4 +33,13 @@ class RoomsController extends Controller
         return Rooms::where('user_id', Auth::user()->id)->get()->toArray();
     }
 
+    public function DeleteRoom($room_id)
+    {
+        if (Rooms::where('id', $room_id)->where('user_id', Auth::user()->id)->delete()) {
+            return 'done';
+        } else {
+            return 'error';
+        }
+    }
+
 }

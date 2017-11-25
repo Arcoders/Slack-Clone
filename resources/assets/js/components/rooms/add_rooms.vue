@@ -87,7 +87,7 @@
                         this.room_name = '';
                     } else {
                         this.type = 'warning';
-                        this.text = 'Your room can not added!';
+                        this.text = 'Your room can not be added!';
                         this.dismissCountDown = this.dismissSecs;
                     }
 

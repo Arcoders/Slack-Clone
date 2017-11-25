@@ -7,6 +7,20 @@
 
         <hr>
 
+        <b-alert :show="dismissCountDown"
+                 dismissible
+                 v-bind:variant="type"
+                 @dismissed="dismissCountDown=0"
+                 @dismiss-count-down="countDownChanged">
+
+            <p>{{text}} {{dismissCountDown}} seconds...</p>
+            <b-progress v-bind:variant="type"
+                        :max="dismissSecs"
+                        :value="dismissCountDown"
+                        height="4px">
+            </b-progress>
+        </b-alert>
+
         <table class="table table-bordered">
             <thead>
             <tr>
@@ -16,11 +30,11 @@
             </tr>
             </thead>
             <tbody>
-            <tr v-for="room in rooms">
+            <tr v-for="(room, index) in rooms">
                 <td>{{ room.name }}</td>
                 <td>{{ room.created_at | moment("from", "now") }}</td>
                 <td>
-                    <button type="button" class="btn btn-danger btn-xs">
+                    <button @click="deleteRoom(room.id, index)" type="button" class="btn btn-danger btn-xs">
                         <i class="fa fa-trash" aria-hidden="true"></i>
                     </button>
                 </td>
@@ -61,10 +75,18 @@
                 isLoading: true,
                 notFound: false,
                 error: false,
-                rooms: []
+                rooms: [],
+                type: '',
+                text: '',
+                dismissSecs: 4,
+                dismissCountDown: 0,
+                showDismissibleAlert: false
             };
         },
         methods: {
+            countDownChanged (dismissCountDown) {
+                this.dismissCountDown = dismissCountDown;
+            },
             getAllRooms: function () {
 
                 this.$http.get('/getMyRooms').then(response => {
@@ -81,6 +103,34 @@
                 }, response => {
                     this.isLoading = false;
                     this.error = true;
+                });
+
+            },
+            deleteRoom: function (room_id, index) {
+
+                this.isLoading = true;
+
+                this.$http.delete('/deleteRoom/'+room_id).then(response => {
+
+                    this.isLoading = false;
+
+                    if (response.body == 'done') {
+                        this.rooms.splice(index, 1);
+                        this.type = 'success';
+                        this.text = 'Your room has been deleted!';
+                        this.dismissCountDown = this.dismissSecs;
+                        this.getAllRooms();
+                    } else {
+                        this.type = 'warning';
+                        this.text = 'Room can not be deleted!';
+                        this.dismissCountDown = this.dismissSecs;
+                    }
+
+                }, response => {
+                    this.isLoading = false;
+                    this.type = 'danger';
+                    this.text = 'Error in the request, sorry room can not added!';
+                    this.dismissCountDown = this.dismissSecs;
                 });
 
             }
