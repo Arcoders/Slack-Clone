@@ -28,4 +28,9 @@ class RoomsController extends Controller
         return Rooms::with('user')->get()->toArray();
     }
 
+    public function GetMyRooms()
+    {
+        return Rooms::where('user_id', Auth::user()->id)->get()->toArray();
+    }
+
 }

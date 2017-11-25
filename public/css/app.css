@@ -8354,6 +8354,12 @@ button.close {
   }
 }
 
+#app th,
+#app td {
+  text-align: center;
+  vertical-align: middle;
+}
+
 .mail-box {
   border-collapse: collapse;
   border-spacing: 0;

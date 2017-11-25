@@ -21,3 +21,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::post('/AddNewRoom', 'RoomsController@AddNewRoom');
 Route::get('/getAllRooms', 'RoomsController@GetAllRooms');
+Route::get('/getMyRooms', 'RoomsController@GetAllRooms');

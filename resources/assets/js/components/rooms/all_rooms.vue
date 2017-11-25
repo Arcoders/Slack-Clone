@@ -26,6 +26,21 @@
                         <vue-simple-spinner message="Loading..."></vue-simple-spinner>
                     </td>
                 </tr>
+                <tr v-if="notFound">
+                    <td colspan="3">
+                        No records found please
+                        <router-link to="/addrooms">
+                             Add Room
+                        </router-link>
+                    </td>
+                </tr>
+                <tr v-if="error">
+                    <td colspan="3">
+                        <div class="alert alert-danger">
+                            <strong>Error!</strong> rejected request.
+                        </div>
+                    </td>
+                </tr>
             </tbody>
         </table>
 
@@ -40,6 +55,8 @@
         data() {
             return {
                 isLoading: true,
+                notFound: false,
+                error: false,
                 rooms: []
             };
         },
@@ -48,11 +65,18 @@
 
                 this.$http.get('/getAllRooms').then(response => {
 
-                    this.rooms = response.data;
                     this.isLoading = false;
+                    this.rooms = response.data;
+
+                    if (this.rooms.length > 0) {
+                        this.rooms = response.data;
+                    } else {
+                        this.notFound = true;
+                    }
 
                 }, response => {
-
+                    this.isLoading = false;
+                    this.error = true;
                 });
 
             }
