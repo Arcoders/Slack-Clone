@@ -67388,7 +67388,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     mounted: function mounted() {
-        this.getAllRooms();
+        this.getMyRooms();
     },
     data: function data() {
         return {
@@ -67409,7 +67409,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.dismissCountDown = dismissCountDown;
         },
 
-        getAllRooms: function getAllRooms() {
+        getMyRooms: function getMyRooms() {
             var _this = this;
 
             this.$http.get('/getMyRooms').then(function (response) {
@@ -67441,7 +67441,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     _this2.type = 'success';
                     _this2.text = 'Your room has been deleted!';
                     _this2.dismissCountDown = _this2.dismissSecs;
-                    _this2.getAllRooms();
+                    _this2.getMyRooms();
                 } else {
                     _this2.type = 'warning';
                     _this2.text = 'Room can not be deleted!';

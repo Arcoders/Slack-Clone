@@ -29,12 +29,12 @@ class User extends Authenticatable
 
     public function messages()
     {
-        return $this->hasMany(Messages::class);
+        return $this->hasMany(Messages::class, 'user_id');
     }
 
     public function rooms()
     {
-        return $this->hasMany(Rooms::class);
+        return $this->hasMany(Rooms::class, 'user_id');
     }
 
 }

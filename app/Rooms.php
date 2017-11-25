@@ -9,7 +9,7 @@ class Rooms extends Model
 
     public function messages()
     {
-        return $this->hasMany(Messages::class);
+        return $this->hasMany(Messages::class, 'room_id');
     }
 
     public function user()

@@ -68,7 +68,7 @@
 <script>
     export default {
         mounted() {
-            this.getAllRooms();
+            this.getMyRooms();
         },
         data() {
             return {
@@ -87,7 +87,7 @@
             countDownChanged (dismissCountDown) {
                 this.dismissCountDown = dismissCountDown;
             },
-            getAllRooms: function () {
+            getMyRooms: function () {
 
                 this.$http.get('/getMyRooms').then(response => {
 
@@ -119,7 +119,7 @@
                         this.type = 'success';
                         this.text = 'Your room has been deleted!';
                         this.dismissCountDown = this.dismissSecs;
-                        this.getAllRooms();
+                        this.getMyRooms();
                     } else {
                         this.type = 'warning';
                         this.text = 'Room can not be deleted!';
