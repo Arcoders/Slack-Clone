@@ -4,30 +4,41 @@
             <h2>Add New Room</h2>
             <hr>
 
+        <vue-simple-spinner v-if="isLoading" message="Loading..."></vue-simple-spinner>
+
             <b-alert :show="dismissCountDown"
                      dismissible
-                     variant="warning"
+                     v-bind:variant="type"
                      @dismissed="dismissCountDown=0"
                      @dismiss-count-down="countDownChanged">
-                <vue-simple-spinner v-if="isLoading" message="Loading..."></vue-simple-spinner>
-                <p>This alert will dismiss after {{dismissCountDown}} seconds...</p>
-                <b-progress variant="warning"
+
+                <p>{{text}} {{dismissCountDown}} seconds...</p>
+                <b-progress v-bind:variant="type"
                             :max="dismissSecs"
                             :value="dismissCountDown"
                             height="4px">
                 </b-progress>
             </b-alert>
 
-            <div v-if="!isLoading" class="mi_formulario">
 
-                <div class="col-md-8">
-                    <input type="text" v-model="room_name" id="name" class="form-control" placeholder="Room name">
-                </div>
+            <div v-if="!isLoading" class="input-group">
 
-                <div class="col-md-4">
-                    <input type="submit" @click="AddRoom()" value="Add Room" class="btn btn-default">
-                </div>
+                <input type="text"
+                       v-model="room_name"
+                       id="name"
+                       class="form-control"
+                       placeholder="Search for..."
+                       aria-label="Search for...">
 
+                <span class="input-group-btn">
+                    <button class="btn btn-primary"
+                            @click="AddRoom()"
+                            value="Add Room"
+                            v-bind:disabled="btnSubmit"
+                            type="button">
+                        Add Room
+                    </button>
+                  </span>
             </div>
 
     </div>
@@ -38,10 +49,21 @@
         data() {
             return {
                 room_name: '',
+                type: '',
+                text: '',
                 isLoading: false,
-                dismissSecs: 3,
+                dismissSecs: 4,
                 dismissCountDown: 0,
                 showDismissibleAlert: false
+            }
+        },
+        computed: {
+            btnSubmit() {
+                if ( this.room_name.length < 5) {
+                    return true;
+                } else {
+                    return false;
+                }
             }
         },
         methods: {
@@ -49,8 +71,24 @@
                 this.dismissCountDown = dismissCountDown;
             },
             AddRoom () {
+                this.SendRequest();
+            },
+            SendRequest() {
+
                 this.isLoading = true;
-                this.dismissCountDown = this.dismissSecs;
+                this.$http.post('/AddNewRoom', {name: this.room_name}).then(response => {
+
+                    this.isLoading = false;
+                    this.type = 'success';
+                    this.text = 'Your room has been added!';
+                    this.dismissCountDown = this.dismissSecs;
+
+                }, response => {
+                    this.isLoading = false;
+                    this.type = 'warning';
+                    this.text = 'Your room can not added!';
+                    this.dismissCountDown = this.dismissSecs;
+                });
             }
         }
     }

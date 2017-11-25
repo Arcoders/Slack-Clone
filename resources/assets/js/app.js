@@ -12,9 +12,14 @@ window.Vue = require('vue');
 import VueRouter from 'vue-router';
 import Spinner from 'vue-simple-spinner';
 import BootstrapVue from 'bootstrap-vue';
+const VueResource = require('vue-resource');
 
+window.Vue.use(VueResource);
 window.Vue.use(BootstrapVue);
 window.Vue.use(VueRouter);
+
+let content = document.getElementById('csrf-token').getAttribute('content');
+Vue.http.headers.common['X-CSRF-TOKEN'] = content;
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
