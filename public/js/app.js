@@ -46414,12 +46414,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.$http.post('/AddNewRoom', { name: this.room_name }).then(function (response) {
 
                 _this.isLoading = false;
-                _this.type = 'success';
-                _this.text = 'Your room has been added!';
-                _this.dismissCountDown = _this.dismissSecs;
+
+                if (response.body == 'done') {
+                    _this.type = 'success';
+                    _this.text = 'Your room has been added!';
+                    _this.dismissCountDown = _this.dismissSecs;
+                    _this.room_name = '';
+                    _this.btnSubmit = true;
+                } else {
+                    _this.type = 'warning';
+                    _this.text = 'Your room can not added!';
+                    _this.dismissCountDown = _this.dismissSecs;
+                }
             }, function (response) {
                 _this.isLoading = false;
-                _this.type = 'warning';
+                _this.type = 'danger';
                 _this.text = 'Your room can not added!';
                 _this.dismissCountDown = _this.dismissSecs;
             });
@@ -46626,10 +46635,28 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     mounted: function mounted() {
-        console.log('All rooms.');
+        this.getAllRooms();
+    },
+    data: function data() {
+        return {
+            rooms: []
+        };
+    },
+
+    methods: {
+        getAllRooms: function getAllRooms() {
+            var _this = this;
+
+            this.$http.get('/getAllRooms').then(function (response) {
+
+                _this.rooms = response.data;
+            }, function (response) {});
+        }
     }
 });
 
@@ -46641,34 +46668,41 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0, false, false)
+  return _c("div", { attrs: { id: "all_rooms" } }, [
+    _c("h2", [_vm._v("All Rooms")]),
+    _vm._v(" "),
+    _c("hr"),
+    _vm._v(" "),
+    _c("table", { staticClass: "table table-bordered" }, [
+      _vm._m(0, false, false),
+      _vm._v(" "),
+      _c(
+        "tbody",
+        _vm._l(_vm.rooms, function(room) {
+          return _c("tr", [
+            _c("td", [_vm._v(_vm._s(room.name))]),
+            _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(room.created_at))]),
+            _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(room.user.name))])
+          ])
+        })
+      )
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { attrs: { id: "all_rooms" } }, [
-      _c("h2", [_vm._v("All Rooms")]),
-      _vm._v(" "),
-      _c("hr"),
-      _vm._v(" "),
-      _c("table", { staticClass: "table table-bordered" }, [
-        _c("thead", [
-          _c("tr", [
-            _c("th", [_vm._v("Room Name")]),
-            _vm._v(" "),
-            _c("th", [_vm._v("Add Date")])
-          ])
-        ]),
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("Room Name")]),
         _vm._v(" "),
-        _c("tbody", [
-          _c("tr", [
-            _c("td", [_vm._v("Room Name")]),
-            _vm._v(" "),
-            _c("td", [_vm._v("24/11/2017")])
-          ])
-        ])
+        _c("th", [_vm._v("Add Date")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("User")])
       ])
     ])
   }

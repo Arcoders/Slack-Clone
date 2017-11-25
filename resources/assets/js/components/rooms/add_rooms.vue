@@ -79,13 +79,22 @@
                 this.$http.post('/AddNewRoom', {name: this.room_name}).then(response => {
 
                     this.isLoading = false;
-                    this.type = 'success';
-                    this.text = 'Your room has been added!';
-                    this.dismissCountDown = this.dismissSecs;
+
+                    if (response.body == 'done') {
+                        this.type = 'success';
+                        this.text = 'Your room has been added!';
+                        this.dismissCountDown = this.dismissSecs;
+                        this.room_name = '';
+                        this.btnSubmit= true;
+                    } else {
+                        this.type = 'warning';
+                        this.text = 'Your room can not added!';
+                        this.dismissCountDown = this.dismissSecs;
+                    }
 
                 }, response => {
                     this.isLoading = false;
-                    this.type = 'warning';
+                    this.type = 'danger';
                     this.text = 'Your room can not added!';
                     this.dismissCountDown = this.dismissSecs;
                 });

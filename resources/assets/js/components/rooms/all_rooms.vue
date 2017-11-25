@@ -9,12 +9,14 @@
                 <tr>
                     <th>Room Name</th>
                     <th>Add Date</th>
+                    <th>User</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Room Name</td>
-                    <td>24/11/2017</td>
+                <tr v-for="room in rooms">
+                    <td>{{ room.name }}</td>
+                    <td>{{ room.created_at }}</td>
+                    <td>{{ room.user.name }}</td>
                 </tr>
             </tbody>
         </table>
@@ -25,7 +27,25 @@
 <script>
     export default {
         mounted() {
-            console.log('All rooms.')
+            this.getAllRooms();
+        },
+        data() {
+            return {
+                rooms: []
+            };
+        },
+        methods: {
+            getAllRooms: function () {
+
+                this.$http.get('/getAllRooms').then(response => {
+
+                    this.rooms = response.data;
+
+                }, response => {
+
+                });
+
+            }
         }
     }
 </script>
