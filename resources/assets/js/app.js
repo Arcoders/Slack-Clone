@@ -16,6 +16,8 @@ window.Vue.use(VueRouter);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+Vue.component('vue-simple-spinner', require('./components/spinner/spinner.vue'));
+
 import chat_box from './components/chatBox/chatbox.vue';
 import add_rooms from './components/rooms/add_rooms.vue';
 import all_rooms from './components/rooms/all_rooms.vue';
@@ -30,4 +32,6 @@ const router = new VueRouter({
     ]
 });
 
-new Vue({ router }).$mount('#app');
+new Vue({
+    router
+}).$mount('#app');
