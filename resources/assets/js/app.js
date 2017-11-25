@@ -8,7 +8,12 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
+
 import VueRouter from 'vue-router';
+import Spinner from 'vue-simple-spinner';
+import BootstrapVue from 'bootstrap-vue';
+
+window.Vue.use(BootstrapVue);
 window.Vue.use(VueRouter);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -17,6 +22,7 @@ window.Vue.use(VueRouter);
  */
 
 Vue.component('vue-simple-spinner', require('./components/spinner/spinner.vue'));
+
 
 import chat_box from './components/chatBox/chatbox.vue';
 import add_rooms from './components/rooms/add_rooms.vue';
@@ -33,5 +39,6 @@ const router = new VueRouter({
 });
 
 new Vue({
-    router
+    router,
+    components: Spinner
 }).$mount('#app');

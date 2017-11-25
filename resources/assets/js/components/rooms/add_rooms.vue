@@ -4,7 +4,19 @@
             <h2>Add New Room</h2>
             <hr>
 
-            <vue-simple-spinner v-if="isLoading" message="Loading..."></vue-simple-spinner>
+            <b-alert :show="dismissCountDown"
+                     dismissible
+                     variant="warning"
+                     @dismissed="dismissCountDown=0"
+                     @dismiss-count-down="countDownChanged">
+                <vue-simple-spinner v-if="isLoading" message="Loading..."></vue-simple-spinner>
+                <p>This alert will dismiss after {{dismissCountDown}} seconds...</p>
+                <b-progress variant="warning"
+                            :max="dismissSecs"
+                            :value="dismissCountDown"
+                            height="4px">
+                </b-progress>
+            </b-alert>
 
             <div v-if="!isLoading" class="mi_formulario">
 
@@ -26,12 +38,19 @@
         data() {
             return {
                 room_name: '',
-                isLoading: false
+                isLoading: false,
+                dismissSecs: 3,
+                dismissCountDown: 0,
+                showDismissibleAlert: false
             }
         },
         methods: {
-            AddRoom() {
+            countDownChanged (dismissCountDown) {
+                this.dismissCountDown = dismissCountDown;
+            },
+            AddRoom () {
                 this.isLoading = true;
+                this.dismissCountDown = this.dismissSecs;
             }
         }
     }
