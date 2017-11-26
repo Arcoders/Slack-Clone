@@ -59,7 +59,7 @@
 
                     if (response.body != 'error') {
                         this.message = '';
-                        this.$dispatch('new_message', response.data);
+                        this.$on('evento', response.data[0]);
                     } else {
                         this.error = true;
                         this.type = 'warning';

@@ -1,7 +1,7 @@
 <template>
     <div id="all_messages">
         <ul class="messages">
-            <li class="message left appeared" v-for="message in messages">
+            <li class="message left appeared" v-for="message in all_messages">
                 <div class="avatar"></div>
                 <div class="text_wrapper">
                     <div class="text">
@@ -15,12 +15,10 @@
 
 <script>
     export default {
-        props: ['messages'],
+        props: ['all_messages'],
         data() {
-            {
-                return {
+            return {
 
-                }
             }
         }
     }

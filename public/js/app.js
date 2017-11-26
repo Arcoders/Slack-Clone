@@ -66660,13 +66660,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     data: function data() {
         return {
-            messages: []
+            messages: [{ body: 'Salam Ismael' }, { body: 'Como andas' }]
         };
     },
 
-    events: {
-        new_message: function new_message(data) {
+    methods: {
+        incrementTotal: function incrementTotal(data) {
             this.messages.push(data);
+            console.log(data);
         }
     }
 });
@@ -66686,7 +66687,10 @@ var render = function() {
       [
         _vm._m(0, false, false),
         _vm._v(" "),
-        _c("all_messages", { attrs: { messages: _vm.messages } }),
+        _c("all_messages", {
+          attrs: { all_messages: _vm.messages },
+          on: { evento: _vm.incrementTotal }
+        }),
         _vm._v(" "),
         _c("add_messages")
       ],
@@ -84181,7 +84185,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
                 if (response.body != 'error') {
                     _this.message = '';
-                    _this.$dispatch('new_message', response.data);
+                    _this.$on('evento', response.data[0]);
                 } else {
                     _this.error = true;
                     _this.type = 'warning';
@@ -84378,11 +84382,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['messages'],
+    props: ['all_messages'],
     data: function data() {
-        {
-            return {};
-        }
+        return {};
     }
 });
 
@@ -84398,7 +84400,7 @@ var render = function() {
     _c(
       "ul",
       { staticClass: "messages" },
-      _vm._l(_vm.messages, function(message) {
+      _vm._l(_vm.all_messages, function(message) {
         return _c("li", { staticClass: "message left appeared" }, [
           _c("div", { staticClass: "avatar" }),
           _vm._v(" "),
