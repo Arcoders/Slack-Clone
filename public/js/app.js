@@ -7701,7 +7701,7 @@ Vue.component('vue-simple-spinner', __webpack_require__(242));
 
 
 var router = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
-    routes: [{ path: '/addrooms', component: __WEBPACK_IMPORTED_MODULE_4__components_rooms_add_rooms_vue___default.a }, { path: '/allrooms', component: __WEBPACK_IMPORTED_MODULE_5__components_rooms_all_rooms_vue___default.a }, { path: '/myrooms', component: __WEBPACK_IMPORTED_MODULE_6__components_rooms_my_rooms_vue___default.a }, { path: '/chat', component: __WEBPACK_IMPORTED_MODULE_3__components_chatBox_chatbox_vue___default.a }]
+    routes: [{ path: '/addrooms', component: __WEBPACK_IMPORTED_MODULE_4__components_rooms_add_rooms_vue___default.a }, { path: '/allrooms', component: __WEBPACK_IMPORTED_MODULE_5__components_rooms_all_rooms_vue___default.a }, { path: '/myrooms', component: __WEBPACK_IMPORTED_MODULE_6__components_rooms_my_rooms_vue___default.a }, { path: '/chat/:room_id', component: __WEBPACK_IMPORTED_MODULE_3__components_chatBox_chatbox_vue___default.a, name: 'chatbox' }]
 });
 
 new Vue({
@@ -66656,6 +66656,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     mounted: function mounted() {
@@ -67113,6 +67115,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     mounted: function mounted() {
@@ -67176,7 +67182,27 @@ var render = function() {
         [
           _vm._l(_vm.rooms, function(room) {
             return _c("tr", [
-              _c("td", [_vm._v(_vm._s(room.name))]),
+              _c(
+                "td",
+                [
+                  _c(
+                    "router-link",
+                    {
+                      attrs: {
+                        to: { name: "chatbox", params: { room_id: room.id } }
+                      }
+                    },
+                    [
+                      _vm._v(
+                        "\n                        " +
+                          _vm._s(room.name) +
+                          "\n                    "
+                      )
+                    ]
+                  )
+                ],
+                1
+              ),
               _vm._v(" "),
               _c("td", [
                 _vm._v(_vm._s(_vm._f("moment")(room.created_at, "from", "now")))
@@ -67385,6 +67411,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     mounted: function mounted() {
@@ -67526,7 +67556,27 @@ var render = function() {
           [
             _vm._l(_vm.rooms, function(room, index) {
               return _c("tr", [
-                _c("td", [_vm._v(_vm._s(room.name))]),
+                _c(
+                  "td",
+                  [
+                    _c(
+                      "router-link",
+                      {
+                        attrs: {
+                          to: { name: "chatbox", params: { room_id: room.id } }
+                        }
+                      },
+                      [
+                        _vm._v(
+                          "\n                    " +
+                            _vm._s(room.name) +
+                            "\n                "
+                        )
+                      ]
+                    )
+                  ],
+                  1
+                ),
                 _vm._v(" "),
                 _c("td", [
                   _vm._v(

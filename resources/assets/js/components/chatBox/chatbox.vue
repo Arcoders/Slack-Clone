@@ -1,5 +1,6 @@
 <template>
     <div id="chat_box">
+
         <div class="chat_window">
             <div class="top_menu">
                 <div class="buttons">
@@ -26,6 +27,7 @@
                 </div>
             </li>
         </div>
+        
     </div>
 </template>
 

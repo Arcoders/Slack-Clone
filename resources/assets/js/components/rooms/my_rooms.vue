@@ -31,7 +31,11 @@
             </thead>
             <tbody>
             <tr v-for="(room, index) in rooms">
-                <td>{{ room.name }}</td>
+                <td>
+                    <router-link :to="{ name: 'chatbox', params: { room_id: room.id }}">
+                        {{ room.name }}
+                    </router-link>
+                </td>
                 <td>{{ room.created_at | moment("from", "now") }}</td>
                 <td>
                     <button @click="deleteRoom(room.id, index)" type="button" class="btn btn-danger btn-xs">
