@@ -10,8 +10,8 @@
                 <div class="title">..........</div>
             </div>
 
-            <all_messages v-on:evento="incrementTotal" :all_messages="messages"></all_messages>
-            <add_messages></add_messages>
+            <all_messages :all_messages="messages"></all_messages>
+            <add_messages v-on:updateMessages="pushMessage($event)"></add_messages>
 
         </div>
     </div>
@@ -29,16 +29,12 @@
         },
         data() {
             return {
-                messages: [
-                    {body: 'Salam Ismael' },
-                    {body: 'Como andas' }
-                ]
+                messages: []
             }
         },
       methods: {
-          incrementTotal(data) {
+          pushMessage: function(data) {
                 this.messages.push(data);
-                console.log(data);
             }
         },
     }

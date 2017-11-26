@@ -13,7 +13,7 @@
 
             </b-alert>
 
-            <div v-if="!error" class="input_message">
+            <div  v-if="!error" class="input_message">
                 <div class="message_input_wrapper">
                     <input class="message_input"
                            @keyup.enter="addMessage()"
@@ -21,7 +21,7 @@
                            placeholder="Type your message here..." />
                 </div>
 
-                <div class="send_message" @click="addMessage()">
+                <div  class="send_message" @click="addMessage()">
                     <div class="icon"></div>
                     <div class="text">
                         Send
@@ -59,7 +59,7 @@
 
                     if (response.body != 'error') {
                         this.message = '';
-                        this.$on('evento', response.data[0]);
+                        this.$emit('updateMessages', response.data[0]);
                     } else {
                         this.error = true;
                         this.type = 'warning';
