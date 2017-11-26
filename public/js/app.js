@@ -66659,7 +66659,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         all_messages: __WEBPACK_IMPORTED_MODULE_1__all_messages_vue___default.a
     },
     data: function data() {
-        return {};
+        return {
+            messages: []
+        };
+    },
+
+    events: {
+        new_message: function new_message(data) {
+            this.messages.push(data);
+        }
     }
 });
 
@@ -66678,7 +66686,7 @@ var render = function() {
       [
         _vm._m(0, false, false),
         _vm._v(" "),
-        _c("all_messages"),
+        _c("all_messages", { attrs: { messages: _vm.messages } }),
         _vm._v(" "),
         _c("add_messages")
       ],
@@ -84171,8 +84179,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var room_id = this.$route.params.room_id;
             this.$http.post('/AddMessage', { message: this.message, room_id: room_id }).then(function (response) {
 
-                if (response.body == 'done') {
+                if (response.body != 'error') {
                     _this.message = '';
+                    _this.$dispatch('new_message', response.data);
                 } else {
                     _this.error = true;
                     _this.type = 'warning';
@@ -84369,6 +84378,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['messages'],
     data: function data() {
         {
             return {};
@@ -84384,28 +84394,29 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0, false, false)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { attrs: { id: "all_messages" } }, [
-      _c("ul", { staticClass: "messages" }, [
-        _c("li", { staticClass: "message left appeared" }, [
+  return _c("div", { attrs: { id: "all_messages" } }, [
+    _c(
+      "ul",
+      { staticClass: "messages" },
+      _vm._l(_vm.messages, function(message) {
+        return _c("li", { staticClass: "message left appeared" }, [
           _c("div", { staticClass: "avatar" }),
           _vm._v(" "),
           _c("div", { staticClass: "text_wrapper" }, [
             _c("div", { staticClass: "text" }, [
-              _vm._v("\n                    Salam Ismael\n                ")
+              _vm._v(
+                "\n                    " +
+                  _vm._s(message.body) +
+                  "\n                "
+              )
             ])
           ])
         ])
-      ])
-    ])
-  }
-]
+      })
+    )
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {

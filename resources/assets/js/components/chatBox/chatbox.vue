@@ -10,7 +10,7 @@
                 <div class="title">..........</div>
             </div>
 
-            <all_messages></all_messages>
+            <all_messages :messages="messages"></all_messages>
             <add_messages></add_messages>
 
         </div>
@@ -29,7 +29,12 @@
         },
         data() {
             return {
-
+                messages: []
+            }
+        },
+        events: {
+            new_message(data) {
+                this.messages.push(data);
             }
         }
     }

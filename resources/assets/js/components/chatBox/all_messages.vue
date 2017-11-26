@@ -1,11 +1,11 @@
 <template>
     <div id="all_messages">
         <ul class="messages">
-            <li class="message left appeared">
+            <li class="message left appeared" v-for="message in messages">
                 <div class="avatar"></div>
                 <div class="text_wrapper">
                     <div class="text">
-                        Salam Ismael
+                        {{ message.body }}
                     </div>
                 </div>
             </li>
@@ -15,6 +15,7 @@
 
 <script>
     export default {
+        props: ['messages'],
         data() {
             {
                 return {

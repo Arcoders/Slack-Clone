@@ -57,8 +57,9 @@
                 let room_id = this.$route.params.room_id;
                 this.$http.post('/AddMessage', {message: this.message, room_id: room_id}).then(response => {
 
-                    if (response.body == 'done') {
+                    if (response.body != 'error') {
                         this.message = '';
+                        this.$dispatch('new_message', response.data);
                     } else {
                         this.error = true;
                         this.type = 'warning';

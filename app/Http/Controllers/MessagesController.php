@@ -16,7 +16,7 @@ class MessagesController extends Controller
         $message->room_id = $request->room_id;
 
         if ($message->save()) {
-            return 'done';
+            return Messages::where('id', $message->id)->with('user')->get()->toArray();
         } else {
             return 'error';
         }
