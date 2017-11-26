@@ -66625,20 +66625,10 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__add_messages_vue__ = __webpack_require__(397);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__add_messages_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__add_messages_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__all_messages_vue__ = __webpack_require__(400);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__all_messages_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__all_messages_vue__);
 //
 //
 //
@@ -66659,9 +66649,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
+
+
+
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-    mounted: function mounted() {
-        console.log('Chat box.');
+    components: {
+        add_messages: __WEBPACK_IMPORTED_MODULE_0__add_messages_vue___default.a,
+        all_messages: __WEBPACK_IMPORTED_MODULE_1__all_messages_vue___default.a
+    },
+    data: function data() {
+        return {};
     }
 });
 
@@ -66673,54 +66671,36 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0, false, false)
+  return _c("div", { attrs: { id: "chat_box" } }, [
+    _c(
+      "div",
+      { staticClass: "chat_window" },
+      [
+        _vm._m(0, false, false),
+        _vm._v(" "),
+        _c("all_messages"),
+        _vm._v(" "),
+        _c("add_messages")
+      ],
+      1
+    )
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { attrs: { id: "chat_box" } }, [
-      _c("div", { staticClass: "chat_window" }, [
-        _c("div", { staticClass: "top_menu" }, [
-          _c("div", { staticClass: "buttons" }, [
-            _c("div", { staticClass: "button close" }),
-            _vm._v(" "),
-            _c("div", { staticClass: "button minimize" }),
-            _vm._v(" "),
-            _c("div", { staticClass: "button maximize" })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "title" }, [_vm._v("..........")])
-        ]),
+    return _c("div", { staticClass: "top_menu" }, [
+      _c("div", { staticClass: "buttons" }, [
+        _c("div", { staticClass: "button close" }),
         _vm._v(" "),
-        _c("ul", { staticClass: "messages" }),
+        _c("div", { staticClass: "button minimize" }),
         _vm._v(" "),
-        _c("div", { staticClass: "bottom_wrapper clearfix" }, [
-          _c("div", { staticClass: "message_input_wrapper" }, [
-            _c("input", {
-              staticClass: "message_input",
-              attrs: { placeholder: "Type your message here..." }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "send_message" }, [
-            _c("div", { staticClass: "icon" }),
-            _vm._v(" "),
-            _c("div", { staticClass: "text" }, [_vm._v("Send")])
-          ])
-        ])
+        _c("div", { staticClass: "button maximize" })
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "message_template" }, [
-        _c("li", { staticClass: "message" }, [
-          _c("div", { staticClass: "avatar" }),
-          _vm._v(" "),
-          _c("div", { staticClass: "text_wrapper" }, [
-            _c("div", { staticClass: "text" })
-          ])
-        ])
-      ])
+      _c("div", { staticClass: "title" }, [_vm._v("..........")])
     ])
   }
 ]
@@ -84074,6 +84054,366 @@ webpackContext.keys = function webpackContextKeys() {
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
 webpackContext.id = 396;
+
+/***/ }),
+/* 397 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(5)
+/* script */
+var __vue_script__ = __webpack_require__(398)
+/* template */
+var __vue_template__ = __webpack_require__(399)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\chatBox\\add_messages.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-17cb4b6a", Component.options)
+  } else {
+    hotAPI.reload("data-v-17cb4b6a", Component.options)
+' + '  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 398 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        {
+            return {
+                message: '',
+                type: '',
+                text: '',
+                error: false,
+                dismissSecs: 4,
+                dismissCountDown: 0,
+                showDismissibleAlert: false
+            };
+        }
+    },
+
+    methods: {
+        countDownChanged: function countDownChanged(dismissCountDown) {
+            this.dismissCountDown = dismissCountDown;
+            this.error = false;
+        },
+        addMessage: function addMessage() {
+            var _this = this;
+
+            var room_id = this.$route.params.room_id;
+            this.$http.post('/AddMessage', { message: this.message, room_id: room_id }).then(function (response) {
+
+                if (response.body == 'done') {
+                    _this.message = '';
+                } else {
+                    _this.error = true;
+                    _this.type = 'warning';
+                    _this.text = 'your message can not be sent!';
+                    _this.dismissCountDown = _this.dismissSecs;
+                }
+            }, function (response) {
+                _this.error = true;
+                _this.type = 'danger';
+                _this.text = 'your message can not be sent!';
+                _this.dismissCountDown = _this.dismissSecs;
+            });
+        }
+    }
+});
+
+/***/ }),
+/* 399 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { attrs: { id: "add_messages" } }, [
+    _c(
+      "div",
+      { staticClass: "bottom_wrapper clearfix" },
+      [
+        _c(
+          "b-alert",
+          {
+            attrs: {
+              show: _vm.dismissCountDown,
+              dismissible: "",
+              variant: _vm.type
+            },
+            on: {
+              dismissed: function($event) {
+                _vm.dismissCountDown = 0
+              },
+              "dismiss-count-down": _vm.countDownChanged
+            }
+          },
+          [
+            _c("b", [_vm._v("Error: ")]),
+            _vm._v(
+              _vm._s(_vm.text) +
+                " " +
+                _vm._s(_vm.dismissCountDown) +
+                " seconds..."
+            )
+          ]
+        ),
+        _vm._v(" "),
+        !_vm.error
+          ? _c("div", { staticClass: "input_message" }, [
+              _c("div", { staticClass: "message_input_wrapper" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.message,
+                      expression: "message"
+                    }
+                  ],
+                  staticClass: "message_input",
+                  attrs: { placeholder: "Type your message here..." },
+                  domProps: { value: _vm.message },
+                  on: {
+                    keyup: function($event) {
+                      if (
+                        !("button" in $event) &&
+                        _vm._k($event.keyCode, "enter", 13, $event.key)
+                      ) {
+                        return null
+                      }
+                      _vm.addMessage()
+                    },
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.message = $event.target.value
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "send_message",
+                  on: {
+                    click: function($event) {
+                      _vm.addMessage()
+                    }
+                  }
+                },
+                [
+                  _c("div", { staticClass: "icon" }),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "text" }, [
+                    _vm._v("\n                    Send\n                ")
+                  ])
+                ]
+              )
+            ])
+          : _vm._e()
+      ],
+      1
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-17cb4b6a", module.exports)
+  }
+}
+
+/***/ }),
+/* 400 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(5)
+/* script */
+var __vue_script__ = __webpack_require__(401)
+/* template */
+var __vue_template__ = __webpack_require__(402)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\chatBox\\all_messages.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-14d62b2c", Component.options)
+  } else {
+    hotAPI.reload("data-v-14d62b2c", Component.options)
+' + '  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 401 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        {
+            return {};
+        }
+    }
+});
+
+/***/ }),
+/* 402 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0, false, false)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { attrs: { id: "all_messages" } }, [
+      _c("ul", { staticClass: "messages" }, [
+        _c("li", { staticClass: "message left appeared" }, [
+          _c("div", { staticClass: "avatar" }),
+          _vm._v(" "),
+          _c("div", { staticClass: "text_wrapper" }, [
+            _c("div", { staticClass: "text" }, [
+              _vm._v("\n                    Salam Ismael\n                ")
+            ])
+          ])
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-14d62b2c", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

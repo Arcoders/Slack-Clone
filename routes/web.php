@@ -20,6 +20,9 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::post('/AddNewRoom', 'RoomsController@AddNewRoom');
+Route::post('/AddMessage', 'MessagesController@AddMessage');
+
 Route::get('/getAllRooms', 'RoomsController@GetAllRooms');
 Route::get('/getMyRooms', 'RoomsController@GetMyRooms');
 Route::delete('/deleteRoom/{room_id}', 'RoomsController@DeleteRoom');
+

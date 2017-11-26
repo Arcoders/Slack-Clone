@@ -1,6 +1,5 @@
 <template>
     <div id="chat_box">
-
         <div class="chat_window">
             <div class="top_menu">
                 <div class="buttons">
@@ -10,31 +9,29 @@
                 </div>
                 <div class="title">..........</div>
             </div>
-            <ul class="messages"></ul>
-            <div class="bottom_wrapper clearfix">
-                <div class="message_input_wrapper"><input class="message_input" placeholder="Type your message here..." /></div>
-                <div class="send_message">
-                    <div class="icon"></div>
-                    <div class="text">Send</div>
-                </div>
-            </div>
+
+            <all_messages></all_messages>
+            <add_messages></add_messages>
+
         </div>
-        <div class="message_template">
-            <li class="message">
-                <div class="avatar"></div>
-                <div class="text_wrapper">
-                    <div class="text"></div>
-                </div>
-            </li>
-        </div>
-        
     </div>
 </template>
 
 <script>
+
+    import addMessages from './add_messages.vue';
+    import allMessages from './all_messages.vue';
+
     export default {
-        mounted() {
-            console.log('Chat box.')
+        components: {
+            add_messages: addMessages,
+            all_messages: allMessages
+        },
+        data() {
+            return {
+
+            }
         }
     }
+
 </script>
