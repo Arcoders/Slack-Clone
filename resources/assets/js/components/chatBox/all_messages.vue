@@ -5,7 +5,12 @@
                 <div class="avatar"></div>
                 <div class="text_wrapper">
                     <div class="text">
+                        <b>{{ message.user.name }}</b>
+                        <br>
                         {{ message.body }}
+                        <small class="small pull-right">
+                           <b> {{ message.created_at }} </b>
+                        </small>
                     </div>
                 </div>
             </li>
