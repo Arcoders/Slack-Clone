@@ -35,7 +35,7 @@
         },
         mounted: function() {
             this.channel = this.$pusher.subscribe(this.$route.params.room_id+'room');
-            console.log(this.channel);
+
             this.channel.bind('pushMessage', ({ data }) => {
                 console.log(data);
                 this.messages.push(data);
@@ -43,9 +43,7 @@
         },
         methods: {
           pushMessage(data) {
-
-              //...
-
+              this.messages.push(data);
             },
 
         },

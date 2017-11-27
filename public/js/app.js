@@ -83044,7 +83044,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         var _this = this;
 
         this.channel = this.$pusher.subscribe(this.$route.params.room_id + 'room');
-        console.log(this.channel);
+
         this.channel.bind('pushMessage', function (_ref) {
             var data = _ref.data;
 
@@ -83054,9 +83054,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     methods: {
         pushMessage: function pushMessage(data) {
-
-            //...
-
+            this.messages.push(data);
         }
     }
 });
