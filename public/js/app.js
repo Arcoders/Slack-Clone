@@ -87287,15 +87287,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             channel: '',
             room_name: this.$route.params.room_name,
             room_id: this.$route.params.room_id,
-            WhoisOnline: []
+            WhoisOnline: [],
+            onlineUserCount: ''
         };
     },
     created: function created() {
         this.BindEvents(this.room_id + 'room', 'pushMessage', this.messages);
-        this.BindEvents(this.room_id + 'online', 'onlineUser', this.WhoisOnline);
     },
     mounted: function mounted() {
         this.GetMeOnline();
+        this.updateCount();
     },
 
     methods: {
@@ -87309,13 +87310,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
         },
         GetMeOnline: function GetMeOnline() {
-            var _this = this;
-
             this.$http.get('/getMeOnline/' + this.room_id).then(function (response) {
 
-                _this.WhoisOnline.push(response.data);
+                //...
+
             }, function (response) {
                 //...
+            });
+        },
+        updateCount: function updateCount() {
+            var _this = this;
+
+            this.channel = this.$pusher.subscribe(this.room_id + 'online');
+            this.channel.bind('onlineUser', function (data) {
+                _this.onlineUserCount = data;
             });
         }
     }
@@ -87713,7 +87721,7 @@ var render = function() {
             _vm._v(
               _vm._s(_vm.room_name) +
                 " online Users " +
-                _vm._s(_vm.WhoisOnline.length)
+                _vm._s(_vm.onlineUserCount)
             )
           ])
         ]),
@@ -88009,11 +88017,7 @@ var render = function() {
                     disabled: _vm.btnSubmit,
                     type: "button"
                   },
-                  on: {
-                    click: function($event) {
-                      _vm.AddRoom()
-                    }
-                  }
+                  on: { click: _vm.AddRoom }
                 },
                 [_vm._v("\n                    Add Room\n                ")]
               )

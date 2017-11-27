@@ -32,7 +32,7 @@
 
                 <span class="input-group-btn">
                     <button class="btn btn-primary"
-                            @click="AddRoom()"
+                            @click="AddRoom"
                             value="Add Room"
                             v-bind:disabled="btnSubmit"
                             type="button">

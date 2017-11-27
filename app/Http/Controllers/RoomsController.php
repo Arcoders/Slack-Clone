@@ -55,12 +55,10 @@ class RoomsController extends Controller
             $this->insertOnline($user->id, $room_id);
         }
 
-        $room = Rooms::where('id', $room_id)->withCount('online')->get()->toArray();
+        $room = Rooms::where('id', $room_id)->withCount('online')->get()[0]->online_count;
+        trigger_pusher( $room_id.'online', 'onlineUser', $room);
 
-        dd($room);
-
-        trigger_pusher( $room_id.'online', 'onlineUser', $user);
-        return $user;
+        return 'done';
     }
 
     protected function insertOnline($user, $room)
@@ -71,5 +69,7 @@ class RoomsController extends Controller
         $online->timelogin = time();
         $online->save();
     }
+
+    
 
 }

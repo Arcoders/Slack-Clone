@@ -7,7 +7,7 @@
                     <div class="button minimize"></div>
                     <div class="button maximize"></div>
                 </div>
-                <div class="title">{{ room_name }} online Users {{ WhoisOnline.length }}</div>
+                <div class="title">{{ room_name }} online Users {{ onlineUserCount }}</div>
             </div>
 
             <all_messages :all_messages="messages"></all_messages>
@@ -33,15 +33,16 @@
                 channel: '',
                 room_name: this.$route.params.room_name,
                 room_id: this.$route.params.room_id,
-                WhoisOnline: []
+                WhoisOnline: [],
+                onlineUserCount: ''
             }
         },
         created() {
             this.BindEvents(this.room_id+'room', 'pushMessage', this.messages);
-            this.BindEvents(this.room_id+'online', 'onlineUser', this.WhoisOnline);
         },
         mounted() {
             this.GetMeOnline();
+            this.updateCount();
         },
         methods: {
           pushMessage(data) {
@@ -56,10 +57,16 @@
           GetMeOnline() {
               this.$http.get('/getMeOnline/'+this.room_id).then(response => {
 
-                  this.WhoisOnline.push(response.data);
+                  //...
 
               }, response => {
                   //...
+              });
+          },
+          updateCount() {
+              this.channel = this.$pusher.subscribe(this.room_id+'online');
+              this.channel.bind('onlineUser', (data) => {
+                  this.onlineUserCount = data;
               });
           }
         },
