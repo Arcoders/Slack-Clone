@@ -45,10 +45,27 @@ class RoomsController extends Controller
 
     public function GetMeOnline($room_id) {
         $user = Auth::user();
+        $userOnline = Online::where('user_id', $user->id)->count();
+
+        if ($userOnline == 0) {
+            $this->insertOnline($user->id, $room_id);
+
+        } else {
+            Online::where('user_id', $user->id)->delete();
+            $this->insertOnline($user->id, $room_id);
+        }
 
         trigger_pusher( $room_id.'online', 'onlineUser', $user);
         return $user;
     }
-    
+
+    protected function insertOnline($user, $room)
+    {
+        $online = new Online();
+        $online->user_id = $user;
+        $online->room_id = $room;
+        $online->timelogin = time();
+        $online->save();
+    }
 
 }
