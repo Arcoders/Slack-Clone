@@ -21,7 +21,7 @@ class Rooms extends Model
 
     public function online()
     {
-        return $this->hasMany(Messages::class, 'room_id');
+        return $this->hasMany(Online::class, 'room_id');
     }
 
 }

@@ -22,9 +22,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/AddNewRoom', 'RoomsController@AddNewRoom');
 Route::post('/AddMessage', 'MessagesController@AddMessage');
 
+Route::get('/getMeOnline/{room_id}', 'RoomsController@GetMeOnline');
+
 Route::get('/getAllRooms', 'RoomsController@GetAllRooms');
 Route::get('/getMyRooms', 'RoomsController@GetMyRooms');
-Route::delete('/getMeOnline/{room_id}', 'RoomsController@DeleteRoom');
+Route::delete('/deleteRoom/{room_id}', 'RoomsController@DeleteRoom');
 
-Route::get('/getMeOnline/{room_id}', 'RoomsController@GetMeOnline');
 

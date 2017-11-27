@@ -18,7 +18,7 @@ class CreateTableWhoisOnline extends Migration
             $table->integer('user_id');
             $table->integer('room_id');
             $table->string('timelogin');
-            $table->string('timelogout');
+            $table->string('timelogout')->nullable();
             $table->timestamps();
         });
     }

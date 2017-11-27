@@ -55,6 +55,10 @@ class RoomsController extends Controller
             $this->insertOnline($user->id, $room_id);
         }
 
+        $room = Rooms::where('id', $room_id)->withCount('online')->get()->toArray();
+
+        dd($room);
+
         trigger_pusher( $room_id.'online', 'onlineUser', $user);
         return $user;
     }
