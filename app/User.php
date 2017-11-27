@@ -27,6 +27,8 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    protected $table = "users";
+
     public function messages()
     {
         return $this->hasMany(Messages::class, 'user_id');
@@ -35,6 +37,11 @@ class User extends Authenticatable
     public function rooms()
     {
         return $this->hasMany(Rooms::class, 'user_id');
+    }
+
+    public function online()
+    {
+        return $this->hasOne(Online::class, 'user_id');
     }
 
 }

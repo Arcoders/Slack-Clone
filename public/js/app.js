@@ -87290,29 +87290,30 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             WhoisOnline: []
         };
     },
-
+    created: function created() {
+        this.BindEvents(this.room_id + 'room', 'pushMessage', this.messages);
+        this.BindEvents(this.room_id + 'online', 'onlineUser', this.WhoisOnline);
+    },
     mounted: function mounted() {
-        this.BindEvents(this.room_id + 'room', 'pushMessage');
         this.GetMeOnline();
     },
+
     methods: {
         pushMessage: function pushMessage(data) {
             // ...
         },
-        BindEvents: function BindEvents(name, action) {
-            var _this = this;
-
+        BindEvents: function BindEvents(name, action, array) {
             this.channel = this.$pusher.subscribe(name);
             this.channel.bind(action, function (data) {
-                _this.messages.push(data);
+                array.push(data);
             });
         },
         GetMeOnline: function GetMeOnline() {
-            var _this2 = this;
+            var _this = this;
 
             this.$http.get('/getMeOnline/' + this.room_id).then(function (response) {
 
-                _this2.WhoisOnline.push(response.data);
+                _this.WhoisOnline.push(response.data);
             }, function (response) {
                 //...
             });

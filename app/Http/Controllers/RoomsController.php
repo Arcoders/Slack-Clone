@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\AddRoomsRequest;
+use App\Online;
 use App\Rooms;
 use Illuminate\Support\Facades\Auth;
 
@@ -44,8 +45,10 @@ class RoomsController extends Controller
 
     public function GetMeOnline($room_id) {
         $user = Auth::user();
-        $room = Rooms::find($room_id);
+
+        trigger_pusher( $room_id.'online', 'onlineUser', $user);
         return $user;
     }
+    
 
 }

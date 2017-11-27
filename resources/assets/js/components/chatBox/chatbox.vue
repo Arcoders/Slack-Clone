@@ -36,18 +36,21 @@
                 WhoisOnline: []
             }
         },
-        mounted: function() {
-            this.BindEvents(this.room_id+'room', 'pushMessage');
+        created() {
+            this.BindEvents(this.room_id+'room', 'pushMessage', this.messages);
+            this.BindEvents(this.room_id+'online', 'onlineUser', this.WhoisOnline);
+        },
+        mounted() {
             this.GetMeOnline();
         },
         methods: {
           pushMessage(data) {
               // ...
           },
-          BindEvents(name, action) {
+          BindEvents(name, action, array) {
               this.channel = this.$pusher.subscribe(name);
               this.channel.bind(action, (data) => {
-                  this.messages.push(data);
+                  array.push(data);
               });
           },
           GetMeOnline() {

@@ -4,10 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Messages extends Model
+class Online extends Model
 {
 
-    protected $table = "messages";
+    protected $table = 'online';
 
     public function user()
     {
