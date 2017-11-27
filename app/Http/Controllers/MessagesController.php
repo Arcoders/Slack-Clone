@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\AddMessageRequest;
 use App\Messages;
 use Illuminate\Support\Facades\Auth;
+use Pusher\Laravel\Facades\Pusher;
 
 class MessagesController extends Controller
 {
@@ -16,9 +17,18 @@ class MessagesController extends Controller
         $message->room_id = $request->room_id;
 
         if ($message->save()) {
-            return Messages::where('id', $message->id)->with('user')->get()->toArray();
+
+            $data = Messages::where('id', $message->id)->with('user')->get()->toArray();
+            Pusher::getDefaultConnection();
+            Pusher::trigger($message->room_id.'room', 'pushMessage', $data);
+
+            return $data;
+
         } else {
             return 'error';
         }
     }
+
+
+
 }

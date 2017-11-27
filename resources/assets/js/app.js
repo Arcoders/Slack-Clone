@@ -15,11 +15,20 @@ import BootstrapVue from 'bootstrap-vue';
 
 const VueResource = require('vue-resource');
 const VueMoment = require('vue-moment');
+const VuePusher = require('vue-pusher');
 
 window.Vue.use(VueResource);
 window.Vue.use(BootstrapVue);
 window.Vue.use(VueRouter);
 window.Vue.use(VueMoment);
+
+window.Vue.use(VuePusher, {
+    api_key: '60efd870de38efff2291',
+    options: {
+        cluster: 'eu',
+        encrypted: true,
+    }
+});
 
 let content = document.getElementById('csrf-token').getAttribute('content');
 Vue.http.headers.common['X-CSRF-TOKEN'] = content;
