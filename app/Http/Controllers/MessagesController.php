@@ -18,7 +18,7 @@ class MessagesController extends Controller
 
         if ($message->save()) {
 
-            $data = Messages::where('id', $message->id)->with('user', 'room')->get()->toArray();
+            $data = Messages::where('id', $message->id)->with('user', 'room')->get()[0]->toArray();
             $this->trigger_pusher( $message->room_id.'room', 'pushMessage', $data);
 
             return $data;
@@ -30,10 +30,10 @@ class MessagesController extends Controller
 
     protected function trigger_pusher($roomChannel, $event, $data)
     {
-        $id = env('PUSHER_APP_ID');
-        $key = env('PUSHER_APP_KEY');
-        $secret = env('PUSHER_APP_SECRET');
-        $cluster = env('PUSHER_APP_CLUSTER');
+        $id = "436290";
+        $key = "60efd870de38efff2291";
+        $secret = "abb5aae8d6cb88f1c4cb";
+        $cluster = "eu";
 
         $pusher = new Pusher( $key, $secret, $id, array('cluster' => $cluster) );
         $pusher->trigger($roomChannel, $event, $data);

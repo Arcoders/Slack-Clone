@@ -35,15 +35,14 @@
         },
         mounted: function() {
             this.channel = this.$pusher.subscribe(this.$route.params.room_id+'room');
-
-            this.channel.bind('pushMessage', ({ data }) => {
-                console.log(data);
+            this.channel.bind('pushMessage', (data) => {
                 this.messages.push(data);
+
             });
         },
         methods: {
           pushMessage(data) {
-              this.messages.push(data);
+              // ...
             },
 
         },

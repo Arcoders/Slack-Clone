@@ -23602,7 +23602,7 @@ return zhTw;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(177);
-module.exports = __webpack_require__(386);
+module.exports = __webpack_require__(388);
 
 
 /***/ }),
@@ -23615,13 +23615,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_simple_spinner__ = __webpack_require__(205);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_simple_spinner___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue_simple_spinner__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_bootstrap_vue__ = __webpack_require__(206);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_chatBox_chatbox_vue__ = __webpack_require__(368);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_chatBox_chatbox_vue__ = __webpack_require__(370);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_chatBox_chatbox_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__components_chatBox_chatbox_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_rooms_add_rooms_vue__ = __webpack_require__(377);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_rooms_add_rooms_vue__ = __webpack_require__(379);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_rooms_add_rooms_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__components_rooms_add_rooms_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_rooms_all_rooms_vue__ = __webpack_require__(380);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_rooms_all_rooms_vue__ = __webpack_require__(382);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_rooms_all_rooms_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__components_rooms_all_rooms_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_rooms_my_rooms_vue__ = __webpack_require__(383);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_rooms_my_rooms_vue__ = __webpack_require__(385);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_rooms_my_rooms_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__components_rooms_my_rooms_vue__);
 
 /**
@@ -23640,7 +23640,7 @@ window.Vue = __webpack_require__(201);
 
 var VueResource = __webpack_require__(359);
 var VueMoment = __webpack_require__(361);
-var VuePusher = __webpack_require__(405);
+var VuePusher = __webpack_require__(363);
 
 window.Vue.use(VueResource);
 window.Vue.use(__WEBPACK_IMPORTED_MODULE_2_bootstrap_vue__["a" /* default */]);
@@ -23663,7 +23663,7 @@ Vue.http.headers.common['X-CSRF-TOKEN'] = content;
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('vue-simple-spinner', __webpack_require__(363));
+Vue.component('vue-simple-spinner', __webpack_require__(365));
 
 
 
@@ -82678,1801 +82678,10 @@ webpackContext.id = 362;
 /* 363 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var disposed = false
-function injectStyle (ssrContext) {
-  if (disposed) return
-  __webpack_require__(364)
-}
-var normalizeComponent = __webpack_require__(6)
-/* script */
-var __vue_script__ = __webpack_require__(366)
-/* template */
-var __vue_template__ = __webpack_require__(367)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = injectStyle
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources\\assets\\js\\components\\spinner\\spinner.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-0ec4ee4f", Component.options)
-  } else {
-    hotAPI.reload("data-v-0ec4ee4f", Component.options)
-' + '  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 364 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(365);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(10)("67970314", content, false);
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-0ec4ee4f\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./spinner.vue", function() {
-     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-0ec4ee4f\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./spinner.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 365 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(9)(undefined);
-// imports
-
-
-// module
-exports.push([module.i, "\n.vue-simple-spinner {\n    -webkit-transition: all 0.3s linear;\n    transition: all 0.3s linear;\n}\n@-webkit-keyframes vue-simple-spinner-spin {\n0% { -webkit-transform: rotate(0deg); transform: rotate(0deg);\n}\n100% { -webkit-transform: rotate(360deg); transform: rotate(360deg);\n}\n}\n@keyframes vue-simple-spinner-spin {\n0% { -webkit-transform: rotate(0deg); transform: rotate(0deg);\n}\n100% { -webkit-transform: rotate(360deg); transform: rotate(360deg);\n}\n}\n", ""]);
-
-// exports
-
-
-/***/ }),
-/* 366 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-
-var isNumber = function isNumber(n) {
-    return !isNaN(parseFloat(n)) && isFinite(n);
-};
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    name: 'vue-simple-spinner',
-    props: {
-        'size': {
-            // either a number (pixel width/height) or 'tiny', 'small',
-            // 'medium', 'large', 'huge', 'massive' for common sizes
-            default: 32
-        },
-        'line-size': {
-            type: Number,
-            default: 3
-        },
-        'line-bg-color': {
-            type: String,
-            default: '#eee'
-        },
-        'line-fg-color': {
-            type: String,
-            default: '#2196f3' // match .blue color to Material Design's 'Blue 500' color
-        },
-        'speed': {
-            type: Number,
-            default: 0.8
-        },
-        'spacing': {
-            type: Number,
-            default: 4
-        },
-        'message': {
-            type: String,
-            default: ''
-        },
-        'font-size': {
-            type: Number,
-            default: 13
-        },
-        'text-fg-color': {
-            type: String,
-            default: '#555'
-        }
-    },
-    computed: {
-        size_px: function size_px() {
-            switch (this.size) {
-                case 'tiny':
-                    return 12;
-                case 'small':
-                    return 16;
-                case 'medium':
-                    return 32;
-                case 'large':
-                    return 48;
-                case 'big':
-                    return 64;
-                case 'huge':
-                    return 96;
-                case 'massive':
-                    return 128;
-            }
-
-            return isNumber(this.size) ? this.size : 32;
-        },
-        line_size_px: function line_size_px() {
-            switch (this.size) {
-                case 'tiny':
-                    return 1;
-                case 'small':
-                    return 2;
-                case 'medium':
-                    return 3;
-                case 'large':
-                    return 3;
-                case 'big':
-                    return 4;
-                case 'huge':
-                    return 4;
-                case 'massive':
-                    return 5;
-            }
-
-            return isNumber(this.lineSize) ? this.lineSize : 4;
-        },
-        text_margin_top: function text_margin_top() {
-            switch (this.size) {
-                case 'tiny':
-                case 'small':
-                case 'medium':
-                case 'large':
-                case 'big':
-                case 'huge':
-                case 'massive':
-                    return Math.min(Math.max(Math.ceil(this.size_px / 8), 3), 12);
-            }
-
-            return isNumber(this.spacing) ? this.spacing : 4;
-        },
-        text_font_size: function text_font_size() {
-            switch (this.size) {
-                case 'tiny':
-                case 'small':
-                case 'medium':
-                case 'large':
-                case 'big':
-                case 'huge':
-                case 'massive':
-                    return Math.min(Math.max(Math.ceil(this.size_px * 0.4), 11), 32);
-            }
-
-            return isNumber(this.fontSize) ? this.fontSize : 13;
-        },
-        spinner_style: function spinner_style() {
-            return {
-                'margin': '0 auto',
-                'border-radius': '100%',
-                'border': this.line_size_px + 'px solid ' + this.lineBgColor,
-                'border-top': this.line_size_px + 'px solid ' + this.lineFgColor,
-                'width': this.size_px + 'px',
-                'height': this.size_px + 'px',
-                'animation': 'vue-simple-spinner-spin ' + this.speed + 's linear infinite'
-            };
-        },
-        text_style: function text_style() {
-            return {
-                'margin-top': this.text_margin_top + 'px',
-                'color': this.textFgColor,
-                'font-size': this.text_font_size + 'px',
-                'text-align': 'center'
-            };
-        }
-    }
-});
-
-/***/ }),
-/* 367 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("div", { staticClass: "vue-simple-spinner", style: _vm.spinner_style }),
-    _vm._v(" "),
-    _vm.message.length > 0
-      ? _c(
-          "div",
-          { staticClass: "vue-simple-spinner-text", style: _vm.text_style },
-          [_vm._v(_vm._s(_vm.message))]
-        )
-      : _vm._e()
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-0ec4ee4f", module.exports)
-  }
-}
-
-/***/ }),
-/* 368 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(6)
-/* script */
-var __vue_script__ = __webpack_require__(369)
-/* template */
-var __vue_template__ = __webpack_require__(376)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources\\assets\\js\\components\\chatBox\\chatbox.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-3ed8e4e3", Component.options)
-  } else {
-    hotAPI.reload("data-v-3ed8e4e3", Component.options)
-' + '  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 369 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__add_messages_vue__ = __webpack_require__(370);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__add_messages_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__add_messages_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__all_messages_vue__ = __webpack_require__(373);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__all_messages_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__all_messages_vue__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    components: {
-        add_messages: __WEBPACK_IMPORTED_MODULE_0__add_messages_vue___default.a,
-        all_messages: __WEBPACK_IMPORTED_MODULE_1__all_messages_vue___default.a
-    },
-    data: function data() {
-        return {
-            messages: [],
-            channel: ''
-        };
-    },
-
-    mounted: function mounted() {
-        var _this = this;
-
-        this.channel = this.$pusher.subscribe(this.$route.params.room_id + 'room');
-
-        this.channel.bind('pushMessage', function (_ref) {
-            var data = _ref.data;
-
-            console.log(data);
-            _this.messages.push(data);
-        });
-    },
-    methods: {
-        pushMessage: function pushMessage(data) {
-            this.messages.push(data);
-        }
-    }
-});
-
-/***/ }),
-/* 370 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(6)
-/* script */
-var __vue_script__ = __webpack_require__(371)
-/* template */
-var __vue_template__ = __webpack_require__(372)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources\\assets\\js\\components\\chatBox\\add_messages.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-17cb4b6a", Component.options)
-  } else {
-    hotAPI.reload("data-v-17cb4b6a", Component.options)
-' + '  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 371 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    data: function data() {
-        {
-            return {
-                message: '',
-                type: '',
-                text: '',
-                error: false,
-                dismissSecs: 4,
-                dismissCountDown: 0,
-                showDismissibleAlert: false
-            };
-        }
-    },
-
-    methods: {
-        countDownChanged: function countDownChanged(dismissCountDown) {
-            this.dismissCountDown = dismissCountDown;
-            this.error = false;
-        },
-        addMessage: function addMessage() {
-            var _this = this;
-
-            var room_id = this.$route.params.room_id;
-            this.$http.post('/AddMessage', { message: this.message, room_id: room_id }).then(function (response) {
-
-                if (response.body != 'error') {
-                    _this.message = '';
-                    _this.$emit('updateMessages', response.data[0]);
-                } else {
-                    _this.error = true;
-                    _this.type = 'warning';
-                    _this.text = 'your message can not be sent!';
-                    _this.dismissCountDown = _this.dismissSecs;
-                }
-            }, function (response) {
-                _this.error = true;
-                _this.type = 'danger';
-                _this.text = 'your message can not be sent!';
-                _this.dismissCountDown = _this.dismissSecs;
-            });
-        }
-    }
-});
-
-/***/ }),
-/* 372 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { attrs: { id: "add_messages" } }, [
-    _c(
-      "div",
-      { staticClass: "bottom_wrapper clearfix" },
-      [
-        _c(
-          "b-alert",
-          {
-            attrs: {
-              show: _vm.dismissCountDown,
-              dismissible: "",
-              variant: _vm.type
-            },
-            on: {
-              dismissed: function($event) {
-                _vm.dismissCountDown = 0
-              },
-              "dismiss-count-down": _vm.countDownChanged
-            }
-          },
-          [
-            _c("b", [_vm._v("Error: ")]),
-            _vm._v(
-              _vm._s(_vm.text) +
-                " " +
-                _vm._s(_vm.dismissCountDown) +
-                " seconds..."
-            )
-          ]
-        ),
-        _vm._v(" "),
-        !_vm.error
-          ? _c("div", { staticClass: "input_message" }, [
-              _c("div", { staticClass: "message_input_wrapper" }, [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.message,
-                      expression: "message"
-                    }
-                  ],
-                  staticClass: "message_input",
-                  attrs: { placeholder: "Type your message here..." },
-                  domProps: { value: _vm.message },
-                  on: {
-                    keyup: function($event) {
-                      if (
-                        !("button" in $event) &&
-                        _vm._k($event.keyCode, "enter", 13, $event.key)
-                      ) {
-                        return null
-                      }
-                      _vm.addMessage()
-                    },
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.message = $event.target.value
-                    }
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass: "send_message",
-                  on: {
-                    click: function($event) {
-                      _vm.addMessage()
-                    }
-                  }
-                },
-                [
-                  _c("div", { staticClass: "icon" }),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "text" }, [
-                    _vm._v("\n                    Send\n                ")
-                  ])
-                ]
-              )
-            ])
-          : _vm._e()
-      ],
-      1
-    )
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-17cb4b6a", module.exports)
-  }
-}
-
-/***/ }),
-/* 373 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(6)
-/* script */
-var __vue_script__ = __webpack_require__(374)
-/* template */
-var __vue_template__ = __webpack_require__(375)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources\\assets\\js\\components\\chatBox\\all_messages.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-14d62b2c", Component.options)
-  } else {
-    hotAPI.reload("data-v-14d62b2c", Component.options)
-' + '  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 374 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['all_messages'],
-    data: function data() {
-        return {};
-    }
-});
-
-/***/ }),
-/* 375 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { attrs: { id: "all_messages" } }, [
-    _c(
-      "ul",
-      { staticClass: "messages" },
-      _vm._l(_vm.all_messages, function(message) {
-        return _c("li", { staticClass: "message left appeared" }, [
-          _c("div", { staticClass: "avatar" }),
-          _vm._v(" "),
-          _c("div", { staticClass: "text_wrapper" }, [
-            _c("div", { staticClass: "text" }, [
-              _c("b", [_vm._v(_vm._s(message.user.name))]),
-              _vm._v(" "),
-              _c("br"),
-              _vm._v(
-                "\n                    " +
-                  _vm._s(message.body) +
-                  "\n                    "
-              ),
-              _c("small", { staticClass: "small pull-right" }, [
-                _c("b", [_vm._v(" " + _vm._s(message.created_at) + " ")])
-              ])
-            ])
-          ])
-        ])
-      })
-    )
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-14d62b2c", module.exports)
-  }
-}
-
-/***/ }),
-/* 376 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { attrs: { id: "chat_box" } }, [
-    _c(
-      "div",
-      { staticClass: "chat_window" },
-      [
-        _vm._m(0, false, false),
-        _vm._v(" "),
-        _c("all_messages", { attrs: { all_messages: _vm.messages } }),
-        _vm._v(" "),
-        _c("add_messages", {
-          on: {
-            updateMessages: function($event) {
-              _vm.pushMessage($event)
-            }
-          }
-        })
-      ],
-      1
-    )
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "top_menu" }, [
-      _c("div", { staticClass: "buttons" }, [
-        _c("div", { staticClass: "button close" }),
-        _vm._v(" "),
-        _c("div", { staticClass: "button minimize" }),
-        _vm._v(" "),
-        _c("div", { staticClass: "button maximize" })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "title" }, [_vm._v("..........")])
-    ])
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-3ed8e4e3", module.exports)
-  }
-}
-
-/***/ }),
-/* 377 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(6)
-/* script */
-var __vue_script__ = __webpack_require__(378)
-/* template */
-var __vue_template__ = __webpack_require__(379)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources\\assets\\js\\components\\rooms\\add_rooms.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-b6342e22", Component.options)
-  } else {
-    hotAPI.reload("data-v-b6342e22", Component.options)
-' + '  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 378 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    data: function data() {
-        return {
-            room_name: '',
-            type: '',
-            text: '',
-            isLoading: false,
-            dismissSecs: 4,
-            dismissCountDown: 0,
-            showDismissibleAlert: false
-        };
-    },
-
-    computed: {
-        btnSubmit: function btnSubmit() {
-            if (this.room_name.length < 5) {
-                return true;
-            } else {
-                return false;
-            }
-        }
-    },
-    methods: {
-        countDownChanged: function countDownChanged(dismissCountDown) {
-            this.dismissCountDown = dismissCountDown;
-        },
-        AddRoom: function AddRoom() {
-            this.SendRequest();
-        },
-        SendRequest: function SendRequest() {
-            var _this = this;
-
-            this.isLoading = true;
-            this.$http.post('/AddNewRoom', { name: this.room_name }).then(function (response) {
-
-                _this.isLoading = false;
-
-                if (response.body == 'done') {
-                    _this.type = 'success';
-                    _this.text = 'Your room has been added!';
-                    _this.dismissCountDown = _this.dismissSecs;
-                    _this.room_name = '';
-                } else {
-                    _this.type = 'warning';
-                    _this.text = 'Your room can not be added!';
-                    _this.dismissCountDown = _this.dismissSecs;
-                }
-            }, function (response) {
-                _this.isLoading = false;
-                _this.type = 'danger';
-                _this.text = 'Your room can not added!';
-                _this.dismissCountDown = _this.dismissSecs;
-            });
-        }
-    }
-});
-
-/***/ }),
-/* 379 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "row", attrs: { id: "add_room" } },
-    [
-      _c("h2", [_vm._v("Add New Room")]),
-      _vm._v(" "),
-      _c("hr"),
-      _vm._v(" "),
-      _vm.isLoading
-        ? _c("vue-simple-spinner", { attrs: { message: "Loading..." } })
-        : _vm._e(),
-      _vm._v(" "),
-      _c(
-        "b-alert",
-        {
-          attrs: {
-            show: _vm.dismissCountDown,
-            dismissible: "",
-            variant: _vm.type
-          },
-          on: {
-            dismissed: function($event) {
-              _vm.dismissCountDown = 0
-            },
-            "dismiss-count-down": _vm.countDownChanged
-          }
-        },
-        [
-          _c("p", [
-            _vm._v(
-              _vm._s(_vm.text) +
-                " " +
-                _vm._s(_vm.dismissCountDown) +
-                " seconds..."
-            )
-          ]),
-          _vm._v(" "),
-          _c("b-progress", {
-            attrs: {
-              variant: _vm.type,
-              max: _vm.dismissSecs,
-              value: _vm.dismissCountDown,
-              height: "4px"
-            }
-          })
-        ],
-        1
-      ),
-      _vm._v(" "),
-      !_vm.isLoading
-        ? _c("div", { staticClass: "input-group" }, [
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.room_name,
-                  expression: "room_name"
-                }
-              ],
-              staticClass: "form-control",
-              attrs: {
-                type: "text",
-                id: "name",
-                placeholder: "Search for...",
-                "aria-label": "Search for..."
-              },
-              domProps: { value: _vm.room_name },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.room_name = $event.target.value
-                }
-              }
-            }),
-            _vm._v(" "),
-            _c("span", { staticClass: "input-group-btn" }, [
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-primary",
-                  attrs: {
-                    value: "Add Room",
-                    disabled: _vm.btnSubmit,
-                    type: "button"
-                  },
-                  on: {
-                    click: function($event) {
-                      _vm.AddRoom()
-                    }
-                  }
-                },
-                [_vm._v("\n                    Add Room\n                ")]
-              )
-            ])
-          ])
-        : _vm._e()
-    ],
-    1
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-b6342e22", module.exports)
-  }
-}
-
-/***/ }),
-/* 380 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(6)
-/* script */
-var __vue_script__ = __webpack_require__(381)
-/* template */
-var __vue_template__ = __webpack_require__(382)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources\\assets\\js\\components\\rooms\\all_rooms.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-ecceac22", Component.options)
-  } else {
-    hotAPI.reload("data-v-ecceac22", Component.options)
-' + '  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 381 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    mounted: function mounted() {
-        this.getAllRooms();
-    },
-    data: function data() {
-        return {
-            isLoading: true,
-            notFound: false,
-            error: false,
-            rooms: []
-        };
-    },
-
-    methods: {
-        getAllRooms: function getAllRooms() {
-            var _this = this;
-
-            this.$http.get('/getAllRooms').then(function (response) {
-
-                _this.isLoading = false;
-                _this.rooms = response.data;
-
-                if (_this.rooms.length > 0) {
-                    _this.rooms = response.data;
-                } else {
-                    _this.notFound = true;
-                }
-            }, function (response) {
-                _this.isLoading = false;
-                _this.error = true;
-            });
-        }
-    }
-});
-
-/***/ }),
-/* 382 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { attrs: { id: "all_rooms" } }, [
-    _c("ul", { staticClass: "list-group" }, [
-      _c("li", { staticClass: "list-group-item list-group-item-info" }, [
-        _c("b", [_vm._v("All Rooms")]),
-        _vm._v(" "),
-        _c("span", { staticClass: "badge" }, [_vm._v(_vm._s(_vm.rooms.length))])
-      ])
-    ]),
-    _vm._v(" "),
-    _c("hr"),
-    _vm._v(" "),
-    _c("table", { staticClass: "table table-bordered" }, [
-      _vm._m(0, false, false),
-      _vm._v(" "),
-      _c(
-        "tbody",
-        [
-          _vm._l(_vm.rooms, function(room) {
-            return _c("tr", [
-              _c(
-                "td",
-                [
-                  _c(
-                    "router-link",
-                    {
-                      attrs: {
-                        to: { name: "chatbox", params: { room_id: room.id } }
-                      }
-                    },
-                    [
-                      _vm._v(
-                        "\n                        " +
-                          _vm._s(room.name) +
-                          "\n                    "
-                      )
-                    ]
-                  )
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c("td", [
-                _vm._v(_vm._s(_vm._f("moment")(room.created_at, "from", "now")))
-              ]),
-              _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(room.user.name))])
-            ])
-          }),
-          _vm._v(" "),
-          _vm.isLoading
-            ? _c("tr", [
-                _c(
-                  "td",
-                  { attrs: { colspan: "3" } },
-                  [
-                    _c("vue-simple-spinner", {
-                      attrs: { message: "Loading..." }
-                    })
-                  ],
-                  1
-                )
-              ])
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.notFound
-            ? _c("tr", [
-                _c(
-                  "td",
-                  { attrs: { colspan: "3" } },
-                  [
-                    _vm._v(
-                      "\n                    No records found please\n                    "
-                    ),
-                    _c("router-link", { attrs: { to: "/addrooms" } }, [
-                      _vm._v(
-                        "\n                         Add Room\n                    "
-                      )
-                    ])
-                  ],
-                  1
-                )
-              ])
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.error ? _c("tr", [_vm._m(1, false, false)]) : _vm._e()
-        ],
-        2
-      )
-    ])
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", [
-        _c("th", [_vm._v("Room Name")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Add Date")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("User")])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", { attrs: { colspan: "3" } }, [
-      _c("div", { staticClass: "alert alert-danger" }, [
-        _c("strong", [_vm._v("Error!")]),
-        _vm._v(" rejected request.\n                    ")
-      ])
-    ])
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-ecceac22", module.exports)
-  }
-}
-
-/***/ }),
-/* 383 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(6)
-/* script */
-var __vue_script__ = __webpack_require__(384)
-/* template */
-var __vue_template__ = __webpack_require__(385)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources\\assets\\js\\components\\rooms\\my_rooms.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-ac8b54c0", Component.options)
-  } else {
-    hotAPI.reload("data-v-ac8b54c0", Component.options)
-' + '  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 384 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    mounted: function mounted() {
-        this.getMyRooms();
-    },
-    data: function data() {
-        return {
-            isLoading: true,
-            notFound: false,
-            error: false,
-            rooms: [],
-            type: '',
-            text: '',
-            dismissSecs: 4,
-            dismissCountDown: 0,
-            showDismissibleAlert: false
-        };
-    },
-
-    methods: {
-        countDownChanged: function countDownChanged(dismissCountDown) {
-            this.dismissCountDown = dismissCountDown;
-        },
-
-        getMyRooms: function getMyRooms() {
-            var _this = this;
-
-            this.$http.get('/getMyRooms').then(function (response) {
-
-                _this.isLoading = false;
-                _this.rooms = response.data;
-
-                if (_this.rooms.length > 0) {
-                    _this.rooms = response.data;
-                } else {
-                    _this.notFound = true;
-                }
-            }, function (response) {
-                _this.isLoading = false;
-                _this.error = true;
-            });
-        },
-        deleteRoom: function deleteRoom(room_id, index) {
-            var _this2 = this;
-
-            this.isLoading = true;
-
-            this.$http.delete('/deleteRoom/' + room_id).then(function (response) {
-
-                _this2.isLoading = false;
-
-                if (response.body == 'done') {
-                    _this2.rooms.splice(index, 1);
-                    _this2.type = 'success';
-                    _this2.text = 'Your room has been deleted!';
-                    _this2.dismissCountDown = _this2.dismissSecs;
-                    _this2.getMyRooms();
-                } else {
-                    _this2.type = 'warning';
-                    _this2.text = 'Room can not be deleted!';
-                    _this2.dismissCountDown = _this2.dismissSecs;
-                }
-            }, function (response) {
-                _this2.isLoading = false;
-                _this2.type = 'danger';
-                _this2.text = 'Error in the request, sorry room can not added!';
-                _this2.dismissCountDown = _this2.dismissSecs;
-            });
-        }
-    }
-});
-
-/***/ }),
-/* 385 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { attrs: { id: "all_rooms" } },
-    [
-      _c("ul", { staticClass: "list-group" }, [
-        _c("li", { staticClass: "list-group-item list-group-item-info" }, [
-          _c("b", [_vm._v("My Rooms")]),
-          _vm._v(" "),
-          _c("span", { staticClass: "badge" }, [
-            _vm._v(_vm._s(_vm.rooms.length))
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("hr"),
-      _vm._v(" "),
-      _c(
-        "b-alert",
-        {
-          attrs: {
-            show: _vm.dismissCountDown,
-            dismissible: "",
-            variant: _vm.type
-          },
-          on: {
-            dismissed: function($event) {
-              _vm.dismissCountDown = 0
-            },
-            "dismiss-count-down": _vm.countDownChanged
-          }
-        },
-        [
-          _c("p", [
-            _vm._v(
-              _vm._s(_vm.text) +
-                " " +
-                _vm._s(_vm.dismissCountDown) +
-                " seconds..."
-            )
-          ]),
-          _vm._v(" "),
-          _c("b-progress", {
-            attrs: {
-              variant: _vm.type,
-              max: _vm.dismissSecs,
-              value: _vm.dismissCountDown,
-              height: "4px"
-            }
-          })
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c("table", { staticClass: "table table-bordered" }, [
-        _vm._m(0, false, false),
-        _vm._v(" "),
-        _c(
-          "tbody",
-          [
-            _vm._l(_vm.rooms, function(room, index) {
-              return _c("tr", [
-                _c(
-                  "td",
-                  [
-                    _c(
-                      "router-link",
-                      {
-                        attrs: {
-                          to: { name: "chatbox", params: { room_id: room.id } }
-                        }
-                      },
-                      [
-                        _vm._v(
-                          "\n                    " +
-                            _vm._s(room.name) +
-                            "\n                "
-                        )
-                      ]
-                    )
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c("td", [
-                  _vm._v(
-                    _vm._s(_vm._f("moment")(room.created_at, "from", "now"))
-                  )
-                ]),
-                _vm._v(" "),
-                _c("td", [
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-danger btn-xs",
-                      attrs: { type: "button" },
-                      on: {
-                        click: function($event) {
-                          _vm.deleteRoom(room.id, index)
-                        }
-                      }
-                    },
-                    [
-                      _c("i", {
-                        staticClass: "fa fa-trash",
-                        attrs: { "aria-hidden": "true" }
-                      })
-                    ]
-                  )
-                ])
-              ])
-            }),
-            _vm._v(" "),
-            _vm.isLoading
-              ? _c("tr", [
-                  _c(
-                    "td",
-                    { attrs: { colspan: "3" } },
-                    [
-                      _c("vue-simple-spinner", {
-                        attrs: { message: "Loading..." }
-                      })
-                    ],
-                    1
-                  )
-                ])
-              : _vm._e(),
-            _vm._v(" "),
-            _vm.notFound
-              ? _c("tr", [
-                  _c(
-                    "td",
-                    { attrs: { colspan: "3" } },
-                    [
-                      _vm._v(
-                        "\n                No records found please\n                "
-                      ),
-                      _c("router-link", { attrs: { to: "/addrooms" } }, [
-                        _vm._v(
-                          "\n                    Add Room\n                "
-                        )
-                      ])
-                    ],
-                    1
-                  )
-                ])
-              : _vm._e(),
-            _vm._v(" "),
-            _vm.error ? _c("tr", [_vm._m(1, false, false)]) : _vm._e()
-          ],
-          2
-        )
-      ])
-    ],
-    1
-  )
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", [
-        _c("th", [_vm._v("Room Name")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Add Date")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Action")])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", { attrs: { colspan: "3" } }, [
-      _c("div", { staticClass: "alert alert-danger" }, [
-        _c("strong", [_vm._v("Error!")]),
-        _vm._v(" rejected request.\n                ")
-      ])
-    ])
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-ac8b54c0", module.exports)
-  }
-}
-
-/***/ }),
-/* 386 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 387 */,
-/* 388 */,
-/* 389 */,
-/* 390 */,
-/* 391 */,
-/* 392 */,
-/* 393 */,
-/* 394 */,
-/* 395 */,
-/* 396 */,
-/* 397 */,
-/* 398 */,
-/* 399 */,
-/* 400 */,
-/* 401 */,
-/* 402 */,
-/* 403 */,
-/* 404 */,
-/* 405 */
-/***/ (function(module, exports, __webpack_require__) {
-
 /**
  * Importing pusher
  */
-var Pusher = __webpack_require__(406);
+var Pusher = __webpack_require__(364);
 
 /**
  * VuePusher class.
@@ -84530,7 +82739,7 @@ module.exports = {
 
 
 /***/ }),
-/* 406 */
+/* 364 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*!
@@ -88712,6 +86921,1775 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ ])
 });
 ;
+
+/***/ }),
+/* 365 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(366)
+}
+var normalizeComponent = __webpack_require__(6)
+/* script */
+var __vue_script__ = __webpack_require__(368)
+/* template */
+var __vue_template__ = __webpack_require__(369)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\spinner\\spinner.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-0ec4ee4f", Component.options)
+  } else {
+    hotAPI.reload("data-v-0ec4ee4f", Component.options)
+' + '  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 366 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(367);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(10)("67970314", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-0ec4ee4f\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./spinner.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-0ec4ee4f\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./spinner.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 367 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(9)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "\n.vue-simple-spinner {\n    -webkit-transition: all 0.3s linear;\n    transition: all 0.3s linear;\n}\n@-webkit-keyframes vue-simple-spinner-spin {\n0% { -webkit-transform: rotate(0deg); transform: rotate(0deg);\n}\n100% { -webkit-transform: rotate(360deg); transform: rotate(360deg);\n}\n}\n@keyframes vue-simple-spinner-spin {\n0% { -webkit-transform: rotate(0deg); transform: rotate(0deg);\n}\n100% { -webkit-transform: rotate(360deg); transform: rotate(360deg);\n}\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 368 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+
+var isNumber = function isNumber(n) {
+    return !isNaN(parseFloat(n)) && isFinite(n);
+};
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: 'vue-simple-spinner',
+    props: {
+        'size': {
+            // either a number (pixel width/height) or 'tiny', 'small',
+            // 'medium', 'large', 'huge', 'massive' for common sizes
+            default: 32
+        },
+        'line-size': {
+            type: Number,
+            default: 3
+        },
+        'line-bg-color': {
+            type: String,
+            default: '#eee'
+        },
+        'line-fg-color': {
+            type: String,
+            default: '#2196f3' // match .blue color to Material Design's 'Blue 500' color
+        },
+        'speed': {
+            type: Number,
+            default: 0.8
+        },
+        'spacing': {
+            type: Number,
+            default: 4
+        },
+        'message': {
+            type: String,
+            default: ''
+        },
+        'font-size': {
+            type: Number,
+            default: 13
+        },
+        'text-fg-color': {
+            type: String,
+            default: '#555'
+        }
+    },
+    computed: {
+        size_px: function size_px() {
+            switch (this.size) {
+                case 'tiny':
+                    return 12;
+                case 'small':
+                    return 16;
+                case 'medium':
+                    return 32;
+                case 'large':
+                    return 48;
+                case 'big':
+                    return 64;
+                case 'huge':
+                    return 96;
+                case 'massive':
+                    return 128;
+            }
+
+            return isNumber(this.size) ? this.size : 32;
+        },
+        line_size_px: function line_size_px() {
+            switch (this.size) {
+                case 'tiny':
+                    return 1;
+                case 'small':
+                    return 2;
+                case 'medium':
+                    return 3;
+                case 'large':
+                    return 3;
+                case 'big':
+                    return 4;
+                case 'huge':
+                    return 4;
+                case 'massive':
+                    return 5;
+            }
+
+            return isNumber(this.lineSize) ? this.lineSize : 4;
+        },
+        text_margin_top: function text_margin_top() {
+            switch (this.size) {
+                case 'tiny':
+                case 'small':
+                case 'medium':
+                case 'large':
+                case 'big':
+                case 'huge':
+                case 'massive':
+                    return Math.min(Math.max(Math.ceil(this.size_px / 8), 3), 12);
+            }
+
+            return isNumber(this.spacing) ? this.spacing : 4;
+        },
+        text_font_size: function text_font_size() {
+            switch (this.size) {
+                case 'tiny':
+                case 'small':
+                case 'medium':
+                case 'large':
+                case 'big':
+                case 'huge':
+                case 'massive':
+                    return Math.min(Math.max(Math.ceil(this.size_px * 0.4), 11), 32);
+            }
+
+            return isNumber(this.fontSize) ? this.fontSize : 13;
+        },
+        spinner_style: function spinner_style() {
+            return {
+                'margin': '0 auto',
+                'border-radius': '100%',
+                'border': this.line_size_px + 'px solid ' + this.lineBgColor,
+                'border-top': this.line_size_px + 'px solid ' + this.lineFgColor,
+                'width': this.size_px + 'px',
+                'height': this.size_px + 'px',
+                'animation': 'vue-simple-spinner-spin ' + this.speed + 's linear infinite'
+            };
+        },
+        text_style: function text_style() {
+            return {
+                'margin-top': this.text_margin_top + 'px',
+                'color': this.textFgColor,
+                'font-size': this.text_font_size + 'px',
+                'text-align': 'center'
+            };
+        }
+    }
+});
+
+/***/ }),
+/* 369 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("div", { staticClass: "vue-simple-spinner", style: _vm.spinner_style }),
+    _vm._v(" "),
+    _vm.message.length > 0
+      ? _c(
+          "div",
+          { staticClass: "vue-simple-spinner-text", style: _vm.text_style },
+          [_vm._v(_vm._s(_vm.message))]
+        )
+      : _vm._e()
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-0ec4ee4f", module.exports)
+  }
+}
+
+/***/ }),
+/* 370 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(6)
+/* script */
+var __vue_script__ = __webpack_require__(371)
+/* template */
+var __vue_template__ = __webpack_require__(378)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\chatBox\\chatbox.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-3ed8e4e3", Component.options)
+  } else {
+    hotAPI.reload("data-v-3ed8e4e3", Component.options)
+' + '  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 371 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__add_messages_vue__ = __webpack_require__(372);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__add_messages_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__add_messages_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__all_messages_vue__ = __webpack_require__(375);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__all_messages_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__all_messages_vue__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    components: {
+        add_messages: __WEBPACK_IMPORTED_MODULE_0__add_messages_vue___default.a,
+        all_messages: __WEBPACK_IMPORTED_MODULE_1__all_messages_vue___default.a
+    },
+    data: function data() {
+        return {
+            messages: [],
+            channel: ''
+        };
+    },
+
+    mounted: function mounted() {
+        var _this = this;
+
+        this.channel = this.$pusher.subscribe(this.$route.params.room_id + 'room');
+        this.channel.bind('pushMessage', function (data) {
+            _this.messages.push(data);
+        });
+    },
+    methods: {
+        pushMessage: function pushMessage(data) {
+            // ...
+        }
+    }
+});
+
+/***/ }),
+/* 372 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(6)
+/* script */
+var __vue_script__ = __webpack_require__(373)
+/* template */
+var __vue_template__ = __webpack_require__(374)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\chatBox\\add_messages.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-17cb4b6a", Component.options)
+  } else {
+    hotAPI.reload("data-v-17cb4b6a", Component.options)
+' + '  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 373 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        {
+            return {
+                message: '',
+                type: '',
+                text: '',
+                error: false,
+                dismissSecs: 4,
+                dismissCountDown: 0,
+                showDismissibleAlert: false
+            };
+        }
+    },
+
+    methods: {
+        countDownChanged: function countDownChanged(dismissCountDown) {
+            this.dismissCountDown = dismissCountDown;
+            this.error = false;
+        },
+        addMessage: function addMessage() {
+            var _this = this;
+
+            var room_id = this.$route.params.room_id;
+            this.$http.post('/AddMessage', { message: this.message, room_id: room_id }).then(function (response) {
+
+                if (response.body != 'error') {
+                    _this.message = '';
+                    _this.$emit('updateMessages', response.data[0]);
+                } else {
+                    _this.error = true;
+                    _this.type = 'warning';
+                    _this.text = 'your message can not be sent!';
+                    _this.dismissCountDown = _this.dismissSecs;
+                }
+            }, function (response) {
+                _this.error = true;
+                _this.type = 'danger';
+                _this.text = 'your message can not be sent!';
+                _this.dismissCountDown = _this.dismissSecs;
+            });
+        }
+    }
+});
+
+/***/ }),
+/* 374 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { attrs: { id: "add_messages" } }, [
+    _c(
+      "div",
+      { staticClass: "bottom_wrapper clearfix" },
+      [
+        _c(
+          "b-alert",
+          {
+            attrs: {
+              show: _vm.dismissCountDown,
+              dismissible: "",
+              variant: _vm.type
+            },
+            on: {
+              dismissed: function($event) {
+                _vm.dismissCountDown = 0
+              },
+              "dismiss-count-down": _vm.countDownChanged
+            }
+          },
+          [
+            _c("b", [_vm._v("Error: ")]),
+            _vm._v(
+              _vm._s(_vm.text) +
+                " " +
+                _vm._s(_vm.dismissCountDown) +
+                " seconds..."
+            )
+          ]
+        ),
+        _vm._v(" "),
+        !_vm.error
+          ? _c("div", { staticClass: "input_message" }, [
+              _c("div", { staticClass: "message_input_wrapper" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.message,
+                      expression: "message"
+                    }
+                  ],
+                  staticClass: "message_input",
+                  attrs: { placeholder: "Type your message here..." },
+                  domProps: { value: _vm.message },
+                  on: {
+                    keyup: function($event) {
+                      if (
+                        !("button" in $event) &&
+                        _vm._k($event.keyCode, "enter", 13, $event.key)
+                      ) {
+                        return null
+                      }
+                      _vm.addMessage()
+                    },
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.message = $event.target.value
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "send_message",
+                  on: {
+                    click: function($event) {
+                      _vm.addMessage()
+                    }
+                  }
+                },
+                [
+                  _c("div", { staticClass: "icon" }),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "text" }, [
+                    _vm._v("\n                    Send\n                ")
+                  ])
+                ]
+              )
+            ])
+          : _vm._e()
+      ],
+      1
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-17cb4b6a", module.exports)
+  }
+}
+
+/***/ }),
+/* 375 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(6)
+/* script */
+var __vue_script__ = __webpack_require__(376)
+/* template */
+var __vue_template__ = __webpack_require__(377)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\chatBox\\all_messages.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-14d62b2c", Component.options)
+  } else {
+    hotAPI.reload("data-v-14d62b2c", Component.options)
+' + '  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 376 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['all_messages'],
+    data: function data() {
+        return {};
+    }
+});
+
+/***/ }),
+/* 377 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { attrs: { id: "all_messages" } }, [
+    _c(
+      "ul",
+      { staticClass: "messages" },
+      _vm._l(_vm.all_messages, function(message) {
+        return _c("li", { staticClass: "message left appeared" }, [
+          _c("div", { staticClass: "avatar" }),
+          _vm._v(" "),
+          _c("div", { staticClass: "text_wrapper" }, [
+            _c("div", { staticClass: "text" }, [
+              _c("b", [_vm._v(_vm._s(message.user.name))]),
+              _vm._v(" "),
+              _c("br"),
+              _vm._v(
+                "\n                    " +
+                  _vm._s(message.body) +
+                  "\n                    "
+              ),
+              _c("small", { staticClass: "small pull-right" }, [
+                _c("b", [_vm._v(" " + _vm._s(message.created_at) + " ")])
+              ])
+            ])
+          ])
+        ])
+      })
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-14d62b2c", module.exports)
+  }
+}
+
+/***/ }),
+/* 378 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { attrs: { id: "chat_box" } }, [
+    _c(
+      "div",
+      { staticClass: "chat_window" },
+      [
+        _vm._m(0, false, false),
+        _vm._v(" "),
+        _c("all_messages", { attrs: { all_messages: _vm.messages } }),
+        _vm._v(" "),
+        _c("add_messages", {
+          on: {
+            updateMessages: function($event) {
+              _vm.pushMessage($event)
+            }
+          }
+        })
+      ],
+      1
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "top_menu" }, [
+      _c("div", { staticClass: "buttons" }, [
+        _c("div", { staticClass: "button close" }),
+        _vm._v(" "),
+        _c("div", { staticClass: "button minimize" }),
+        _vm._v(" "),
+        _c("div", { staticClass: "button maximize" })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "title" }, [_vm._v("..........")])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-3ed8e4e3", module.exports)
+  }
+}
+
+/***/ }),
+/* 379 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(6)
+/* script */
+var __vue_script__ = __webpack_require__(380)
+/* template */
+var __vue_template__ = __webpack_require__(381)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\rooms\\add_rooms.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-b6342e22", Component.options)
+  } else {
+    hotAPI.reload("data-v-b6342e22", Component.options)
+' + '  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 380 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            room_name: '',
+            type: '',
+            text: '',
+            isLoading: false,
+            dismissSecs: 4,
+            dismissCountDown: 0,
+            showDismissibleAlert: false
+        };
+    },
+
+    computed: {
+        btnSubmit: function btnSubmit() {
+            if (this.room_name.length < 5) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    },
+    methods: {
+        countDownChanged: function countDownChanged(dismissCountDown) {
+            this.dismissCountDown = dismissCountDown;
+        },
+        AddRoom: function AddRoom() {
+            this.SendRequest();
+        },
+        SendRequest: function SendRequest() {
+            var _this = this;
+
+            this.isLoading = true;
+            this.$http.post('/AddNewRoom', { name: this.room_name }).then(function (response) {
+
+                _this.isLoading = false;
+
+                if (response.body == 'done') {
+                    _this.type = 'success';
+                    _this.text = 'Your room has been added!';
+                    _this.dismissCountDown = _this.dismissSecs;
+                    _this.room_name = '';
+                } else {
+                    _this.type = 'warning';
+                    _this.text = 'Your room can not be added!';
+                    _this.dismissCountDown = _this.dismissSecs;
+                }
+            }, function (response) {
+                _this.isLoading = false;
+                _this.type = 'danger';
+                _this.text = 'Your room can not added!';
+                _this.dismissCountDown = _this.dismissSecs;
+            });
+        }
+    }
+});
+
+/***/ }),
+/* 381 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "row", attrs: { id: "add_room" } },
+    [
+      _c("h2", [_vm._v("Add New Room")]),
+      _vm._v(" "),
+      _c("hr"),
+      _vm._v(" "),
+      _vm.isLoading
+        ? _c("vue-simple-spinner", { attrs: { message: "Loading..." } })
+        : _vm._e(),
+      _vm._v(" "),
+      _c(
+        "b-alert",
+        {
+          attrs: {
+            show: _vm.dismissCountDown,
+            dismissible: "",
+            variant: _vm.type
+          },
+          on: {
+            dismissed: function($event) {
+              _vm.dismissCountDown = 0
+            },
+            "dismiss-count-down": _vm.countDownChanged
+          }
+        },
+        [
+          _c("p", [
+            _vm._v(
+              _vm._s(_vm.text) +
+                " " +
+                _vm._s(_vm.dismissCountDown) +
+                " seconds..."
+            )
+          ]),
+          _vm._v(" "),
+          _c("b-progress", {
+            attrs: {
+              variant: _vm.type,
+              max: _vm.dismissSecs,
+              value: _vm.dismissCountDown,
+              height: "4px"
+            }
+          })
+        ],
+        1
+      ),
+      _vm._v(" "),
+      !_vm.isLoading
+        ? _c("div", { staticClass: "input-group" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.room_name,
+                  expression: "room_name"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: {
+                type: "text",
+                id: "name",
+                placeholder: "Search for...",
+                "aria-label": "Search for..."
+              },
+              domProps: { value: _vm.room_name },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.room_name = $event.target.value
+                }
+              }
+            }),
+            _vm._v(" "),
+            _c("span", { staticClass: "input-group-btn" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary",
+                  attrs: {
+                    value: "Add Room",
+                    disabled: _vm.btnSubmit,
+                    type: "button"
+                  },
+                  on: {
+                    click: function($event) {
+                      _vm.AddRoom()
+                    }
+                  }
+                },
+                [_vm._v("\n                    Add Room\n                ")]
+              )
+            ])
+          ])
+        : _vm._e()
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-b6342e22", module.exports)
+  }
+}
+
+/***/ }),
+/* 382 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(6)
+/* script */
+var __vue_script__ = __webpack_require__(383)
+/* template */
+var __vue_template__ = __webpack_require__(384)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\rooms\\all_rooms.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-ecceac22", Component.options)
+  } else {
+    hotAPI.reload("data-v-ecceac22", Component.options)
+' + '  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 383 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    mounted: function mounted() {
+        this.getAllRooms();
+    },
+    data: function data() {
+        return {
+            isLoading: true,
+            notFound: false,
+            error: false,
+            rooms: []
+        };
+    },
+
+    methods: {
+        getAllRooms: function getAllRooms() {
+            var _this = this;
+
+            this.$http.get('/getAllRooms').then(function (response) {
+
+                _this.isLoading = false;
+                _this.rooms = response.data;
+
+                if (_this.rooms.length > 0) {
+                    _this.rooms = response.data;
+                } else {
+                    _this.notFound = true;
+                }
+            }, function (response) {
+                _this.isLoading = false;
+                _this.error = true;
+            });
+        }
+    }
+});
+
+/***/ }),
+/* 384 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { attrs: { id: "all_rooms" } }, [
+    _c("ul", { staticClass: "list-group" }, [
+      _c("li", { staticClass: "list-group-item list-group-item-info" }, [
+        _c("b", [_vm._v("All Rooms")]),
+        _vm._v(" "),
+        _c("span", { staticClass: "badge" }, [_vm._v(_vm._s(_vm.rooms.length))])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("hr"),
+    _vm._v(" "),
+    _c("table", { staticClass: "table table-bordered" }, [
+      _vm._m(0, false, false),
+      _vm._v(" "),
+      _c(
+        "tbody",
+        [
+          _vm._l(_vm.rooms, function(room) {
+            return _c("tr", [
+              _c(
+                "td",
+                [
+                  _c(
+                    "router-link",
+                    {
+                      attrs: {
+                        to: { name: "chatbox", params: { room_id: room.id } }
+                      }
+                    },
+                    [
+                      _vm._v(
+                        "\n                        " +
+                          _vm._s(room.name) +
+                          "\n                    "
+                      )
+                    ]
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c("td", [
+                _vm._v(_vm._s(_vm._f("moment")(room.created_at, "from", "now")))
+              ]),
+              _vm._v(" "),
+              _c("td", [_vm._v(_vm._s(room.user.name))])
+            ])
+          }),
+          _vm._v(" "),
+          _vm.isLoading
+            ? _c("tr", [
+                _c(
+                  "td",
+                  { attrs: { colspan: "3" } },
+                  [
+                    _c("vue-simple-spinner", {
+                      attrs: { message: "Loading..." }
+                    })
+                  ],
+                  1
+                )
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.notFound
+            ? _c("tr", [
+                _c(
+                  "td",
+                  { attrs: { colspan: "3" } },
+                  [
+                    _vm._v(
+                      "\n                    No records found please\n                    "
+                    ),
+                    _c("router-link", { attrs: { to: "/addrooms" } }, [
+                      _vm._v(
+                        "\n                         Add Room\n                    "
+                      )
+                    ])
+                  ],
+                  1
+                )
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.error ? _c("tr", [_vm._m(1, false, false)]) : _vm._e()
+        ],
+        2
+      )
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("Room Name")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Add Date")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("User")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", { attrs: { colspan: "3" } }, [
+      _c("div", { staticClass: "alert alert-danger" }, [
+        _c("strong", [_vm._v("Error!")]),
+        _vm._v(" rejected request.\n                    ")
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-ecceac22", module.exports)
+  }
+}
+
+/***/ }),
+/* 385 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(6)
+/* script */
+var __vue_script__ = __webpack_require__(386)
+/* template */
+var __vue_template__ = __webpack_require__(387)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\rooms\\my_rooms.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-ac8b54c0", Component.options)
+  } else {
+    hotAPI.reload("data-v-ac8b54c0", Component.options)
+' + '  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 386 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    mounted: function mounted() {
+        this.getMyRooms();
+    },
+    data: function data() {
+        return {
+            isLoading: true,
+            notFound: false,
+            error: false,
+            rooms: [],
+            type: '',
+            text: '',
+            dismissSecs: 4,
+            dismissCountDown: 0,
+            showDismissibleAlert: false
+        };
+    },
+
+    methods: {
+        countDownChanged: function countDownChanged(dismissCountDown) {
+            this.dismissCountDown = dismissCountDown;
+        },
+
+        getMyRooms: function getMyRooms() {
+            var _this = this;
+
+            this.$http.get('/getMyRooms').then(function (response) {
+
+                _this.isLoading = false;
+                _this.rooms = response.data;
+
+                if (_this.rooms.length > 0) {
+                    _this.rooms = response.data;
+                } else {
+                    _this.notFound = true;
+                }
+            }, function (response) {
+                _this.isLoading = false;
+                _this.error = true;
+            });
+        },
+        deleteRoom: function deleteRoom(room_id, index) {
+            var _this2 = this;
+
+            this.isLoading = true;
+
+            this.$http.delete('/deleteRoom/' + room_id).then(function (response) {
+
+                _this2.isLoading = false;
+
+                if (response.body == 'done') {
+                    _this2.rooms.splice(index, 1);
+                    _this2.type = 'success';
+                    _this2.text = 'Your room has been deleted!';
+                    _this2.dismissCountDown = _this2.dismissSecs;
+                    _this2.getMyRooms();
+                } else {
+                    _this2.type = 'warning';
+                    _this2.text = 'Room can not be deleted!';
+                    _this2.dismissCountDown = _this2.dismissSecs;
+                }
+            }, function (response) {
+                _this2.isLoading = false;
+                _this2.type = 'danger';
+                _this2.text = 'Error in the request, sorry room can not added!';
+                _this2.dismissCountDown = _this2.dismissSecs;
+            });
+        }
+    }
+});
+
+/***/ }),
+/* 387 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { attrs: { id: "all_rooms" } },
+    [
+      _c("ul", { staticClass: "list-group" }, [
+        _c("li", { staticClass: "list-group-item list-group-item-info" }, [
+          _c("b", [_vm._v("My Rooms")]),
+          _vm._v(" "),
+          _c("span", { staticClass: "badge" }, [
+            _vm._v(_vm._s(_vm.rooms.length))
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("hr"),
+      _vm._v(" "),
+      _c(
+        "b-alert",
+        {
+          attrs: {
+            show: _vm.dismissCountDown,
+            dismissible: "",
+            variant: _vm.type
+          },
+          on: {
+            dismissed: function($event) {
+              _vm.dismissCountDown = 0
+            },
+            "dismiss-count-down": _vm.countDownChanged
+          }
+        },
+        [
+          _c("p", [
+            _vm._v(
+              _vm._s(_vm.text) +
+                " " +
+                _vm._s(_vm.dismissCountDown) +
+                " seconds..."
+            )
+          ]),
+          _vm._v(" "),
+          _c("b-progress", {
+            attrs: {
+              variant: _vm.type,
+              max: _vm.dismissSecs,
+              value: _vm.dismissCountDown,
+              height: "4px"
+            }
+          })
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c("table", { staticClass: "table table-bordered" }, [
+        _vm._m(0, false, false),
+        _vm._v(" "),
+        _c(
+          "tbody",
+          [
+            _vm._l(_vm.rooms, function(room, index) {
+              return _c("tr", [
+                _c(
+                  "td",
+                  [
+                    _c(
+                      "router-link",
+                      {
+                        attrs: {
+                          to: { name: "chatbox", params: { room_id: room.id } }
+                        }
+                      },
+                      [
+                        _vm._v(
+                          "\n                    " +
+                            _vm._s(room.name) +
+                            "\n                "
+                        )
+                      ]
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c("td", [
+                  _vm._v(
+                    _vm._s(_vm._f("moment")(room.created_at, "from", "now"))
+                  )
+                ]),
+                _vm._v(" "),
+                _c("td", [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-danger btn-xs",
+                      attrs: { type: "button" },
+                      on: {
+                        click: function($event) {
+                          _vm.deleteRoom(room.id, index)
+                        }
+                      }
+                    },
+                    [
+                      _c("i", {
+                        staticClass: "fa fa-trash",
+                        attrs: { "aria-hidden": "true" }
+                      })
+                    ]
+                  )
+                ])
+              ])
+            }),
+            _vm._v(" "),
+            _vm.isLoading
+              ? _c("tr", [
+                  _c(
+                    "td",
+                    { attrs: { colspan: "3" } },
+                    [
+                      _c("vue-simple-spinner", {
+                        attrs: { message: "Loading..." }
+                      })
+                    ],
+                    1
+                  )
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.notFound
+              ? _c("tr", [
+                  _c(
+                    "td",
+                    { attrs: { colspan: "3" } },
+                    [
+                      _vm._v(
+                        "\n                No records found please\n                "
+                      ),
+                      _c("router-link", { attrs: { to: "/addrooms" } }, [
+                        _vm._v(
+                          "\n                    Add Room\n                "
+                        )
+                      ])
+                    ],
+                    1
+                  )
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.error ? _c("tr", [_vm._m(1, false, false)]) : _vm._e()
+          ],
+          2
+        )
+      ])
+    ],
+    1
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("Room Name")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Add Date")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Action")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", { attrs: { colspan: "3" } }, [
+      _c("div", { staticClass: "alert alert-danger" }, [
+        _c("strong", [_vm._v("Error!")]),
+        _vm._v(" rejected request.\n                ")
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-ac8b54c0", module.exports)
+  }
+}
+
+/***/ }),
+/* 388 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);
