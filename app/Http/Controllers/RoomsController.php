@@ -42,4 +42,10 @@ class RoomsController extends Controller
         }
     }
 
+    public function GetMeOnline($room_id) {
+        $user = Auth::user();
+        $room = Rooms::find($room_id);
+        return $user;
+    }
+
 }

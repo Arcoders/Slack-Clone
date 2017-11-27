@@ -32,7 +32,7 @@
             <tbody>
             <tr v-for="(room, index) in rooms">
                 <td>
-                    <router-link :to="{ name: 'chatbox', params: { room_id: room.id }}">
+                    <router-link :to="{ name: 'chatbox', params: { room_id: room.id, room_name: room.name }}">
                         {{ room.name }}
                     </router-link>
                 </td>

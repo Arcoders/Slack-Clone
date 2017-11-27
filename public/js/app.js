@@ -23671,7 +23671,7 @@ Vue.component('vue-simple-spinner', __webpack_require__(365));
 
 
 var router = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
-    routes: [{ path: '/addrooms', component: __WEBPACK_IMPORTED_MODULE_4__components_rooms_add_rooms_vue___default.a }, { path: '/allrooms', component: __WEBPACK_IMPORTED_MODULE_5__components_rooms_all_rooms_vue___default.a }, { path: '/myrooms', component: __WEBPACK_IMPORTED_MODULE_6__components_rooms_my_rooms_vue___default.a }, { path: '/chat/:room_id', component: __WEBPACK_IMPORTED_MODULE_3__components_chatBox_chatbox_vue___default.a, name: 'chatbox' }]
+    routes: [{ path: '/addrooms', component: __WEBPACK_IMPORTED_MODULE_4__components_rooms_add_rooms_vue___default.a }, { path: '/allrooms', component: __WEBPACK_IMPORTED_MODULE_5__components_rooms_all_rooms_vue___default.a }, { path: '/myrooms', component: __WEBPACK_IMPORTED_MODULE_6__components_rooms_my_rooms_vue___default.a }, { path: '/chat/:room_id/:room_name', component: __WEBPACK_IMPORTED_MODULE_3__components_chatBox_chatbox_vue___default.a, name: 'chatbox' }]
 });
 
 new Vue({
@@ -87284,21 +87284,38 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             messages: [],
-            channel: ''
+            channel: '',
+            room_name: this.$route.params.room_name,
+            room_id: this.$route.params.room_id,
+            WhoisOnline: []
         };
     },
 
     mounted: function mounted() {
-        var _this = this;
-
-        this.channel = this.$pusher.subscribe(this.$route.params.room_id + 'room');
-        this.channel.bind('pushMessage', function (data) {
-            _this.messages.push(data);
-        });
+        this.BindEvents(this.room_id + 'room', 'pushMessage');
+        this.GetMeOnline();
     },
     methods: {
         pushMessage: function pushMessage(data) {
             // ...
+        },
+        BindEvents: function BindEvents(name, action) {
+            var _this = this;
+
+            this.channel = this.$pusher.subscribe(name);
+            this.channel.bind(action, function (data) {
+                _this.messages.push(data);
+            });
+        },
+        GetMeOnline: function GetMeOnline() {
+            var _this2 = this;
+
+            this.$http.get('/getMeOnline/' + this.room_id).then(function (response) {
+
+                _this2.WhoisOnline.push(response.data);
+            }, function (response) {
+                //...
+            });
         }
     }
 });
@@ -87688,7 +87705,17 @@ var render = function() {
       "div",
       { staticClass: "chat_window" },
       [
-        _vm._m(0, false, false),
+        _c("div", { staticClass: "top_menu" }, [
+          _vm._m(0, false, false),
+          _vm._v(" "),
+          _c("div", { staticClass: "title" }, [
+            _vm._v(
+              _vm._s(_vm.room_name) +
+                " online Users " +
+                _vm._s(_vm.WhoisOnline.length)
+            )
+          ])
+        ]),
         _vm._v(" "),
         _c("all_messages", { attrs: { all_messages: _vm.messages } }),
         _vm._v(" "),
@@ -87709,16 +87736,12 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "top_menu" }, [
-      _c("div", { staticClass: "buttons" }, [
-        _c("div", { staticClass: "button close" }),
-        _vm._v(" "),
-        _c("div", { staticClass: "button minimize" }),
-        _vm._v(" "),
-        _c("div", { staticClass: "button maximize" })
-      ]),
+    return _c("div", { staticClass: "buttons" }, [
+      _c("div", { staticClass: "button close" }),
       _vm._v(" "),
-      _c("div", { staticClass: "title" }, [_vm._v("..........")])
+      _c("div", { staticClass: "button minimize" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "button maximize" })
     ])
   }
 ]
@@ -88187,7 +88210,10 @@ var render = function() {
                     "router-link",
                     {
                       attrs: {
-                        to: { name: "chatbox", params: { room_id: room.id } }
+                        to: {
+                          name: "chatbox",
+                          params: { room_id: room.id, room_name: room.name }
+                        }
                       }
                     },
                     [
@@ -88561,7 +88587,10 @@ var render = function() {
                       "router-link",
                       {
                         attrs: {
-                          to: { name: "chatbox", params: { room_id: room.id } }
+                          to: {
+                            name: "chatbox",
+                            params: { room_id: room.id, room_name: room.name }
+                          }
                         }
                       },
                       [

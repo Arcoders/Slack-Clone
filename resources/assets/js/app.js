@@ -51,7 +51,7 @@ const router = new VueRouter({
         { path: '/addrooms', component: add_rooms },
         { path: '/allrooms', component: all_rooms },
         { path: '/myrooms', component: my_rooms },
-        { path: '/chat/:room_id', component: chat_box, name: 'chatbox' }
+        { path: '/chat/:room_id/:room_name', component: chat_box, name: 'chatbox' }
     ]
 });
 
