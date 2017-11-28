@@ -1,19 +1,34 @@
 <template>
     <div id="chat_box">
-        <div class="chat_window">
-            <div class="top_menu">
-                <div class="buttons">
-                    <div class="button close"></div>
-                    <div class="button minimize"></div>
-                    <div class="button maximize"></div>
+
+        <div class="row">
+
+            <div class="col-lg-8" >
+                <div class="chat_window">
+                    <div class="top_menu">
+                        <div class="buttons">
+                            <div class="button close"></div>
+                            <div class="button minimize"></div>
+                            <div class="button maximize"></div>
+                        </div>
+                        <div class="title">{{ room_name }} online Users {{ onlineUserCount }}</div>
+                    </div>
+
+                    <all_messages :all_messages="messages"></all_messages>
+                    <add_messages v-on:updateMessages="pushMessage($event)"></add_messages>
+
                 </div>
-                <div class="title">{{ room_name }} online Users {{ onlineUserCount }}</div>
             </div>
 
-            <all_messages :all_messages="messages"></all_messages>
-            <add_messages v-on:updateMessages="pushMessage($event)"></add_messages>
+            <div class="col-lg-4" >
+
+                <activity></activity>
+                <online></online>
+
+            </div>
 
         </div>
+
     </div>
 </template>
 
@@ -21,11 +36,16 @@
 
     import addMessages from './add_messages.vue';
     import allMessages from './all_messages.vue';
+    import activity from './activity.vue';
+    import online from './online.vue';
+
 
     export default {
         components: {
             add_messages: addMessages,
-            all_messages: allMessages
+            all_messages: allMessages,
+            activity: activity,
+            online: online
         },
         data() {
             return {

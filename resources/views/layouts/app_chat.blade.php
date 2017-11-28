@@ -37,37 +37,26 @@
                         All Rooms
                     </router-link>
 
+                    <div class="pull-right">
+
+                        <b>{{ Auth::user()->name }}</b>
+
+                        <a href="{{ route('logout') }}"
+                           onclick="event.preventDefault();
+                           document.getElementById('logout-form').submit();">
+
+                            <i class="fa fa-power-off"></i>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                {{ csrf_field() }}
+                            </form>
+                        </a>
+
+                    </div>
 
                 </div>
                 <div class="inbox-body">
                     @yield('content')
-                </div>
-            </aside>
-            <aside class="sm-side">
-                <div class="user-head">
-                    <a class="inbox-avatar" href="javascript:;">
-                        <img  width="64" hieght="60" src="http://bootsnipp.com/img/avatars/ebeb306fd7ec11ab68cbcaa34282158bd80361a7.jpg">
-                    </a>
-                    <div class="user-name">
-                        <h5><a href="#">{{ Auth::user()->name }}</a></h5>
-                        <span><a href="#">{{ Auth::user()->email }}</a></span>
-                    </div>
-                    <a class="mail-dropdown pull-right"
-                       href="{{ route('logout') }}"
-                       onclick="event.preventDefault();
-                           document.getElementById('logout-form').submit();">
-
-                        <i class="fa fa-power-off"></i>
-
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            {{ csrf_field() }}
-                        </form>
-                    </a>
-                </div>
-                <div class="inbox-body">
-                    <a href="#myModal" data-toggle="modal"  title="Compose"    class="btn btn-compose">
-                        Compose
-                    </a>
                 </div>
             </aside>
         </div>
