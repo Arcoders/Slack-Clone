@@ -27,4 +27,8 @@ Route::get('/getAllRooms', 'RoomsController@GetAllRooms');
 Route::get('/getMyRooms', 'RoomsController@GetMyRooms');
 Route::delete('/deleteRoom/{room_id}', 'RoomsController@DeleteRoom');
 
+Route::get('/getCurrentUser', function() {
+    return Auth::user()->id;
+});
+
 

@@ -1,7 +1,11 @@
 <template>
     <div id="all_messages">
         <ul class="messages">
-            <li class="message left appeared" v-for="message in all_messages">
+            <li v-for="message in all_messages"
+                class="message appeared"
+                v-bind:class="{ 'right': message.user.id == currentUser,
+                                'left': message.user.id != currentUser
+                               }">
                 <div class="avatar"></div>
                 <div class="text_wrapper">
                     <div class="text">
@@ -23,8 +27,21 @@
         props: ['all_messages'],
         data() {
             return {
-
+                currentUser: ''
             }
+        },
+        created() {
+            this.$http.get('/getCurrentUser').then(response => {
+
+                if (response.status == 200) {
+                    this.currentUser = response.body;
+                } else {
+                    // ...
+                }
+
+            }, response => {
+                // ...
+            });
         }
     }
 </script>
