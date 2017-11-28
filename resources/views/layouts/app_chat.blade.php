@@ -17,6 +17,32 @@
 
  <div id="app" class="container_nada">
         <div class="mail-box">
+            <aside class="lg-side">
+                <div class="inbox-head">
+
+                    <h3>Real Time Web Chat</h3>
+
+                    <router-link to="/addrooms">
+                        <i class="fa fa-plus"></i>
+                        Add Room
+                    </router-link>
+
+                    <router-link to="/myrooms">
+                        <i class="fa fa-comments-o"></i>
+                        My Rooms
+                    </router-link>
+
+                    <router-link to="/allrooms">
+                        <i class="fa fa-globe"></i>
+                        All Rooms
+                    </router-link>
+
+
+                </div>
+                <div class="inbox-body">
+                    @yield('content')
+                </div>
+            </aside>
             <aside class="sm-side">
                 <div class="user-head">
                     <a class="inbox-avatar" href="javascript:;">
@@ -27,8 +53,8 @@
                         <span><a href="#">{{ Auth::user()->email }}</a></span>
                     </div>
                     <a class="mail-dropdown pull-right"
-                           href="{{ route('logout') }}"
-                           onclick="event.preventDefault();
+                       href="{{ route('logout') }}"
+                       onclick="event.preventDefault();
                            document.getElementById('logout-form').submit();">
 
                         <i class="fa fa-power-off"></i>
@@ -42,49 +68,6 @@
                     <a href="#myModal" data-toggle="modal"  title="Compose"    class="btn btn-compose">
                         Compose
                     </a>
-                </div>
-                <ul class="inbox-nav inbox-divider">
-
-                    <li class="active">
-                        <router-link to="/addrooms">
-                            <i class="fa fa-plus"></i>
-                            Add Room
-                            <span class="label label-success pull-right">7</span>
-                        </router-link>
-                    </li>
-
-                    <li class="active">
-                        <router-link to="/myrooms">
-                            <i class="fa fa-comments-o"></i>
-                            My Rooms
-                            <span class="label label-success pull-right">3</span>
-                        </router-link>
-                    </li>
-
-                    <li class="active">
-                        <router-link to="/allrooms">
-                            <i class="fa fa-globe"></i>
-                            All Rooms
-                            <span class="label label-success pull-right">7</span>
-                        </router-link>
-                    </li>
-
-                </ul>
-
-
-            </aside>
-            <aside class="lg-side">
-                <div class="inbox-head">
-                    <h3>Inbox</h3>
-                    <form action="#" class="pull-right position">
-                        <div class="input-append">
-                            <input type="text" class="sr-input" placeholder="Search Mail">
-                            <button class="btn sr-btn" type="button"><i class="fa fa-search"></i></button>
-                        </div>
-                    </form>
-                </div>
-                <div class="inbox-body">
-                    @yield('content')
                 </div>
             </aside>
         </div>
