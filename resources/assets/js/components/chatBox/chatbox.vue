@@ -68,6 +68,11 @@
               this.channel.bind('onlineUser', (data) => {
                   this.onlineUserCount = data;
               });
+
+              this.channel = this.$pusher.subscribe(this.room_id+'offline');
+              this.channel.bind('leaveUser', (data) => {
+                  this.onlineUserCount = data;
+              });
           }
         },
     }

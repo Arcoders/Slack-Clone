@@ -87325,6 +87325,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.channel.bind('onlineUser', function (data) {
                 _this.onlineUserCount = data;
             });
+
+            this.channel = this.$pusher.subscribe(this.room_id + 'offline');
+            this.channel.bind('leaveUser', function (data) {
+                _this.onlineUserCount = data;
+            });
         }
     }
 });

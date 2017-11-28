@@ -49,9 +49,13 @@ class RoomsController extends Controller
 
         if ($userOnline == 0) {
             $this->insertOnline($user->id, $room_id);
-
         } else {
+            $leaveRoom = Online::where('user_id', $user->id)->get()[0];
             Online::where('user_id', $user->id)->delete();
+
+            $room = Rooms::where('id', $leaveRoom->room->id)->withCount('online')->get()[0]->online_count;
+            trigger_pusher( $leaveRoom->room->id.'offline', 'leaveUser', $room);
+
             $this->insertOnline($user->id, $room_id);
         }
 
@@ -70,6 +74,6 @@ class RoomsController extends Controller
         $online->save();
     }
 
-    
+
 
 }
