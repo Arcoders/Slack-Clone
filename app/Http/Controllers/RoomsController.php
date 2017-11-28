@@ -45,9 +45,8 @@ class RoomsController extends Controller
 
     public function GetMeOnline($room_id) {
         $user = Auth::user();
-        $userOnline = Online::where('user_id', $user->id)->count();
 
-        if ($userOnline == 0) {
+        if (Online::where('user_id', $user->id)->count() == 0) {
 
             $this->insertOnline($user->id, $room_id);
 
@@ -60,14 +59,16 @@ class RoomsController extends Controller
         }
 
         $this->triggerPusher($room_id, 'online', 'onlineUser');
-
         return 'done';
     }
 
     protected function triggerPusher($room_id, $concat, $event)
     {
-        $room = Rooms::where('id', $room_id)->withCount('online')->get()[0]->online_count;
-        trigger_pusher( $room_id.$concat, $event, $room);
+        $array = [
+            'count' => Rooms::where('id', $room_id)->withCount('online')->get()[0]->online_count,
+            'conected' => Online::where('room_id', $room_id)->with('user')->get()
+        ];
+        trigger_pusher( $room_id.$concat, $event, $array);
     }
 
     protected function insertOnline($user, $room)

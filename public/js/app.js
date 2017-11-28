@@ -87311,15 +87311,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             room_name: this.$route.params.room_name,
             room_id: this.$route.params.room_id,
             WhoisOnline: [],
-            onlineUserCount: ''
+            onlineUserCount: '',
+            ac: []
         };
     },
     created: function created() {
         this.BindEvents(this.room_id + 'room', 'pushMessage', this.messages);
     },
     mounted: function mounted() {
-        this.GetMeOnline();
         this.updateCount();
+        this.GetMeOnline();
     },
 
     methods: {
@@ -87346,12 +87347,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             this.channel = this.$pusher.subscribe(this.room_id + 'online');
             this.channel.bind('onlineUser', function (data) {
-                _this.onlineUserCount = data;
+                _this.onlineUserCount = data.count;
+                _this.ac = data.conected;
             });
 
             this.channel = this.$pusher.subscribe(this.room_id + 'offline');
             this.channel.bind('leaveUser', function (data) {
-                _this.onlineUserCount = data;
+                _this.onlineUserCount = data.count;
+                _this.ac = data.conected;
             });
         }
     }
@@ -87821,9 +87824,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['ac'],
     data: function data() {
         return {
             msg: 'Hola AC'
@@ -87840,9 +87847,15 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { attrs: { id: "chat_activity" } }, [
-    _c("div", { staticClass: "well maximo" }, [
-      _vm._v("\n        " + _vm._s(_vm.msg) + "\n    ")
-    ])
+    _c(
+      "div",
+      { staticClass: "well maximo" },
+      _vm._l(_vm.ac, function(a) {
+        return _c("a", { staticClass: "btn btn-success btn-xs" }, [
+          _vm._v("\n                " + _vm._s(a.user.name) + "\n        ")
+        ])
+      })
+    )
   ])
 }
 var staticRenderFns = []
@@ -87995,7 +88008,7 @@ var render = function() {
       _c(
         "div",
         { staticClass: "col-lg-4" },
-        [_c("activity"), _vm._v(" "), _c("online")],
+        [_c("activity", { attrs: { ac: _vm.ac } }), _vm._v(" "), _c("online")],
         1
       )
     ])

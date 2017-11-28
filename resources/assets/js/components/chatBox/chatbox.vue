@@ -22,7 +22,7 @@
 
             <div class="col-lg-4" >
 
-                <activity></activity>
+                <activity :ac="ac"></activity>
                 <online></online>
 
             </div>
@@ -54,15 +54,16 @@
                 room_name: this.$route.params.room_name,
                 room_id: this.$route.params.room_id,
                 WhoisOnline: [],
-                onlineUserCount: ''
+                onlineUserCount: '',
+                ac:[]
             }
         },
         created() {
             this.BindEvents(this.room_id+'room', 'pushMessage', this.messages);
         },
         mounted() {
-            this.GetMeOnline();
             this.updateCount();
+            this.GetMeOnline();
         },
         methods: {
           pushMessage(data) {
@@ -86,12 +87,14 @@
           updateCount() {
               this.channel = this.$pusher.subscribe(this.room_id+'online');
               this.channel.bind('onlineUser', (data) => {
-                  this.onlineUserCount = data;
+                  this.onlineUserCount = data.count;
+                  this.ac = data.conected;
               });
 
               this.channel = this.$pusher.subscribe(this.room_id+'offline');
               this.channel.bind('leaveUser', (data) => {
-                  this.onlineUserCount = data;
+                  this.onlineUserCount = data.count;
+                  this.ac = data.conected;
               });
           }
         },
