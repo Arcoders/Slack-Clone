@@ -80,7 +80,7 @@
 
                     this.isLoading = false;
 
-                    if (response.body == 'done') {
+                    if (response.body == 1) {
                         this.type = 'success';
                         this.text = 'Your room has been added!';
                         this.dismissCountDown = this.dismissSecs;

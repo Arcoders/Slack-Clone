@@ -87906,7 +87906,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
                 _this.isLoading = false;
 
-                if (response.body == 'done') {
+                if (response.body == 1) {
                     _this.type = 'success';
                     _this.text = 'Your room has been added!';
                     _this.dismissCountDown = _this.dismissSecs;
@@ -88500,7 +88500,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
                 _this2.isLoading = false;
 
-                if (response.body == 'done') {
+                if (response.body == 1) {
                     _this2.rooms.splice(index, 1);
                     _this2.type = 'success';
                     _this2.text = 'Your room has been deleted!';

@@ -23,7 +23,6 @@ Route::post('/AddNewRoom', 'RoomsController@AddNewRoom');
 Route::post('/AddMessage', 'MessagesController@AddMessage');
 
 Route::get('/getMeOnline/{room_id}', 'RoomsController@GetMeOnline');
-
 Route::get('/getAllRooms', 'RoomsController@GetAllRooms');
 Route::get('/getMyRooms', 'RoomsController@GetMyRooms');
 Route::delete('/deleteRoom/{room_id}', 'RoomsController@DeleteRoom');

@@ -18,9 +18,9 @@ class RoomsController extends Controller
 
         if ($room->save())
         {
-            return 'done';
+            return 1;
         } else {
-            return 'error';
+            return 0;
         }
     }
 
@@ -37,9 +37,9 @@ class RoomsController extends Controller
     public function DeleteRoom($room_id)
     {
         if (Rooms::where('id', $room_id)->where('user_id', Auth::user()->id)->delete()) {
-            return 'done';
+            return 1;
         } else {
-            return 'error';
+            return 0;
         }
     }
 
@@ -48,14 +48,14 @@ class RoomsController extends Controller
         $userOnline = Online::where('user_id', $user->id)->count();
 
         if ($userOnline == 0) {
+
             $this->insertOnline($user->id, $room_id);
+
         } else {
             $leaveRoom = Online::where('user_id', $user->id)->get()[0];
-
             Online::where('user_id', $user->id)->delete();
 
             $this->triggerPusher($leaveRoom->room->id, 'offline', 'leaveUser');
-
             $this->insertOnline($user->id, $room_id);
         }
 
@@ -78,7 +78,4 @@ class RoomsController extends Controller
         $online->timelogin = time();
         $online->save();
     }
-
-
-
 }
