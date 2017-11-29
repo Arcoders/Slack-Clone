@@ -14,7 +14,7 @@
                         <div class="title">{{ room_name }} online Users {{ onlineUserCount }}</div>
                     </div>
 
-                    <all_messages :all_messages="messages"></all_messages>
+                    <all_messages :all_messages="messages" :latest="latest"></all_messages>
                     <add_messages v-on:updateMessages="pushMessage($event)"></add_messages>
 
                 </div>
@@ -50,6 +50,7 @@
         data() {
             return {
                 messages: [],
+                latest: [],
                 channel: '',
                 room_name: this.$route.params.room_name,
                 room_id: this.$route.params.room_id,
@@ -59,6 +60,7 @@
             }
         },
         created() {
+            this.getLatest();
             this.BindEvents(this.room_id+'room', 'pushMessage', this.messages);
         },
         mounted() {
@@ -98,7 +100,20 @@
                   this.onlineUsers = data.conected;
                   this.actions.push(data.actions);
               });
-          }
+          },
+        getLatest() {
+            this.$http.get('/GetLatest/'+this.room_id).then(response => {
+
+                if (response.status == 200) {
+                    this.latest = response.data;
+                } else {
+                    // ...
+                }
+
+            }, response => {
+                // ...
+            });
+        }
         },
     }
 

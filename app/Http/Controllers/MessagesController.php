@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\AddMessageRequest;
 use App\Messages;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 class MessagesController extends Controller
 {
@@ -26,4 +27,12 @@ class MessagesController extends Controller
             return 'error';
         }
     }
+
+    public function GetLatest(Request $request)
+    {
+        return Messages::where('room_id', $request->room_id)
+                        ->with('user', 'room')
+                        ->get();
+    }
+
 }

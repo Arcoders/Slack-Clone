@@ -87307,6 +87307,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             messages: [],
+            latest: [],
             channel: '',
             room_name: this.$route.params.room_name,
             room_id: this.$route.params.room_id,
@@ -87316,6 +87317,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         };
     },
     created: function created() {
+        this.getLatest();
         this.BindEvents(this.room_id + 'room', 'pushMessage', this.messages);
     },
     mounted: function mounted() {
@@ -87357,6 +87359,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this.onlineUserCount = data.count;
                 _this.onlineUsers = data.conected;
                 _this.actions.push(data.actions);
+            });
+        },
+        getLatest: function getLatest() {
+            var _this2 = this;
+
+            this.$http.get('/GetLatest/' + this.room_id).then(function (response) {
+
+                if (response.status == 200) {
+                    _this2.latest = response.data;
+                } else {
+                    // ...
+                }
+            }, function (response) {
+                // ...
             });
         }
     }
@@ -87684,27 +87700,53 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['all_messages'],
+    props: ['all_messages', 'latest'],
     data: function data() {
         return {
             currentUser: ''
         };
     },
     created: function created() {
-        var _this = this;
+        this.getCurrentUser();
+    },
 
-        this.$http.get('/getCurrentUser').then(function (response) {
+    methods: {
+        getCurrentUser: function getCurrentUser() {
+            var _this = this;
 
-            if (response.status == 200) {
-                _this.currentUser = response.body;
-            } else {
+            this.$http.get('/getCurrentUser').then(function (response) {
+
+                if (response.status == 200) {
+                    _this.currentUser = response.body;
+                } else {
+                    // ...
+                }
+            }, function (response) {
                 // ...
-            }
-        }, function (response) {
-            // ...
-        });
+            });
+        }
     }
 });
 
@@ -87720,37 +87762,72 @@ var render = function() {
     _c(
       "ul",
       { staticClass: "messages" },
-      _vm._l(_vm.all_messages, function(message) {
-        return _c(
-          "li",
-          {
-            staticClass: "message appeared",
-            class: {
-              right: message.user.id == _vm.currentUser,
-              left: message.user.id != _vm.currentUser
-            }
-          },
-          [
-            _c("div", { staticClass: "avatar" }),
-            _vm._v(" "),
-            _c("div", { staticClass: "text_wrapper" }, [
-              _c("div", { staticClass: "text" }, [
-                _c("b", [_vm._v(_vm._s(message.user.name))]),
-                _vm._v(" "),
-                _c("br"),
-                _vm._v(
-                  "\n                    " +
-                    _vm._s(message.body) +
-                    "\n                    "
-                ),
-                _c("small", { staticClass: "small pull-right" }, [
-                  _c("b", [_vm._v(" " + _vm._s(message.created_at) + " ")])
+      [
+        _vm._l(_vm.latest, function(last) {
+          return _c(
+            "li",
+            {
+              staticClass: "message appeared",
+              class: {
+                right: last.user.id == _vm.currentUser,
+                left: last.user.id != _vm.currentUser
+              }
+            },
+            [
+              _c("div", { staticClass: "avatar" }),
+              _vm._v(" "),
+              _c("div", { staticClass: "text_wrapper" }, [
+                _c("div", { staticClass: "text" }, [
+                  _c("b", [_vm._v(_vm._s(last.user.name))]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(last.body) +
+                      "\n                    "
+                  ),
+                  _c("small", { staticClass: "small pull-right" }, [
+                    _c("b", [_vm._v(" " + _vm._s(last.created_at) + " ")])
+                  ])
                 ])
               ])
-            ])
-          ]
-        )
-      })
+            ]
+          )
+        }),
+        _vm._v(" "),
+        _vm._l(_vm.all_messages, function(message) {
+          return _c(
+            "li",
+            {
+              staticClass: "message appeared",
+              class: {
+                right: message.user.id == _vm.currentUser,
+                left: message.user.id != _vm.currentUser
+              }
+            },
+            [
+              _c("div", { staticClass: "avatar" }),
+              _vm._v(" "),
+              _c("div", { staticClass: "text_wrapper" }, [
+                _c("div", { staticClass: "text" }, [
+                  _c("b", [_vm._v(_vm._s(message.user.name))]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(message.body) +
+                      "\n                    "
+                  ),
+                  _c("small", { staticClass: "small pull-right" }, [
+                    _c("b", [_vm._v(" " + _vm._s(message.created_at) + " ")])
+                  ])
+                ])
+              ])
+            ]
+          )
+        })
+      ],
+      2
     )
   ])
 }
@@ -88008,7 +88085,9 @@ var render = function() {
               ])
             ]),
             _vm._v(" "),
-            _c("all_messages", { attrs: { all_messages: _vm.messages } }),
+            _c("all_messages", {
+              attrs: { all_messages: _vm.messages, latest: _vm.latest }
+            }),
             _vm._v(" "),
             _c("add_messages", {
               on: {
