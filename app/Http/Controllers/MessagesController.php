@@ -30,9 +30,13 @@ class MessagesController extends Controller
 
     public function GetLatest(Request $request)
     {
+        $count =  Messages::where('room_id', $request->room_id)->get()->count();
+
         return Messages::where('room_id', $request->room_id)
-                        ->with('user', 'room')
-                        ->get();
+            ->with('user', 'room')
+            ->skip($count - 5)
+            ->take(5)
+            ->get();
     }
 
 }
