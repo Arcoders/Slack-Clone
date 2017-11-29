@@ -54,19 +54,20 @@ class RoomsController extends Controller
             $leaveRoom = Online::where('user_id', $user->id)->get()[0];
             Online::where('user_id', $user->id)->delete();
 
-            $this->triggerPusher($leaveRoom->room->id, 'offline', 'leaveUser');
+            $this->triggerPusher($leaveRoom->room->id, 'offline', 'leaveUser', "leave room $leaveRoom->name");
             $this->insertOnline($user->id, $room_id);
         }
 
-        $this->triggerPusher($room_id, 'online', 'onlineUser');
+        $this->triggerPusher($room_id, 'online', 'onlineUser', "login to room");
         return 'done';
     }
 
-    protected function triggerPusher($room_id, $concat, $event)
+    protected function triggerPusher($room_id, $concat, $event, $indicatedRoom)
     {
         $array = [
             'count' => Rooms::where('id', $room_id)->withCount('online')->get()[0]->online_count,
-            'conected' => Online::where('room_id', $room_id)->with('user')->get()
+            'conected' => Online::where('room_id', $room_id)->with('user')->get(),
+            'actions' => Auth::user()->name.' '.$indicatedRoom
         ];
         trigger_pusher( $room_id.$concat, $event, $array);
     }

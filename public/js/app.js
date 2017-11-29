@@ -87310,9 +87310,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             channel: '',
             room_name: this.$route.params.room_name,
             room_id: this.$route.params.room_id,
-            WhoisOnline: [],
+            onlineUsers: [],
             onlineUserCount: '',
-            ac: []
+            actions: []
         };
     },
     created: function created() {
@@ -87348,13 +87348,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.channel = this.$pusher.subscribe(this.room_id + 'online');
             this.channel.bind('onlineUser', function (data) {
                 _this.onlineUserCount = data.count;
-                _this.ac = data.conected;
+                _this.onlineUsers = data.conected;
+                _this.actions.push(data.actions);
             });
 
             this.channel = this.$pusher.subscribe(this.room_id + 'offline');
             this.channel.bind('leaveUser', function (data) {
                 _this.onlineUserCount = data.count;
-                _this.ac = data.conected;
+                _this.onlineUsers = data.conected;
+                _this.actions.push(data.actions);
             });
         }
     }
@@ -87826,11 +87828,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['ac'],
+    props: ['actions'],
     data: function data() {
         return {
             msg: 'Hola AC'
@@ -87849,10 +87850,10 @@ var render = function() {
   return _c("div", { attrs: { id: "chat_activity" } }, [
     _c(
       "div",
-      { staticClass: "well maximo" },
-      _vm._l(_vm.ac, function(a) {
-        return _c("a", { staticClass: "btn btn-success btn-xs" }, [
-          _vm._v("\n                " + _vm._s(a.user.name) + "\n        ")
+      { staticClass: "maximo" },
+      _vm._l(_vm.actions, function(action) {
+        return _c("div", { staticClass: "alert alert-success" }, [
+          _c("strong", [_vm._v(_vm._s(action))])
         ])
       })
     )
@@ -87930,9 +87931,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['onlineUsers'],
     data: function data() {
         return {
             msg: 'Hola ON'
@@ -87949,9 +87956,19 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { attrs: { id: "chat_online" } }, [
-    _c("div", { staticClass: "well" }, [
-      _vm._v("\n        " + _vm._s(_vm.msg) + "\n    ")
-    ])
+    _c("h3", [_vm._v("Online Users")]),
+    _vm._v(" "),
+    _c("hr"),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "maximo" },
+      _vm._l(_vm.onlineUsers, function(online) {
+        return _c("a", { staticClass: "btn btn-success btn-xs" }, [
+          _vm._v("\n            " + _vm._s(online.user.name) + "\n        ")
+        ])
+      })
+    )
   ])
 }
 var staticRenderFns = []
@@ -88008,7 +88025,11 @@ var render = function() {
       _c(
         "div",
         { staticClass: "col-lg-4" },
-        [_c("activity", { attrs: { ac: _vm.ac } }), _vm._v(" "), _c("online")],
+        [
+          _c("activity", { attrs: { actions: _vm.actions } }),
+          _vm._v(" "),
+          _c("online", { attrs: { onlineUsers: _vm.onlineUsers } })
+        ],
         1
       )
     ])

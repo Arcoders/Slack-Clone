@@ -22,8 +22,8 @@
 
             <div class="col-lg-4" >
 
-                <activity :ac="ac"></activity>
-                <online></online>
+                <activity :actions="actions"></activity>
+                <online :onlineUsers="onlineUsers"></online>
 
             </div>
 
@@ -53,9 +53,9 @@
                 channel: '',
                 room_name: this.$route.params.room_name,
                 room_id: this.$route.params.room_id,
-                WhoisOnline: [],
+                onlineUsers: [],
                 onlineUserCount: '',
-                ac:[]
+                actions:[]
             }
         },
         created() {
@@ -88,13 +88,15 @@
               this.channel = this.$pusher.subscribe(this.room_id+'online');
               this.channel.bind('onlineUser', (data) => {
                   this.onlineUserCount = data.count;
-                  this.ac = data.conected;
+                  this.onlineUsers = data.conected;
+                  this.actions.push(data.actions);
               });
 
               this.channel = this.$pusher.subscribe(this.room_id+'offline');
               this.channel.bind('leaveUser', (data) => {
                   this.onlineUserCount = data.count;
-                  this.ac = data.conected;
+                  this.onlineUsers = data.conected;
+                  this.actions.push(data.actions);
               });
           }
         },

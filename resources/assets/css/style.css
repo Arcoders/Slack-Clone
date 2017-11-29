@@ -168,7 +168,13 @@ ul.labels-info li a i {
 
 .maximo {
     min-height: 200px;
-    max-height: 300px;
+    max-height: 200px;
+    background-color: lavender;
+    overflow: auto;
+}
+
+.maximo a{
+    margin: 10px;
 }
 
 .inbox-head .sr-input {
