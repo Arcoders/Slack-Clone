@@ -22,6 +22,11 @@
 
                     <h3>Real Time Web Chat</h3>
 
+                    <router-link to="/myprofile">
+                        <i class="fa fa-globe"></i>
+                        My Profile
+                    </router-link>
+
                     <router-link to="/addrooms">
                         <i class="fa fa-plus"></i>
                         Add Room
