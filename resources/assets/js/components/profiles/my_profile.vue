@@ -4,8 +4,6 @@
         <h2>Upload Your Avatar</h2>
         <hr>
 
-        <vue-simple-spinner v-if="false" message="Loading..."></vue-simple-spinner>
-
         <b-alert :show="dismissCountDown"
                  dismissible
                  v-bind:variant="type"

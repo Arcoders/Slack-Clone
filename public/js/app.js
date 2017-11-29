@@ -89192,8 +89192,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -89242,10 +89240,6 @@ var render = function() {
       _c("h2", [_vm._v("Upload Your Avatar")]),
       _vm._v(" "),
       _c("hr"),
-      _vm._v(" "),
-      false
-        ? _c("vue-simple-spinner", { attrs: { message: "Loading..." } })
-        : _vm._e(),
       _vm._v(" "),
       _c(
         "b-alert",
