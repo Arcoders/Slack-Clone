@@ -21,7 +21,7 @@
         </b-alert>
 
 
-        <div v-if="false" class="input-group">
+        <div class="input-group">
 
             <input type="file"
                    name="file"
@@ -31,9 +31,8 @@
 
             <span class="input-group-btn">
                     <button class="btn btn-primary"
-                            @click="AddRoom"
                             value="Add Room"
-                            v-bind:disabled="btnSubmit"
+                            v-bind:disabled="true"
                             type="button">
                         Upload
                     </button>

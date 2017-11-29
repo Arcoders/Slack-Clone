@@ -45,7 +45,7 @@ import chat_box from './components/chatBox/chatbox.vue';
 import add_rooms from './components/rooms/add_rooms.vue';
 import all_rooms from './components/rooms/all_rooms.vue';
 import my_rooms from './components/rooms/my_rooms.vue';
-import my_prifile from './components/profiles/my_profile.vue';
+import my_profile from './components/profiles/my_profile.vue';
 
 const router = new VueRouter({
     routes: [
