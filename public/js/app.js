@@ -87508,6 +87508,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this = this;
 
             var room_id = this.$route.params.room_id;
+            // console.log(this.usersTyping, 'holaaaa');
             this.$http.get('/typingUsers/' + room_id).then(function (response) {
 
                 if (response.status == 200) {
@@ -87763,18 +87764,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['all_messages', 'latest', 'usersTyping'],
     data: function data() {
         return {
-            currentUser: ''
+            currentUser: '',
+            currentUserName: ''
         };
     },
     created: function created() {
@@ -87788,7 +87784,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.$http.get('/getCurrentUser').then(function (response) {
 
                 if (response.status == 200) {
-                    _this.currentUser = response.body;
+                    _this.currentUser = response.body.id;
+                    _this.currentUserName = response.body.name;
                 } else {
                     // ...
                 }
@@ -87876,23 +87873,20 @@ var render = function() {
           )
         }),
         _vm._v(" "),
-        _c("div", { staticClass: "avatar" }),
-        _vm._v(" "),
-        _c("div", { staticClass: "text_wrapper" }, [
-          _c("div", { staticClass: "text" }, [
-            _c("b", [_vm._v(_vm._s(_vm.message.user.name))]),
-            _vm._v(" "),
-            _c("br"),
-            _vm._v(
-              "\n                    " +
-                _vm._s(_vm.message.body) +
-                "\n                    "
-            ),
-            _c("small", { staticClass: "small pull-right" }, [
-              _c("b", [_vm._v(" " + _vm._s(_vm.message.created_at) + " ")])
-            ])
-          ])
-        ])
+        _vm._l(_vm.usersTyping, function(userTyping) {
+          return userTyping.userName != _vm.currentUserName
+            ? _c("div", { staticClass: "message appeared left" }, [
+                _c("div", { staticClass: "delete_typing" }, [
+                  _c("i", {
+                    staticClass: "fa fa-commenting-o",
+                    attrs: { "aria-hidden": "true" }
+                  }),
+                  _vm._v(" "),
+                  _c("b", [_vm._v(" " + _vm._s(userTyping.userName) + " ...")])
+                ])
+              ])
+            : _vm._e()
+        })
       ],
       2
     )
@@ -88161,6 +88155,7 @@ var render = function() {
             }),
             _vm._v(" "),
             _c("add_messages", {
+              attrs: { usersTyping: _vm.typing },
               on: {
                 updateMessages: function($event) {
                   _vm.pushMessage($event)

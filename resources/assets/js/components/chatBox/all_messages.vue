@@ -38,20 +38,14 @@
                 </div>
             </li>
 
-            <li v-for="userTyping in usersTyping"
-                class="message appeared left"
-                <div class="avatar"></div>
-                <div class="text_wrapper">
-                    <div class="text">
-                        <b>{{ message.user.name }}</b>
-                        <br>
-                        {{ message.body }}
-                        <small class="small pull-right">
-                            <b> {{ message.created_at }} </b>
-                        </small>
-                    </div>
+            <div  v-for="userTyping in usersTyping"
+                 class="message appeared left"
+                 v-if="userTyping.userName != currentUserName">
+                <div class="delete_typing">
+                    <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                    <b> {{ userTyping.userName }} ...</b>
                 </div>
-            </li>
+            </div>
 
         </ul>
     </div>
@@ -62,7 +56,8 @@
         props: ['all_messages', 'latest', 'usersTyping'],
         data() {
             return {
-                currentUser: ''
+                currentUser: '',
+                currentUserName: ''
             }
         },
         created() {
@@ -73,7 +68,8 @@
                 this.$http.get('/getCurrentUser').then(response => {
 
                     if (response.status == 200) {
-                        this.currentUser = response.body;
+                        this.currentUser = response.body.id;
+                        this.currentUserName = response.body.name;
                     } else {
                         // ...
                     }

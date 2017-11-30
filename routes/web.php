@@ -31,7 +31,8 @@ Route::get('/getMyRooms', 'RoomsController@GetMyRooms');
 Route::delete('/deleteRoom/{room_id}', 'RoomsController@DeleteRoom');
 
 Route::get('/getCurrentUser', function() {
-    return Auth::user()->id;
+    $user = Auth::user();
+    return ['id' => $user->id, 'name' => $user->name];
 });
 
 

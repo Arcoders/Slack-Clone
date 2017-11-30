@@ -21,7 +21,7 @@
 
                     <add_messages v-on:updateMessages="pushMessage($event)"
                                   v-on:typing="userTyping($event)"
-
+                                  :usersTyping="typing"
                     ></add_messages>
 
                 </div>
@@ -94,7 +94,7 @@
 
                   //...
 
-              }, response => {
+              }, response =>{
                   //...
               });
           },
