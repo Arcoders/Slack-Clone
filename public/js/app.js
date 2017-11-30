@@ -87293,6 +87293,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -87323,7 +87330,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     created: function created() {
         this.getLatest();
         this.BindEvents(this.room_id + 'room', 'pushMessage', this.messages);
-        this.BindEvents(this.room_id + 'room', 'userTyping', this.typing);
+        this.BindEvents(this.room_id + 'typing', 'userTyping', this.typing);
     },
     mounted: function mounted() {
         this.updateCount();
@@ -87331,11 +87338,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     methods: {
-        pushMessage: function pushMessage(data) {
-            // ...
+        pushMessage: function pushMessage() {
+            console.log(this.messages);
         },
-        userTyping: function userTyping(data) {
-            // ...
+        userTyping: function userTyping() {
+            console.log(this.typing);
         },
         BindEvents: function BindEvents(name, action, array) {
             this.channel = this.$pusher.subscribe(name);
@@ -87601,7 +87608,9 @@ var render = function() {
                       }
                       _vm.addMessage()
                     },
-                    click: function($event) {},
+                    click: function($event) {
+                      _vm.typingUsers()
+                    },
                     input: function($event) {
                       if ($event.target.composing) {
                         return
@@ -87745,9 +87754,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['all_messages', 'latest', 'typing'],
+    props: ['all_messages', 'latest', 'usersTyping'],
     data: function data() {
         return {
             currentUser: ''
@@ -87850,7 +87874,25 @@ var render = function() {
               ])
             ]
           )
-        })
+        }),
+        _vm._v(" "),
+        _c("div", { staticClass: "avatar" }),
+        _vm._v(" "),
+        _c("div", { staticClass: "text_wrapper" }, [
+          _c("div", { staticClass: "text" }, [
+            _c("b", [_vm._v(_vm._s(_vm.message.user.name))]),
+            _vm._v(" "),
+            _c("br"),
+            _vm._v(
+              "\n                    " +
+                _vm._s(_vm.message.body) +
+                "\n                    "
+            ),
+            _c("small", { staticClass: "small pull-right" }, [
+              _c("b", [_vm._v(" " + _vm._s(_vm.message.created_at) + " ")])
+            ])
+          ])
+        ])
       ],
       2
     )
@@ -88112,8 +88154,8 @@ var render = function() {
             _vm._v(" "),
             _c("all_messages", {
               attrs: {
-                typing: _vm.userTyping(_vm.$event),
                 all_messages: _vm.messages,
+                usersTyping: _vm.typing,
                 latest: _vm.latest
               }
             }),
@@ -88122,6 +88164,9 @@ var render = function() {
               on: {
                 updateMessages: function($event) {
                   _vm.pushMessage($event)
+                },
+                typing: function($event) {
+                  _vm.userTyping($event)
                 }
               }
             })

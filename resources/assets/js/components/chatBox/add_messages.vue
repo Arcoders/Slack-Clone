@@ -18,7 +18,7 @@
                     <input class="message_input"
                            @keyup.enter="addMessage()"
                            v-model="message"
-                           @click=""
+                           @click="typingUsers()"
                            placeholder="Type your message here..." />
                 </div>
 

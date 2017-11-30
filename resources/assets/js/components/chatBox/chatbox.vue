@@ -14,8 +14,15 @@
                         <div class="title">{{ room_name }} online Users {{ onlineUserCount }}</div>
                     </div>
 
-                    <all_messages :typing="userTyping($event)" :all_messages="messages" :latest="latest"></all_messages>
-                    <add_messages v-on:updateMessages="pushMessage($event)"></add_messages>
+                    <all_messages :all_messages="messages"
+                                  :usersTyping="typing"
+                                  :latest="latest"
+                    ></all_messages>
+
+                    <add_messages v-on:updateMessages="pushMessage($event)"
+                                  v-on:typing="userTyping($event)"
+
+                    ></add_messages>
 
                 </div>
             </div>
@@ -63,18 +70,18 @@
         created() {
             this.getLatest();
             this.BindEvents(this.room_id+'room', 'pushMessage', this.messages);
-            this.BindEvents(this.room_id+'room', 'userTyping', this.typing);
+            this.BindEvents(this.room_id+'typing', 'userTyping', this.typing);
         },
         mounted() {
             this.updateCount();
             this.GetMeOnline();
         },
         methods: {
-          pushMessage(data) {
-              // ...
+          pushMessage() {
+              console.log(this.messages);
           },
-          userTyping(data) {
-              // ...
+          userTyping() {
+              console.log(this.typing);
           },
           BindEvents(name, action, array) {
               this.channel = this.$pusher.subscribe(name);

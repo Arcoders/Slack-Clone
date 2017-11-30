@@ -38,13 +38,28 @@
                 </div>
             </li>
 
+            <li v-for="userTyping in usersTyping"
+                class="message appeared left"
+                <div class="avatar"></div>
+                <div class="text_wrapper">
+                    <div class="text">
+                        <b>{{ message.user.name }}</b>
+                        <br>
+                        {{ message.body }}
+                        <small class="small pull-right">
+                            <b> {{ message.created_at }} </b>
+                        </small>
+                    </div>
+                </div>
+            </li>
+
         </ul>
     </div>
 </template>
 
 <script>
     export default {
-        props: ['all_messages', 'latest', 'typing'],
+        props: ['all_messages', 'latest', 'usersTyping'],
         data() {
             return {
                 currentUser: ''

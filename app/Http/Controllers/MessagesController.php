@@ -31,7 +31,7 @@ class MessagesController extends Controller
     public function typingUsers($room_id)
     {
         $userName = Auth::user()->name;
-        trigger_pusher( $room_id.'typing', 'userTyping', [$userName]);
+        trigger_pusher( $room_id.'typing', 'userTyping', ['userName' => $userName]);
         return $userName;
     }
 
