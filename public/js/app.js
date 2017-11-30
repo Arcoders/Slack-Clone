@@ -87311,6 +87311,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return {
             messages: [],
             latest: [],
+            typing: [],
             channel: '',
             room_name: this.$route.params.room_name,
             room_id: this.$route.params.room_id,
@@ -87322,6 +87323,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     created: function created() {
         this.getLatest();
         this.BindEvents(this.room_id + 'room', 'pushMessage', this.messages);
+        this.BindEvents(this.room_id + 'room', 'userTyping', this.typing);
     },
     mounted: function mounted() {
         this.updateCount();
@@ -87330,6 +87332,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         pushMessage: function pushMessage(data) {
+            // ...
+        },
+        userTyping: function userTyping(data) {
             // ...
         },
         BindEvents: function BindEvents(name, action, array) {
@@ -87725,7 +87730,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['all_messages', 'latest'],
+    props: ['all_messages', 'latest', 'typing'],
     data: function data() {
         return {
             currentUser: ''
@@ -87736,13 +87741,27 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     methods: {
-        getCurrentUser: function getCurrentUser() {
+        typingUsers: function typingUsers() {
             var _this = this;
+
+            this.$http.get('/typingUsers').then(function (response) {
+
+                if (response.status == 200) {
+                    _this.currentUser = response.body;
+                } else {
+                    // ...
+                }
+            }, function (response) {
+                // ...
+            });
+        },
+        getCurrentUser: function getCurrentUser() {
+            var _this2 = this;
 
             this.$http.get('/getCurrentUser').then(function (response) {
 
                 if (response.status == 200) {
-                    _this.currentUser = response.body;
+                    _this2.currentUser = response.body;
                 } else {
                     // ...
                 }
@@ -88089,7 +88108,11 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("all_messages", {
-              attrs: { all_messages: _vm.messages, latest: _vm.latest }
+              attrs: {
+                typing: _vm.userTyping(_vm.$event),
+                all_messages: _vm.messages,
+                latest: _vm.latest
+              }
             }),
             _vm._v(" "),
             _c("add_messages", {

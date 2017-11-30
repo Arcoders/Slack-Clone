@@ -14,7 +14,7 @@
                         <div class="title">{{ room_name }} online Users {{ onlineUserCount }}</div>
                     </div>
 
-                    <all_messages :all_messages="messages" :latest="latest"></all_messages>
+                    <all_messages :typing="userTyping($event)" :all_messages="messages" :latest="latest"></all_messages>
                     <add_messages v-on:updateMessages="pushMessage($event)"></add_messages>
 
                 </div>
@@ -51,6 +51,7 @@
             return {
                 messages: [],
                 latest: [],
+                typing: [],
                 channel: '',
                 room_name: this.$route.params.room_name,
                 room_id: this.$route.params.room_id,
@@ -62,6 +63,7 @@
         created() {
             this.getLatest();
             this.BindEvents(this.room_id+'room', 'pushMessage', this.messages);
+            this.BindEvents(this.room_id+'room', 'userTyping', this.typing);
         },
         mounted() {
             this.updateCount();
@@ -69,6 +71,9 @@
         },
         methods: {
           pushMessage(data) {
+              // ...
+          },
+          userTyping(data) {
               // ...
           },
           BindEvents(name, action, array) {

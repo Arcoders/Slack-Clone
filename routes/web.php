@@ -23,6 +23,7 @@ Route::post('/AddNewRoom', 'RoomsController@AddNewRoom');
 
 Route::post('/AddMessage', 'MessagesController@AddMessage');
 Route::get('/GetLatest/{room_id}', 'MessagesController@GetLatest');
+Route::get('/typingUsers', 'MessagesController@typingUsers');
 
 Route::get('/getMeOnline/{room_id}', 'RoomsController@GetMeOnline');
 Route::get('/getAllRooms', 'RoomsController@GetAllRooms');

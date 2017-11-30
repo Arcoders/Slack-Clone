@@ -28,6 +28,11 @@ class MessagesController extends Controller
         }
     }
 
+    public function typingUsers()
+    {
+        return Auth::user()->name;
+    }
+
     public function GetLatest(Request $request)
     {
         $count =  Messages::where('room_id', $request->room_id)->get()->count();

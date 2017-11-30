@@ -44,7 +44,7 @@
 
 <script>
     export default {
-        props: ['all_messages', 'latest'],
+        props: ['all_messages', 'latest', 'typing'],
         data() {
             return {
                 currentUser: ''
@@ -54,6 +54,19 @@
             this.getCurrentUser();
         },
         methods: {
+            typingUsers() {
+                this.$http.get('/typingUsers').then(response => {
+
+                    if (response.status == 200) {
+                        this.currentUser = response.body;
+                    } else {
+                        // ...
+                    }
+
+                }, response => {
+                    // ...
+                });
+            },
             getCurrentUser() {
                 this.$http.get('/getCurrentUser').then(response => {
 
