@@ -28,9 +28,11 @@ class MessagesController extends Controller
         }
     }
 
-    public function typingUsers()
+    public function typingUsers($room_id)
     {
-        return Auth::user()->name;
+        $userName = Auth::user()->name;
+        trigger_pusher( $room_id.'typing', 'userTyping', [$userName]);
+        return $userName;
     }
 
     public function GetLatest(Request $request)

@@ -87475,6 +87475,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -87496,26 +87497,41 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.dismissCountDown = dismissCountDown;
             this.error = false;
         },
-        addMessage: function addMessage() {
+        typingUsers: function typingUsers() {
             var _this = this;
+
+            var room_id = this.$route.params.room_id;
+            this.$http.get('/typingUsers/' + room_id).then(function (response) {
+
+                if (response.status == 200) {
+                    _this.$emit('typing', response.data);
+                } else {
+                    // ...
+                }
+            }, function (response) {
+                // ...
+            });
+        },
+        addMessage: function addMessage() {
+            var _this2 = this;
 
             var room_id = this.$route.params.room_id;
             this.$http.post('/AddMessage', { message: this.message, room_id: room_id }).then(function (response) {
 
                 if (response.body != 'error') {
-                    _this.message = '';
-                    _this.$emit('updateMessages', response.data[0]);
+                    _this2.message = '';
+                    _this2.$emit('updateMessages', response.data[0]);
                 } else {
-                    _this.error = true;
-                    _this.type = 'warning';
-                    _this.text = 'your message can not be sent!';
-                    _this.dismissCountDown = _this.dismissSecs;
+                    _this2.error = true;
+                    _this2.type = 'warning';
+                    _this2.text = 'your message can not be sent!';
+                    _this2.dismissCountDown = _this2.dismissSecs;
                 }
             }, function (response) {
-                _this.error = true;
-                _this.type = 'danger';
-                _this.text = 'your message can not be sent!';
-                _this.dismissCountDown = _this.dismissSecs;
+                _this2.error = true;
+                _this2.type = 'danger';
+                _this2.text = 'your message can not be sent!';
+                _this2.dismissCountDown = _this2.dismissSecs;
             });
         }
     }
@@ -87585,6 +87601,7 @@ var render = function() {
                       }
                       _vm.addMessage()
                     },
+                    click: function($event) {},
                     input: function($event) {
                       if ($event.target.composing) {
                         return
@@ -87741,27 +87758,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     methods: {
-        typingUsers: function typingUsers() {
-            var _this = this;
-
-            this.$http.get('/typingUsers').then(function (response) {
-
-                if (response.status == 200) {
-                    _this.currentUser = response.body;
-                } else {
-                    // ...
-                }
-            }, function (response) {
-                // ...
-            });
-        },
         getCurrentUser: function getCurrentUser() {
-            var _this2 = this;
+            var _this = this;
 
             this.$http.get('/getCurrentUser').then(function (response) {
 
                 if (response.status == 200) {
-                    _this2.currentUser = response.body;
+                    _this.currentUser = response.body;
                 } else {
                     // ...
                 }

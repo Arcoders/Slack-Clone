@@ -18,6 +18,7 @@
                     <input class="message_input"
                            @keyup.enter="addMessage()"
                            v-model="message"
+                           @click=""
                            placeholder="Type your message here..." />
                 </div>
 
@@ -52,6 +53,20 @@
             countDownChanged (dismissCountDown) {
                 this.dismissCountDown = dismissCountDown;
                 this.error = false;
+            },
+            typingUsers() {
+                let room_id = this.$route.params.room_id;
+                this.$http.get('/typingUsers/'+room_id).then(response => {
+
+                    if (response.status == 200) {
+                        this.$emit('typing', response.data);
+                    } else {
+                        // ...
+                    }
+
+                }, response => {
+                    // ...
+                });
             },
             addMessage() {
                 let room_id = this.$route.params.room_id;
