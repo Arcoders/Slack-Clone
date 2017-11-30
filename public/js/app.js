@@ -87311,6 +87311,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return {
             messages: [],
             latest: [],
+            typing: [],
             channel: '',
             room_name: this.$route.params.room_name,
             room_id: this.$route.params.room_id,
@@ -87321,7 +87322,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     created: function created() {
         this.getLatest();
+        console.log(this.typing);
         this.BindEvents(this.room_id + 'room', 'pushMessage', this.messages);
+        this.BindEvents(this.room_id + 'room', 'actualTyping', this.typing);
     },
     mounted: function mounted() {
         this.updateCount();
@@ -87330,6 +87333,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         pushMessage: function pushMessage(data) {
+            // ...
+        },
+        actualTyping: function actualTyping() {
             // ...
         },
         BindEvents: function BindEvents(name, action, array) {
@@ -87470,6 +87476,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -87491,26 +87498,40 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.dismissCountDown = dismissCountDown;
             this.error = false;
         },
-        addMessage: function addMessage() {
+        typing: function typing() {
             var _this = this;
+
+            this.$http.get('/getCurrentUser').then(function (response) {
+
+                if (response.status == 200) {
+                    _this.$emit('userTyping', response.body);
+                } else {
+                    // ...
+                }
+            }, function (response) {
+                // ...
+            });
+        },
+        addMessage: function addMessage() {
+            var _this2 = this;
 
             var room_id = this.$route.params.room_id;
             this.$http.post('/AddMessage', { message: this.message, room_id: room_id }).then(function (response) {
 
                 if (response.body != 'error') {
-                    _this.message = '';
-                    _this.$emit('updateMessages', response.data[0]);
+                    _this2.message = '';
+                    _this2.$emit('updateMessages', response.data[0]);
                 } else {
-                    _this.error = true;
-                    _this.type = 'warning';
-                    _this.text = 'your message can not be sent!';
-                    _this.dismissCountDown = _this.dismissSecs;
+                    _this2.error = true;
+                    _this2.type = 'warning';
+                    _this2.text = 'your message can not be sent!';
+                    _this2.dismissCountDown = _this2.dismissSecs;
                 }
             }, function (response) {
-                _this.error = true;
-                _this.type = 'danger';
-                _this.text = 'your message can not be sent!';
-                _this.dismissCountDown = _this.dismissSecs;
+                _this2.error = true;
+                _this2.type = 'danger';
+                _this2.text = 'your message can not be sent!';
+                _this2.dismissCountDown = _this2.dismissSecs;
             });
         }
     }
@@ -87579,6 +87600,9 @@ var render = function() {
                         return null
                       }
                       _vm.addMessage()
+                    },
+                    click: function($event) {
+                      _vm.typing()
                     },
                     input: function($event) {
                       if ($event.target.composing) {
@@ -87725,7 +87749,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['all_messages', 'latest'],
+    props: ['all_messages', 'latest', 'typing'],
     data: function data() {
         return {
             currentUser: ''
@@ -87733,6 +87757,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     created: function created() {
         this.getCurrentUser();
+    },
+    mounted: function mounted() {
+        //            console.log(this.typing);
     },
 
     methods: {
@@ -88089,7 +88116,16 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("all_messages", {
-              attrs: { all_messages: _vm.messages, latest: _vm.latest }
+              attrs: {
+                all_messages: _vm.messages,
+                latest: _vm.latest,
+                typing: _vm.typing
+              },
+              on: {
+                userTyping: function($event) {
+                  _vm.actualTyping($event)
+                }
+              }
             }),
             _vm._v(" "),
             _c("add_messages", {
