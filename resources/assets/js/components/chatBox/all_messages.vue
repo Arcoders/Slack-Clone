@@ -44,7 +44,7 @@
 
 <script>
     export default {
-        props: ['all_messages', 'latest', 'typing'],
+        props: ['all_messages', 'latest'],
         data() {
             return {
                 currentUser: ''
@@ -52,9 +52,6 @@
         },
         created() {
             this.getCurrentUser();
-        },
-        mounted() {
-//            console.log(this.typing);
         },
         methods: {
             getCurrentUser() {
