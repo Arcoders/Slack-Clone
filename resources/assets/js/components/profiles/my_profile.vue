@@ -1,78 +1,76 @@
 <template>
-    <div id="add_room" class="row">
-
-        <h2>Upload Your Avatar</h2>
-        <hr>
-
-        <b-alert :show="dismissCountDown"
-                 dismissible
-                 v-bind:variant="type"
-                 @dismissed="dismissCountDown=0"
-                 @dismiss-count-down="countDownChanged">
-
-            <p>{{text}} {{dismissCountDown}} seconds...</p>
-            <b-progress v-bind:variant="type"
-                        :max="dismissSecs"
-                        :value="dismissCountDown"
-                        height="4px">
-            </b-progress>
-        </b-alert>
-
-
-        <div class="input-group">
-
-            <form v-on:submit.prevent="UploadAvatar()" enctype="multipart/form-data">
-                <input type="file"
-                       name="file"
-                       id="file"
-                       v-el:avtar
-                       class="form-control"
-                       placeholder="Select an image...">
-
-                <span class="input-group-btn">
-                    <button class="btn btn-primary"
-                            value="Add Room"
-                            v-bind:disabled="true"
-                            type="button">
-                        Upload
-                    </button>
-                  </span>
-            </form>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="col-md-2">
+                <img v-if="image" :src="image" class="img-responsive">
+                <avatar v-else  :username="currentUserName"
+                         color="#fff"
+                         class="avatar"
+                        :size="100">
+                </avatar>
+            </div>
+            <div class="col-md-8">
+                <input type="file" v-on:change="onFileChange" class="form-control">
+            </div>
+            <div class="col-md-2">
+                <button class="btn btn-success btn-block" @click="upload">Upload</button>
+            </div>
         </div>
-
-
     </div>
 </template>
-
+<style scoped>
+    img{
+        height: 100px;
+        width: 100px;
+        border-radius: 50%;
+    }
+</style>
 <script>
-    export default {
-        data() {
+    export default{
+        data(){
             return {
-                type: '',
-                text: '',
-                dismissSecs: 4,
-                dismissCountDown: 0,
-                showDismissibleAlert: false
+                image: '',
+                currentUserName: ''
             }
         },
-        computed: {
-
+        created() {
+            this.getCurrentUser();
         },
         methods: {
-            countDownChanged (dismissCountDown) {
-                this.dismissCountDown = dismissCountDown;
+            onFileChange(e) {
+                let files = e.target.files || e.dataTransfer.files;
+                if (!files.length)
+                    return;
+                this.createImage(files[0]);
             },
-            UploadAvatar() {
+            createImage(file) {
+                let reader = new FileReader();
+                let vm = this;
+                reader.onload = (e) => {
+                    vm.image = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            },
+            upload() {
+                this.$http.post('/AddNewRoom', {image: this.image}).then(response => {
 
-                let formData = new FormData();
-                formData.append(
-                    'avatar', this.$els.avatar.files[0]
-                );
-                this.$http.post('/AddNewRoom').then(response => {
-
+                    console.log(this.image);
 
                     if (response.body == 1) {
                         // ...
+                    } else {
+                        // ...
+                    }
+
+                }, response => {
+                    // ...
+                });
+            },
+            getCurrentUser() {
+                this.$http.get('/getCurrentUser').then(response => {
+
+                    if (response.status == 200) {
+                        this.currentUserName = response.body.name;
                     } else {
                         // ...
                     }

@@ -12,7 +12,6 @@ window.Vue = require('vue');
 import VueRouter from 'vue-router';
 import BootstrapVue from 'bootstrap-vue';
 import Avatar from 'vue-avatar';
-import AvatarCropper from 'vue-avatar-cropper';
 
 const VueResource = require('vue-resource');
 const VueMoment = require('vue-moment');
@@ -41,7 +40,6 @@ Vue.http.headers.common['X-CSRF-TOKEN'] = content;
 
 Vue.component('vue-simple-spinner', require('./components/spinner/spinner.vue'));
 Vue.component('avatar', Avatar);
-Vue.component('avatar-cropper', AvatarCropper);
 
 
 import chat_box from './components/chatBox/chatbox.vue';

@@ -32,7 +32,6 @@
                 <avatar  :username="message.user.name"
                          color="#fff"
                          class="avatar">
-
                 </avatar>
                 <div class="text_wrapper">
                     <div class="text">
