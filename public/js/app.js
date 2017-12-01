@@ -87299,7 +87299,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 
 
@@ -87339,10 +87338,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         pushMessage: function pushMessage() {
-            console.log(this.messages);
+            // console.log(this.messages);
         },
         userTyping: function userTyping() {
-            console.log(this.typing);
+            // console.log(this.typing);
         },
         BindEvents: function BindEvents(name, action, array) {
             this.channel = this.$pusher.subscribe(name);
@@ -87764,13 +87763,28 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['all_messages', 'latest', 'usersTyping'],
     data: function data() {
         return {
             currentUser: '',
-            currentUserName: ''
+            currentUserName: '',
+            dismissSecs: 4,
+            dismissCountDown: 0,
+            showDismissibleAlert: false
         };
     },
     created: function created() {
@@ -87778,6 +87792,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     methods: {
+        countDownChanged: function countDownChanged(dismissCountDown) {
+            this.dismissCountDown = dismissCountDown;
+        },
         getCurrentUser: function getCurrentUser() {
             var _this = this;
 
@@ -87875,16 +87892,44 @@ var render = function() {
         _vm._v(" "),
         _vm._l(_vm.usersTyping, function(userTyping) {
           return userTyping.userName != _vm.currentUserName
-            ? _c("div", { staticClass: "message appeared left" }, [
-                _c("div", { staticClass: "delete_typing" }, [
-                  _c("i", {
-                    staticClass: "fa fa-commenting-o",
-                    attrs: { "aria-hidden": "true" }
-                  }),
-                  _vm._v(" "),
-                  _c("b", [_vm._v(" " + _vm._s(userTyping.userName) + " ...")])
-                ])
-              ])
+            ? _c(
+                "li",
+                { staticClass: "message appeared left" },
+                [
+                  _c(
+                    "b-alert",
+                    {
+                      attrs: {
+                        show: (_vm.dismissCountDown = _vm.dismissSecs),
+                        dismissible: "",
+                        variant: "info"
+                      },
+                      on: {
+                        dismissed: function($event) {
+                          _vm.dismissCountDown = 0
+                        },
+                        "dismiss-count-down": _vm.countDownChanged
+                      }
+                    },
+                    [
+                      _c("p", [
+                        _c("b", [
+                          _c("i", {
+                            staticClass: "fa fa-commenting-o",
+                            attrs: { "aria-hidden": "true" }
+                          })
+                        ]),
+                        _vm._v(
+                          "\n                    " +
+                            _vm._s(userTyping.userName) +
+                            " is writing\n                "
+                        )
+                      ])
+                    ]
+                  )
+                ],
+                1
+              )
             : _vm._e()
         })
       ],
@@ -88155,7 +88200,6 @@ var render = function() {
             }),
             _vm._v(" "),
             _c("add_messages", {
-              attrs: { usersTyping: _vm.typing },
               on: {
                 updateMessages: function($event) {
                   _vm.pushMessage($event)

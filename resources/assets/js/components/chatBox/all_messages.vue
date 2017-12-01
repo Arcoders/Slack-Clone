@@ -38,14 +38,26 @@
                 </div>
             </li>
 
-            <div  v-for="userTyping in usersTyping"
+
+
+            <li  v-for="userTyping in usersTyping"
                  class="message appeared left"
                  v-if="userTyping.userName != currentUserName">
-                <div class="delete_typing">
-                    <i class="fa fa-commenting-o" aria-hidden="true"></i>
-                    <b> {{ userTyping.userName }} ...</b>
-                </div>
-            </div>
+
+                <b-alert :show="dismissCountDown = dismissSecs"
+                         dismissible
+                         variant="info"
+                         @dismissed="dismissCountDown=0"
+                         @dismiss-count-down="countDownChanged">
+
+                    <p>
+                        <b> <i class="fa fa-commenting-o" aria-hidden="true"></i></b>
+                        {{ userTyping.userName }} is writing
+                    </p>
+
+                </b-alert>
+
+            </li>
 
         </ul>
     </div>
@@ -57,13 +69,19 @@
         data() {
             return {
                 currentUser: '',
-                currentUserName: ''
+                currentUserName: '',
+                dismissSecs: 4,
+                dismissCountDown: 0,
+                showDismissibleAlert: false
             }
         },
         created() {
             this.getCurrentUser();
         },
         methods: {
+            countDownChanged (dismissCountDown) {
+                this.dismissCountDown = dismissCountDown;
+            },
             getCurrentUser() {
                 this.$http.get('/getCurrentUser').then(response => {
 

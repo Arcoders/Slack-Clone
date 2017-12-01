@@ -21,7 +21,6 @@
 
                     <add_messages v-on:updateMessages="pushMessage($event)"
                                   v-on:typing="userTyping($event)"
-                                  :usersTyping="typing"
                     ></add_messages>
 
                 </div>
@@ -78,10 +77,10 @@
         },
         methods: {
           pushMessage() {
-              console.log(this.messages);
+             // console.log(this.messages);
           },
           userTyping() {
-              console.log(this.typing);
+             // console.log(this.typing);
           },
           BindEvents(name, action, array) {
               this.channel = this.$pusher.subscribe(name);
