@@ -9,7 +9,7 @@
                      @dismissed="dismissCountDown=0"
                      @dismiss-count-down="countDownChanged">
 
-                <b>Error: </b>{{text}} {{dismissCountDown}} seconds...</b>
+                <b>Error: </b>{{text}} {{dismissCountDown}} seconds...
 
             </b-alert>
 

@@ -21,13 +21,15 @@
 
         <div class="input-group">
 
-            <input type="file"
-                   name="file"
-                   id="file"
-                   class="form-control"
-                   placeholder="Select an image...">
+            <form v-on:submit.prevent="UploadAvatar()" enctype="multipart/form-data">
+                <input type="file"
+                       name="file"
+                       id="file"
+                       v-el:avtar
+                       class="form-control"
+                       placeholder="Select an image...">
 
-            <span class="input-group-btn">
+                <span class="input-group-btn">
                     <button class="btn btn-primary"
                             value="Add Room"
                             v-bind:disabled="true"
@@ -35,7 +37,9 @@
                         Upload
                     </button>
                   </span>
+            </form>
         </div>
+
 
     </div>
 </template>
@@ -58,8 +62,12 @@
             countDownChanged (dismissCountDown) {
                 this.dismissCountDown = dismissCountDown;
             },
-            SendRequest() {
+            UploadAvatar() {
 
+                let formData = new FormData();
+                formData.append(
+                    'avatar', this.$els.avatar.files[0]
+                );
                 this.$http.post('/AddNewRoom').then(response => {
 
 

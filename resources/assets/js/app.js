@@ -10,8 +10,8 @@ require('./bootstrap');
 window.Vue = require('vue');
 
 import VueRouter from 'vue-router';
-import Spinner from 'vue-simple-spinner';
 import BootstrapVue from 'bootstrap-vue';
+import Avatar from 'vue-avatar';
 
 const VueResource = require('vue-resource');
 const VueMoment = require('vue-moment');
@@ -39,6 +39,7 @@ Vue.http.headers.common['X-CSRF-TOKEN'] = content;
  */
 
 Vue.component('vue-simple-spinner', require('./components/spinner/spinner.vue'));
+Vue.component('avatar', Avatar);
 
 
 import chat_box from './components/chatBox/chatbox.vue';
@@ -58,6 +59,5 @@ const router = new VueRouter({
 });
 
 new Vue({
-    router,
-    components: Spinner
+    router
 }).$mount('#app');

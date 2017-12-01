@@ -7,7 +7,11 @@
                 v-bind:class="{ 'right': last.user.id == currentUser,
                                 'left': last.user.id != currentUser
                                }">
-                <div class="avatar"></div>
+                <avatar :username="last.user.name"
+                        color="#fff"
+                        class="avatar">
+
+                </avatar>
                 <div class="text_wrapper">
                     <div class="text">
                         <b>{{ last.user.name }}</b>
@@ -25,7 +29,11 @@
                 v-bind:class="{ 'right': message.user.id == currentUser,
                                 'left': message.user.id != currentUser
                                }">
-                <div class="avatar"></div>
+                <avatar  :username="message.user.name"
+                         color="#fff"
+                         class="avatar">
+
+                </avatar>
                 <div class="text_wrapper">
                     <div class="text">
                         <b>{{ message.user.name }}</b>

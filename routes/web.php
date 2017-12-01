@@ -35,4 +35,5 @@ Route::get('/getCurrentUser', function() {
     return ['id' => $user->id, 'name' => $user->name];
 });
 
+Route::post('/UploadAvatar', 'UserController@UploadAvatar');
 
