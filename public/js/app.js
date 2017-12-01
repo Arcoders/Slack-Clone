@@ -88622,6 +88622,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -88649,11 +88652,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             reader.readAsDataURL(file);
         },
         upload: function upload() {
-            var _this = this;
-
-            this.$http.post('/AddNewRoom', { image: this.image }).then(function (response) {
-
-                console.log(_this.image);
+            this.$http.post('/UploadAvatar', { image: this.image }).then(function (response) {
 
                 if (response.body == 1) {
                     // ...
@@ -88665,12 +88664,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
         },
         getCurrentUser: function getCurrentUser() {
-            var _this2 = this;
+            var _this = this;
 
             this.$http.get('/getCurrentUser').then(function (response) {
 
                 if (response.status == 200) {
-                    _this2.currentUserName = response.body.name;
+                    _this.currentUserName = response.body.name;
                 } else {
                     // ...
                 }
@@ -88759,45 +88758,58 @@ var render = function() {
         "div",
         { staticClass: "col-md-2" },
         [
-          _vm.image
-            ? _c("img", {
-                staticClass: "img-responsive",
-                attrs: { src: _vm.image }
-              })
-            : _c("avatar", {
-                staticClass: "avatar",
-                attrs: {
-                  username: _vm.currentUserName,
-                  color: "#fff",
-                  size: 100
-                }
-              })
+          _c("avatar", {
+            staticClass: "avatar",
+            attrs: {
+              username: _vm.currentUserName,
+              color: "#fff",
+              src: _vm.image,
+              size: 100
+            }
+          })
         ],
         1
       ),
       _vm._v(" "),
-      _c("div", { staticClass: "col-md-8" }, [
-        _c("input", {
-          staticClass: "form-control",
-          attrs: { type: "file" },
-          on: { change: _vm.onFileChange }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-2" }, [
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-success btn-block",
-            on: { click: _vm.upload }
-          },
-          [_vm._v("Upload")]
-        )
-      ])
+      _c(
+        "form",
+        {
+          attrs: { method: "POST", enctype: "multipart/form-data" },
+          on: {
+            submit: function($event) {
+              $event.preventDefault()
+              _vm.upload()
+            }
+          }
+        },
+        [
+          _c("div", { staticClass: "col-md-8" }, [
+            _c("input", {
+              staticClass: "form-control",
+              attrs: { type: "file", name: "image" },
+              on: { change: _vm.onFileChange }
+            })
+          ]),
+          _vm._v(" "),
+          _vm._m(0, false, false)
+        ]
+      )
     ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-2" }, [
+      _c("input", {
+        staticClass: "btn btn-success btn-block",
+        attrs: { type: "submit", value: "Upload" }
+      })
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {

@@ -2,19 +2,22 @@
     <div class="row">
         <div class="col-md-12">
             <div class="col-md-2">
-                <img v-if="image" :src="image" class="img-responsive">
-                <avatar v-else  :username="currentUserName"
+
+                <avatar :username="currentUserName"
                          color="#fff"
                          class="avatar"
+                        :src="image"
                         :size="100">
                 </avatar>
             </div>
-            <div class="col-md-8">
-                <input type="file" v-on:change="onFileChange" class="form-control">
-            </div>
-            <div class="col-md-2">
-                <button class="btn btn-success btn-block" @click="upload">Upload</button>
-            </div>
+            <form method="POST" v-on:submit.prevent="upload()" enctype="multipart/form-data">
+                <div class="col-md-8">
+                    <input type="file" name="image" v-on:change="onFileChange" class="form-control">
+                </div>
+                <div class="col-md-2">
+                    <input class="btn btn-success btn-block" type="submit" value="Upload">
+                </div>
+            </form>
         </div>
     </div>
 </template>
@@ -52,9 +55,7 @@
                 reader.readAsDataURL(file);
             },
             upload() {
-                this.$http.post('/AddNewRoom', {image: this.image}).then(response => {
-
-                    console.log(this.image);
+                this.$http.post('/UploadAvatar', {image: this.image}).then(response => {
 
                     if (response.body == 1) {
                         // ...
