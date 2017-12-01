@@ -40,13 +40,12 @@
 
 
 
-            <li  v-for="userTyping in usersTyping"
-                 class="message appeared left"
-                 v-if="userTyping.userName != currentUserName">
+            <div  v-for="userTyping in usersTyping"
+                  class="left"
+                  v-if="userTyping.userName != currentUserName">
 
                 <b-alert :show="dismissCountDown = dismissSecs"
-                         dismissible
-                         variant="info"
+                         variant="default"
                          @dismissed="dismissCountDown=0"
                          @dismiss-count-down="countDownChanged">
 
@@ -57,7 +56,7 @@
 
                 </b-alert>
 
-            </li>
+            </div>
 
         </ul>
     </div>
@@ -70,7 +69,7 @@
             return {
                 currentUser: '',
                 currentUserName: '',
-                dismissSecs: 4,
+                dismissSecs: 1,
                 dismissCountDown: 0,
                 showDismissibleAlert: false
             }

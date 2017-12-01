@@ -18,7 +18,7 @@
                     <input class="message_input"
                            @keyup.enter="addMessage()"
                            v-model="message"
-                           @click="typingUsers()"
+                           @focus="typingUsers()"
                            placeholder="Type your message here..." />
                 </div>
 
@@ -56,7 +56,7 @@
             },
             typingUsers() {
                 let room_id = this.$route.params.room_id;
-               // console.log(this.usersTyping, 'holaaaa');
+
                 this.$http.get('/typingUsers/'+room_id).then(response => {
 
                     if (response.status == 200) {

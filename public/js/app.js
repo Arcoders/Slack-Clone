@@ -87507,7 +87507,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this = this;
 
             var room_id = this.$route.params.room_id;
-            // console.log(this.usersTyping, 'holaaaa');
+
             this.$http.get('/typingUsers/' + room_id).then(function (response) {
 
                 if (response.status == 200) {
@@ -87608,7 +87608,7 @@ var render = function() {
                       }
                       _vm.addMessage()
                     },
-                    click: function($event) {
+                    focus: function($event) {
                       _vm.typingUsers()
                     },
                     input: function($event) {
@@ -87774,7 +87774,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['all_messages', 'latest', 'usersTyping'],
@@ -87782,7 +87781,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return {
             currentUser: '',
             currentUserName: '',
-            dismissSecs: 4,
+            dismissSecs: 1,
             dismissCountDown: 0,
             showDismissibleAlert: false
         };
@@ -87893,16 +87892,15 @@ var render = function() {
         _vm._l(_vm.usersTyping, function(userTyping) {
           return userTyping.userName != _vm.currentUserName
             ? _c(
-                "li",
-                { staticClass: "message appeared left" },
+                "div",
+                { staticClass: "left" },
                 [
                   _c(
                     "b-alert",
                     {
                       attrs: {
                         show: (_vm.dismissCountDown = _vm.dismissSecs),
-                        dismissible: "",
-                        variant: "info"
+                        variant: "default"
                       },
                       on: {
                         dismissed: function($event) {
