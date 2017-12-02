@@ -88625,6 +88625,76 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -88652,7 +88722,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             reader.readAsDataURL(file);
         },
         upload: function upload() {
-            this.$http.post('/UploadAvatar', { image: this.image }).then(function (response) {
+
+            var formData = new FormData();
+            formData.append('fileInput', this.$refs.fileInput.files[0]);
+            console.log(formData);
+
+            this.$http.post('/UploadAvatar', formData).then(function (response) {
 
                 if (response.body == 1) {
                     // ...
@@ -88785,8 +88860,9 @@ var render = function() {
         [
           _c("div", { staticClass: "col-md-8" }, [
             _c("input", {
+              ref: "fileInput",
               staticClass: "form-control",
-              attrs: { type: "file", name: "image" },
+              attrs: { type: "file", id: "fileInput" },
               on: { change: _vm.onFileChange }
             })
           ]),
