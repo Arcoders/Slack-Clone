@@ -88625,76 +88625,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -88722,6 +88652,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             reader.readAsDataURL(file);
         },
         upload: function upload() {
+            var _this = this;
 
             var formData = new FormData();
             formData.append('fileInput', this.$refs.fileInput.files[0]);
@@ -88729,22 +88660,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             this.$http.post('/UploadAvatar', formData).then(function (response) {
 
-                if (response.body == 1) {
+                if (response.status == 200) {
                     // ...
                 } else {
-                        // ...
-                    }
+                    _this.image = null;
+                }
             }, function (response) {
-                // ...
+                _this.image = null;
             });
         },
         getCurrentUser: function getCurrentUser() {
-            var _this = this;
+            var _this2 = this;
 
             this.$http.get('/getCurrentUser').then(function (response) {
 
                 if (response.status == 200) {
-                    _this.currentUserName = response.body.name;
+                    _this2.currentUserName = response.body.name;
                 } else {
                     // ...
                 }
@@ -88863,7 +88794,11 @@ var render = function() {
               ref: "fileInput",
               staticClass: "form-control",
               attrs: { type: "file", id: "fileInput" },
-              on: { change: _vm.onFileChange }
+              on: {
+                change: function($event) {
+                  _vm.onFileChange($event)
+                }
+              }
             })
           ]),
           _vm._v(" "),

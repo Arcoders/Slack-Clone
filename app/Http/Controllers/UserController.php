@@ -8,6 +8,9 @@ class UserController extends Controller
 {
     public  function UploadAvatar(Request $request)
     {
-       dd($request);
+        $path = public_path().'images/avatars/';
+        $img = Image::make($request->image);
+        $img->fit(100, 100);
+        $img->save(public_path().'images/avatars/');
     }
 }
