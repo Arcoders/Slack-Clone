@@ -88625,6 +88625,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -88656,12 +88657,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             var formData = new FormData();
             formData.append('fileInput', this.$refs.fileInput.files[0]);
-            console.log(formData);
 
             this.$http.post('/UploadAvatar', formData).then(function (response) {
 
                 if (response.status == 200) {
-                    // ...
+                    _this.image = response.data;
+                    console.log(_this.image);
                 } else {
                     _this.image = null;
                 }
@@ -88676,6 +88677,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
                 if (response.status == 200) {
                     _this2.currentUserName = response.body.name;
+                    _this2.image = response.body.avatar;
                 } else {
                     // ...
                 }
@@ -88793,7 +88795,7 @@ var render = function() {
             _c("input", {
               ref: "fileInput",
               staticClass: "form-control",
-              attrs: { type: "file", id: "fileInput" },
+              attrs: { type: "file", name: "fileInput" },
               on: {
                 change: function($event) {
                   _vm.onFileChange($event)

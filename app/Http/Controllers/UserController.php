@@ -2,15 +2,31 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
-use Intervention\Image\Image;
+use Illuminate\Support\Facades\Auth;
+use Intervention\Image\Facades\Image;
 
 class UserController extends Controller
 {
     public  function UploadAvatar(Request $request)
     {
-        $path = public_path().'images/avatars/';
-        $img = Image::make($request->image);
+        $user = Auth::user();
+        $path = public_path().'/images/avatars/';
+
+        if ($user->avatar) {
+            if (file_exists($path.$user->avatar)) {
+                @unlink($path.$user->avatar);
+            }
+        }
+
+        $image = $request->file('fileInput');
+        $img = Image::make($image);
         $img->fit(100, 100);
-        $img->save(public_path().'images/avatars/');
+
+        $imageName = time().$user->id.$image->getClientOriginalName();
+        $img->save($path.$imageName, 60);
+
+        $user->avatar = $imageName;
+        $user->save();
+        return url('/images/avatars/'.$imageName);
     }
 }

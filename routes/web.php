@@ -32,7 +32,11 @@ Route::delete('/deleteRoom/{room_id}', 'RoomsController@DeleteRoom');
 
 Route::get('/getCurrentUser', function() {
     $user = Auth::user();
-    return ['id' => $user->id, 'name' => $user->name];
+    return [
+            'id' => $user->id,
+            'name' => $user->name,
+            'avatar' => ($user->avatar) ? url('/images/avatars/'.$user->avatar) : null
+    ];
 });
 
 Route::post('/UploadAvatar', 'UserController@UploadAvatar');

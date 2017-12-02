@@ -9,10 +9,11 @@
                         :src="image"
                         :size="100">
                 </avatar>
+
             </div>
             <form method="POST" v-on:submit.prevent="upload()" enctype="multipart/form-data">
                 <div class="col-md-8">
-                    <input type="file" id="fileInput" v-on:change="onFileChange($event)" ref="fileInput" class="form-control">
+                    <input type="file" name="fileInput" v-on:change="onFileChange($event)" ref="fileInput" class="form-control">
                 </div>
                 <div class="col-md-2">
                     <input class="btn btn-success btn-block" type="submit" value="Upload">
@@ -58,12 +59,12 @@
 
                 let formData = new FormData();
                 formData.append('fileInput', this.$refs.fileInput.files[0]);
-                console.log(formData);
 
                 this.$http.post('/UploadAvatar', formData).then(response => {
 
                     if (response.status == 200) {
-                        // ...
+                        this.image = response.data;
+                        console.log(this.image);
                     } else {
                         this.image = null
                     }
@@ -77,6 +78,7 @@
 
                     if (response.status == 200) {
                         this.currentUserName = response.body.name;
+                        this.image = response.body.avatar;
                     } else {
                         // ...
                     }
