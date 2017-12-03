@@ -166,6 +166,10 @@ ul.labels-info li a i {
     color: #FFFFFF;
 }
 
+.inbox-head .active {
+    color: lavender;
+}
+
 .maximo {
     min-height: 200px;
     max-height: 200px;

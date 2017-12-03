@@ -22,22 +22,22 @@
 
                     <h3>Real Time Web Chat</h3>
 
-                    <router-link to="/myprofile">
-                        <i class="fa fa-globe"></i>
+                    <router-link to="/myprofile"  exact-active-class="active">
+                        <i class="fa fa-user"></i>
                         My Profile
                     </router-link>
 
-                    <router-link to="/addrooms">
+                    <router-link to="/addrooms"  exact-active-class="active">
                         <i class="fa fa-plus"></i>
                         Add Room
                     </router-link>
 
-                    <router-link to="/myrooms">
+                    <router-link to="/myrooms"  exact-active-class="active">
                         <i class="fa fa-comments-o"></i>
                         My Rooms
                     </router-link>
 
-                    <router-link to="/allrooms">
+                    <router-link to="/allrooms"  exact-active-class="active">
                         <i class="fa fa-globe"></i>
                         All Rooms
                     </router-link>
