@@ -49,6 +49,7 @@ import my_profile from './components/profiles/my_profile.vue';
 
 const router = new VueRouter({
     routes: [
+        { path: '/', component: all_rooms },
         { path: '/myprofile', component: my_profile },
         { path: '/addrooms', component: add_rooms },
         { path: '/allrooms', component: all_rooms },

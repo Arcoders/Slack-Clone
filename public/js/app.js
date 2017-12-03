@@ -23675,7 +23675,7 @@ Vue.component('avatar', __WEBPACK_IMPORTED_MODULE_2_vue_avatar___default.a);
 
 
 var router = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
-    routes: [{ path: '/myprofile', component: __WEBPACK_IMPORTED_MODULE_7__components_profiles_my_profile_vue___default.a }, { path: '/addrooms', component: __WEBPACK_IMPORTED_MODULE_4__components_rooms_add_rooms_vue___default.a }, { path: '/allrooms', component: __WEBPACK_IMPORTED_MODULE_5__components_rooms_all_rooms_vue___default.a }, { path: '/myrooms', component: __WEBPACK_IMPORTED_MODULE_6__components_rooms_my_rooms_vue___default.a }, { path: '/chat/:room_id/:room_name', component: __WEBPACK_IMPORTED_MODULE_3__components_chatBox_chatbox_vue___default.a, name: 'chatbox' }]
+    routes: [{ path: '/', component: __WEBPACK_IMPORTED_MODULE_5__components_rooms_all_rooms_vue___default.a }, { path: '/myprofile', component: __WEBPACK_IMPORTED_MODULE_7__components_profiles_my_profile_vue___default.a }, { path: '/addrooms', component: __WEBPACK_IMPORTED_MODULE_4__components_rooms_add_rooms_vue___default.a }, { path: '/allrooms', component: __WEBPACK_IMPORTED_MODULE_5__components_rooms_all_rooms_vue___default.a }, { path: '/myrooms', component: __WEBPACK_IMPORTED_MODULE_6__components_rooms_my_rooms_vue___default.a }, { path: '/chat/:room_id/:room_name', component: __WEBPACK_IMPORTED_MODULE_3__components_chatBox_chatbox_vue___default.a, name: 'chatbox' }]
 });
 
 new Vue({
