@@ -1,6 +1,7 @@
 <template>
     <div id="chat_online">
         <h3>Online Users</h3>
+        {{ user }}
         <hr>
         <div class="maximo">
             <div v-for="online in onlineUsers">
@@ -21,7 +22,7 @@
 <script>
 
     export default {
-        props: ['onlineUsers'],
+        props: ['onlineUsers', 'user'],
         data() {
             return {
                 msg: 'Hola ON'

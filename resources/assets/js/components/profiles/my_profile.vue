@@ -31,6 +31,7 @@
 </style>
 <script>
     export default{
+        props: ['user'],
         data(){
             return {
                 image: null,

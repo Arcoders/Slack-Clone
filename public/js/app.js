@@ -87467,10 +87467,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['onlineUsers'],
+    props: ['onlineUsers', 'user'],
     data: function data() {
         return {
             msg: 'Hola ON'
@@ -87488,7 +87489,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { attrs: { id: "chat_online" } }, [
     _c("h3", [_vm._v("Online Users")]),
-    _vm._v(" "),
+    _vm._v("\n    " + _vm._s(_vm.user) + "\n    "),
     _c("hr"),
     _vm._v(" "),
     _c(
@@ -88702,6 +88703,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['user'],
     data: function data() {
         return {
             image: null,
