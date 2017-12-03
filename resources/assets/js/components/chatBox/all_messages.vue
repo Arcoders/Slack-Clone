@@ -9,6 +9,7 @@
                                }">
                 <avatar :username="last.user.name"
                         color="#fff"
+                        :src="last.user.avatar"
                         class="avatar">
 
                 </avatar>
@@ -31,6 +32,7 @@
                                }">
                 <avatar  :username="message.user.name"
                          color="#fff"
+                         :src="message.user.avatar"
                          class="avatar">
                 </avatar>
                 <div class="text_wrapper">

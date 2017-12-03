@@ -33,7 +33,7 @@
     export default{
         data(){
             return {
-                image: '',
+                image: null,
                 currentUserName: ''
             }
         },
@@ -64,7 +64,6 @@
 
                     if (response.status == 200) {
                         this.image = response.data;
-                        console.log(this.image);
                     } else {
                         this.image = null
                     }

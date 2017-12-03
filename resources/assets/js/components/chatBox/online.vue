@@ -3,10 +3,17 @@
         <h3>Online Users</h3>
         <hr>
         <div class="maximo">
-            <a v-for="online in onlineUsers"
-               class="btn btn-success btn-xs">
-                {{ online.user.name }}
-            </a>
+            <div v-for="online in onlineUsers">
+                <div class="alert alert-info">
+                    <avatar :username="online.user.name"
+                            color="#fff"
+                            class="avatar"
+                            :src="online.user.avatar"
+                            :size="50">
+                    </avatar>
+                    <span>{{ online.user.name }}</span>
+                </div>
+            </div>
         </div>
     </div>
 </template>

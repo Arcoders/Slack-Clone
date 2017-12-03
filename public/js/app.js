@@ -87099,6 +87099,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['all_messages', 'latest', 'usersTyping'],
@@ -87163,7 +87165,11 @@ var render = function() {
             [
               _c("avatar", {
                 staticClass: "avatar",
-                attrs: { username: last.user.name, color: "#fff" }
+                attrs: {
+                  username: last.user.name,
+                  color: "#fff",
+                  src: last.user.avatar
+                }
               }),
               _vm._v(" "),
               _c("div", { staticClass: "text_wrapper" }, [
@@ -87199,7 +87205,11 @@ var render = function() {
             [
               _c("avatar", {
                 staticClass: "avatar",
-                attrs: { username: message.user.name, color: "#fff" }
+                attrs: {
+                  username: message.user.name,
+                  color: "#fff",
+                  src: message.user.avatar
+                }
               }),
               _vm._v(" "),
               _c("div", { staticClass: "text_wrapper" }, [
@@ -87450,6 +87460,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -87478,8 +87495,25 @@ var render = function() {
       "div",
       { staticClass: "maximo" },
       _vm._l(_vm.onlineUsers, function(online) {
-        return _c("a", { staticClass: "btn btn-success btn-xs" }, [
-          _vm._v("\n            " + _vm._s(online.user.name) + "\n        ")
+        return _c("div", [
+          _c(
+            "div",
+            { staticClass: "alert alert-info" },
+            [
+              _c("avatar", {
+                staticClass: "avatar",
+                attrs: {
+                  username: online.user.name,
+                  color: "#fff",
+                  src: online.user.avatar,
+                  size: 50
+                }
+              }),
+              _vm._v(" "),
+              _c("span", [_vm._v(_vm._s(online.user.name))])
+            ],
+            1
+          )
         ])
       })
     )
@@ -88670,7 +88704,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            image: '',
+            image: null,
             currentUserName: ''
         };
     },
@@ -88702,7 +88736,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
                 if (response.status == 200) {
                     _this.image = response.data;
-                    console.log(_this.image);
                 } else {
                     _this.image = null;
                 }

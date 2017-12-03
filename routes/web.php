@@ -35,7 +35,7 @@ Route::get('/getCurrentUser', function() {
     return [
             'id' => $user->id,
             'name' => $user->name,
-            'avatar' => ($user->avatar) ? url('/images/avatars/'.$user->avatar) : null
+            'avatar' => $user->avatar
     ];
 });
 

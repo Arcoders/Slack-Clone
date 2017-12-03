@@ -13,8 +13,9 @@ class UserController extends Controller
         $path = public_path().'/images/avatars/';
 
         if ($user->avatar) {
-            if (file_exists($path.$user->avatar)) {
-                @unlink($path.$user->avatar);
+            $file =  substr($user->avatar, strrpos($user->avatar, '/') + 1);
+            if (file_exists($path.$file)) {
+                @unlink($path.$file);
             }
         }
 
@@ -25,8 +26,8 @@ class UserController extends Controller
         $imageName = time().$user->id.$image->getClientOriginalName();
         $img->save($path.$imageName, 60);
 
-        $user->avatar = $imageName;
+        $user->avatar = url('/images/avatars/'.$imageName);
         $user->save();
-        return url('/images/avatars/'.$imageName);
+        return $user->avatar;
     }
 }
