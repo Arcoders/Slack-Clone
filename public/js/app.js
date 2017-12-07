@@ -86649,6 +86649,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         };
     },
     created: function created() {
+        this.leaving();
         this.getLatest();
         this.BindEvents(this.room_id + 'room', 'pushMessage', this.messages);
         this.BindEvents(this.room_id + 'typing', 'userTyping', this.typing);
@@ -86659,6 +86660,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     methods: {
+        leaving: function leaving() {
+            window.addEventListener("beforeunload", function (e) {
+                var confirmationMessage = 'You want to leave this.page ?';
+                (e || window.event).returnValue = confirmationMessage;
+                return confirmationMessage;
+            });
+        },
         pushMessage: function pushMessage() {
             // console.log(this.messages);
         },
