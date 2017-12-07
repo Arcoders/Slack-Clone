@@ -30,6 +30,5 @@ function triggerPusher($room_id, $event, $indicatedRoom)
 
 function room_id()
  {
-     $user = Auth::user();
-     return Online::where('user_id', $user->id)->get()[0]->room_id;
+     return Online::where('user_id', Auth::user()->id)->get()[0]->room_id;
  }
