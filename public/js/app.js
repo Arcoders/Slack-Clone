@@ -23615,16 +23615,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_bootstrap_vue__ = __webpack_require__(205);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_avatar__ = __webpack_require__(358);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_avatar___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_vue_avatar__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_chatBox_chatbox_vue__ = __webpack_require__(370);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_chatBox_chatbox_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__components_chatBox_chatbox_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_rooms_add_rooms_vue__ = __webpack_require__(385);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_rooms_add_rooms_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__components_rooms_add_rooms_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_rooms_all_rooms_vue__ = __webpack_require__(388);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_rooms_all_rooms_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__components_rooms_all_rooms_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_rooms_my_rooms_vue__ = __webpack_require__(391);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_rooms_my_rooms_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__components_rooms_my_rooms_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_profiles_my_profile_vue__ = __webpack_require__(394);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_profiles_my_profile_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__components_profiles_my_profile_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vue_chat_scroll__ = __webpack_require__(416);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vue_chat_scroll___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_vue_chat_scroll__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_chatBox_chatbox_vue__ = __webpack_require__(370);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_chatBox_chatbox_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__components_chatBox_chatbox_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_rooms_add_rooms_vue__ = __webpack_require__(385);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_rooms_add_rooms_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__components_rooms_add_rooms_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_rooms_all_rooms_vue__ = __webpack_require__(388);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_rooms_all_rooms_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__components_rooms_all_rooms_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_rooms_my_rooms_vue__ = __webpack_require__(391);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_rooms_my_rooms_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__components_rooms_my_rooms_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_profiles_my_profile_vue__ = __webpack_require__(394);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_profiles_my_profile_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8__components_profiles_my_profile_vue__);
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -23640,6 +23642,7 @@ window.Vue = __webpack_require__(201);
 
 
 
+
 var VueResource = __webpack_require__(359);
 var VueMoment = __webpack_require__(361);
 var VuePusher = __webpack_require__(363);
@@ -23648,6 +23651,7 @@ window.Vue.use(VueResource);
 window.Vue.use(__WEBPACK_IMPORTED_MODULE_1_bootstrap_vue__["a" /* default */]);
 window.Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]);
 window.Vue.use(VueMoment);
+window.Vue.use(__WEBPACK_IMPORTED_MODULE_3_vue_chat_scroll___default.a);
 
 window.Vue.use(VuePusher, {
     api_key: '60efd870de38efff2291',
@@ -23675,7 +23679,7 @@ Vue.component('avatar', __WEBPACK_IMPORTED_MODULE_2_vue_avatar___default.a);
 
 
 var router = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
-    routes: [{ path: '/', component: __WEBPACK_IMPORTED_MODULE_5__components_rooms_all_rooms_vue___default.a }, { path: '/myprofile', component: __WEBPACK_IMPORTED_MODULE_7__components_profiles_my_profile_vue___default.a }, { path: '/addrooms', component: __WEBPACK_IMPORTED_MODULE_4__components_rooms_add_rooms_vue___default.a }, { path: '/allrooms', component: __WEBPACK_IMPORTED_MODULE_5__components_rooms_all_rooms_vue___default.a }, { path: '/myrooms', component: __WEBPACK_IMPORTED_MODULE_6__components_rooms_my_rooms_vue___default.a }, { path: '/chat/:room_id/:room_name', component: __WEBPACK_IMPORTED_MODULE_3__components_chatBox_chatbox_vue___default.a, name: 'chatbox' }]
+    routes: [{ path: '/', component: __WEBPACK_IMPORTED_MODULE_6__components_rooms_all_rooms_vue___default.a }, { path: '/myprofile', component: __WEBPACK_IMPORTED_MODULE_8__components_profiles_my_profile_vue___default.a }, { path: '/addrooms', component: __WEBPACK_IMPORTED_MODULE_5__components_rooms_add_rooms_vue___default.a }, { path: '/allrooms', component: __WEBPACK_IMPORTED_MODULE_6__components_rooms_all_rooms_vue___default.a }, { path: '/myrooms', component: __WEBPACK_IMPORTED_MODULE_7__components_rooms_my_rooms_vue___default.a }, { path: '/chat/:room_id/:room_name', component: __WEBPACK_IMPORTED_MODULE_4__components_chatBox_chatbox_vue___default.a, name: 'chatbox' }]
 });
 
 new Vue({
@@ -87150,7 +87154,10 @@ var render = function() {
   return _c("div", { attrs: { id: "all_messages" } }, [
     _c(
       "ul",
-      { staticClass: "messages" },
+      {
+        directives: [{ name: "chat-scroll", rawName: "v-chat-scroll" }],
+        staticClass: "messages"
+      },
       [
         _vm._l(_vm.latest, function(last) {
           return _c(
@@ -88848,6 +88855,87 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 400 */,
+/* 401 */,
+/* 402 */,
+/* 403 */,
+/* 404 */,
+/* 405 */,
+/* 406 */,
+/* 407 */,
+/* 408 */,
+/* 409 */,
+/* 410 */,
+/* 411 */,
+/* 412 */,
+/* 413 */,
+/* 414 */,
+/* 415 */,
+/* 416 */
+/***/ (function(module, exports, __webpack_require__) {
+
+(function (global, factory) {
+	 true ? module.exports = factory() :
+	typeof define === 'function' && define.amd ? define(factory) :
+	(global['vue-chat-scroll'] = factory());
+}(this, (function () { 'use strict';
+
+/**
+ * @name VueJS vChatScroll (vue-chat-scroll)
+ * @description Monitors an element and scrolls to the bottom if a new child is added
+ * @author Theodore Messinezis <theo@theomessin.com>
+ * @file v-chat-scroll  directive definition
+ */
+
+var scrollToBottom = function scrollToBottom(el) {
+    el.scrollTop = el.scrollHeight;
+};
+
+var vChatScroll = {
+    bind: function bind(el, binding) {
+        var timeout = void 0;
+        var scrolled = false;
+
+        el.addEventListener('scroll', function (e) {
+            if (timeout) window.clearTimeout(timeout);
+            timeout = window.setTimeout(function () {
+                scrolled = el.scrollTop + el.clientHeight + 1 < el.scrollHeight;
+            }, 200);
+        });
+
+        new MutationObserver(function (e) {
+            var config = binding.value || {};
+            var pause = config.always === false && scrolled;
+            if (pause || e[e.length - 1].addedNodes.length != 1) return;
+            scrollToBottom(el);
+        }).observe(el, { childList: true, subtree: true });
+    },
+    inserted: scrollToBottom
+};
+
+/**
+ * @name VueJS vChatScroll (vue-chat-scroll)
+ * @description Monitors an element and scrolls to the bottom if a new child is added
+ * @author Theodore Messinezis <theo@theomessin.com>
+ * @file vue-chat-scroll plugin definition
+ */
+
+var VueChatScroll = {
+    install: function install(Vue, options) {
+        Vue.directive('chat-scroll', vChatScroll);
+    }
+};
+
+if (typeof window !== 'undefined' && window.Vue) {
+    window.Vue.use(VueChatScroll);
+}
+
+return VueChatScroll;
+
+})));
+
 
 /***/ })
 /******/ ]);

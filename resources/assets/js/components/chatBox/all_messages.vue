@@ -1,6 +1,6 @@
 <template>
     <div id="all_messages">
-        <ul class="messages">
+        <ul class="messages" v-chat-scroll>
 
             <li v-for="last in latest"
                 class="message appeared"

@@ -12,6 +12,7 @@ window.Vue = require('vue');
 import VueRouter from 'vue-router';
 import BootstrapVue from 'bootstrap-vue';
 import Avatar from 'vue-avatar';
+import VueChatScroll from 'vue-chat-scroll';
 
 const VueResource = require('vue-resource');
 const VueMoment = require('vue-moment');
@@ -21,6 +22,7 @@ window.Vue.use(VueResource);
 window.Vue.use(BootstrapVue);
 window.Vue.use(VueRouter);
 window.Vue.use(VueMoment);
+window.Vue.use(VueChatScroll);
 
 window.Vue.use(VuePusher, {
     api_key: '60efd870de38efff2291',
