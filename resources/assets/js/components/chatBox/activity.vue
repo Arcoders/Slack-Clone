@@ -1,6 +1,6 @@
 <template>
     <div id="chat_activity">
-        <div class="maximo">
+        <div class="maximo" v-chat-scroll>
             <div class="alert alert-success" v-for="action in actions">
                 <strong>{{ action }}</strong>
             </div>

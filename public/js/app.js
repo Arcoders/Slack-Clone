@@ -87381,7 +87381,10 @@ var render = function() {
   return _c("div", { attrs: { id: "chat_activity" } }, [
     _c(
       "div",
-      { staticClass: "maximo" },
+      {
+        directives: [{ name: "chat-scroll", rawName: "v-chat-scroll" }],
+        staticClass: "maximo"
+      },
       _vm._l(_vm.actions, function(action) {
         return _c("div", { staticClass: "alert alert-success" }, [
           _c("strong", [_vm._v(_vm._s(action))])
