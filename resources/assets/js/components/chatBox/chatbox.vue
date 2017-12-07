@@ -106,14 +106,14 @@
               });
           },
           updateCount() {
-              this.channel = this.$pusher.subscribe(this.room_id+'online');
+              this.channel = this.$pusher.subscribe(this.room_id+'onlineUser');
               this.channel.bind('onlineUser', (data) => {
                   this.onlineUserCount = data.count;
                   this.onlineUsers = data.conected;
                   this.actions.push(data.actions);
               });
 
-              this.channel = this.$pusher.subscribe(this.room_id+'offline');
+              this.channel = this.$pusher.subscribe(this.room_id+'leaveUser');
               this.channel.bind('leaveUser', (data) => {
                   this.onlineUserCount = data.count;
                   this.onlineUsers = data.conected;
