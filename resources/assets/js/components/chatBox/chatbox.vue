@@ -67,7 +67,6 @@
             }
         },
         created() {
-            window.onbeforeunload = this.leaving();
             this.getLatest();
             this.BindEvents(this.room_id+'room', 'pushMessage', this.messages);
             this.BindEvents(this.room_id+'typing', 'userTyping', this.typing);
@@ -77,15 +76,6 @@
             this.GetMeOnline();
         },
         methods: {
-          leaving() {
-              this.$http.get('/leaving/'+this.room_id).then(response => {
-
-                  //...
-
-              }, response => {
-                  //...
-              });
-          },
           pushMessage() {
              // console.log(this.messages);
           },
