@@ -11,6 +11,8 @@
 |
 */
 
+use App\User;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -42,6 +44,10 @@ Route::get('/getCurrentUser', function() {
 
 Route::post('/UploadAvatar', 'UserController@UploadAvatar');
 
-Route::get('/saludo', function () {
-    return Auth::user()->saludo();
+Route::get('/add', function () {
+    return Auth::user()->add_friend(2);
+});
+
+Route::get('/accept', function () {
+    return User::find(2)->accept_frient(1);
 });
