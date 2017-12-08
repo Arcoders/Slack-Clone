@@ -12,6 +12,8 @@ trait Friendable
     {
         if ($this->id === $user_requested_id) return 0;
 
+        if ($this->is_friends_with($user_requested_id) === 1) return 'Already friends';
+
         if ($this->has_pending_friend_request_sent_to($user_requested_id) === 1) return 'Already sent';
 
         if ($this->has_pending_friend_request_from($user_requested_id) === 1)
