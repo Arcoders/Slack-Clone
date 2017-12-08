@@ -50,5 +50,5 @@ Route::get('/add', function () {
 
 
 Route::get('/check', function () {
-    return User::find(2)->has_pending_friend_request_sent_to(1);
+    return User::find(1)->add_friend(2);
 });
