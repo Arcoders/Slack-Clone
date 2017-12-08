@@ -45,9 +45,13 @@ Route::get('/getCurrentUser', function() {
 Route::post('/UploadAvatar', 'UserController@UploadAvatar');
 
 Route::get('/add', function () {
-    return Auth::user()->add_friend(2);
+    return Auth::user(1)->add_friend(4);
 });
 
 Route::get('/accept', function () {
-    return User::find(2)->accept_frient(1);
+    return User::find(3)->accept_friends(1);
+});
+
+Route::get('/friends', function () {
+    return User::find(1)->friends();
 });
