@@ -55,3 +55,12 @@ Route::get('/accept', function () {
 Route::get('/friends', function () {
     return User::find(1)->friends();
 });
+
+
+Route::get('/ids', function () {
+    return User::find(1)->friends_ids();
+});
+
+Route::get('/is', function () {
+    return User::find(1)->is_friends_with(3);
+});

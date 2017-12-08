@@ -67,5 +67,39 @@ trait Friendable
         return array_merge($friends1, $friends2);
 
     }
+
+    public function pending_friend_requests()
+    {
+        $users = array();
+
+        $Friendships = Friendship::where('status', 0)
+                        ->where('requester', $this->id)
+                        ->get();
+
+        foreach ($Friendships as $friendship):
+            array_push($users, User::find($friendship->user_requested));
+        endforeach;
+
+        return $users;
+
+    }
+
+    public function friends_ids()
+    {
+        return collect($this->friends())->pluck('id')->toArray();
+    }
+
+    public function is_friends_with($user_id)
+    {
+        if (in_array($user_id, $this->friends_ids()))
+        {
+            return response()->json('true', 200);
+        }
+        else
+        {
+            return response()->json('false', 200);
+        }
+    }
+
 }
 
