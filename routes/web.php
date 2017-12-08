@@ -48,19 +48,7 @@ Route::get('/add', function () {
     return Auth::user(1)->add_friend(4);
 });
 
-Route::get('/accept', function () {
-    return User::find(3)->accept_friends(1);
-});
 
-Route::get('/friends', function () {
-    return User::find(1)->friends();
-});
-
-
-Route::get('/ids', function () {
-    return User::find(1)->friends_ids();
-});
-
-Route::get('/is', function () {
-    return User::find(1)->is_friends_with(3);
+Route::get('/check', function () {
+    return User::find(2)->has_pending_friend_request_sent_to(1);
 });

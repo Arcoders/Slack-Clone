@@ -68,13 +68,51 @@ trait Friendable
 
     }
 
+    public function friends_ids()
+    {
+        return collect($this->friends())->pluck('id')->toArray();
+    }
+
     public function pending_friend_requests()
     {
         $users = array();
 
         $Friendships = Friendship::where('status', 0)
-                        ->where('requester', $this->id)
+                        ->where('user_requested', $this->id)
                         ->get();
+
+        foreach ($Friendships as $friendship):
+            array_push($users, User::find($friendship->requester));
+        endforeach;
+
+        return $users;
+
+    }
+
+    public function pending_friend_requests_ids()
+    {
+        return collect($this->pending_friend_requests())->pluck('id')->toArray();
+    }
+
+    public function is_friends_with($user_id)
+    {
+        if (in_array($user_id, $this->friends_ids()))
+        {
+            return 1;
+        }
+        else
+        {
+            return 0;
+        }
+    }
+
+    public function pending_friend_requests_sent()
+    {
+        $users = array();
+
+        $Friendships = Friendship::where('status', 0)
+            ->where('requester', $this->id)
+            ->get();
 
         foreach ($Friendships as $friendship):
             array_push($users, User::find($friendship->user_requested));
@@ -84,14 +122,14 @@ trait Friendable
 
     }
 
-    public function friends_ids()
+    public function pending_friend_requests_sent_ids()
     {
-        return collect($this->friends())->pluck('id')->toArray();
+        return collect($this->pending_friend_requests_sent())->pluck('id')->toArray();
     }
 
-    public function is_friends_with($user_id)
+    public function has_pending_friend_request_from($user_id)
     {
-        if (in_array($user_id, $this->friends_ids()))
+        if (in_array($user_id, $this->pending_friend_requests_sent_ids()))
         {
             return response()->json('true', 200);
         }
@@ -100,6 +138,20 @@ trait Friendable
             return response()->json('false', 200);
         }
     }
+
+    public function has_pending_friend_request_sent_to($user_id)
+    {
+        if (in_array($user_id, $this->pending_friend_requests_sent_ids()))
+        {
+            return 1;
+        }
+        else
+        {
+            return 0;
+        }
+    }
+
+
 
 }
 
