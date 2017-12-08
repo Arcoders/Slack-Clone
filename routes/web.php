@@ -42,3 +42,6 @@ Route::get('/getCurrentUser', function() {
 
 Route::post('/UploadAvatar', 'UserController@UploadAvatar');
 
+Route::get('/saludo', function () {
+    return Auth::user()->saludo();
+});
