@@ -42,6 +42,11 @@
                         All Rooms
                     </router-link>
 
+                    <router-link to="/friend"  exact-active-class="active">
+                        <i class="fa fa-user-plus"></i>
+                        Users
+                    </router-link>
+
                     <div class="pull-right">
 
                         <b>{{ Auth::user()->name }}</b>
