@@ -23,7 +23,11 @@
                         </router-link>
                     </td>
                     <td>{{ room.created_at | moment("from", "now") }}</td>
-                    <td>{{ room.user.name }}</td>
+                    <td>
+                        <router-link :to="{ name: 'userProfile', params: { user_id: room.user.id, user_name: room.user.name }}">
+                            {{ room.user.name }}
+                        </router-link>
+                    </td>
                 </tr>
                 <tr v-if="isLoading">
                     <td colspan="3">

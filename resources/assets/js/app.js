@@ -49,6 +49,7 @@ import all_rooms from './components/rooms/all_rooms.vue';
 import my_rooms from './components/rooms/my_rooms.vue';
 import my_profile from './components/profiles/my_profile.vue';
 import friend from './components/users/friend.vue';
+import user_profile from './components/profiles/user_profile.vue';
 
 const router = new VueRouter({
     routes: [
@@ -58,6 +59,7 @@ const router = new VueRouter({
         { path: '/allrooms', component: all_rooms },
         { path: '/myrooms', component: my_rooms },
         { path: '/friend', component: friend },
+        { path: '/user/:user_id/:user_name', component: user_profile, name: 'userProfile' },
         { path: '/chat/:room_id/:room_name', component: chat_box, name: 'chatbox' }
     ]
 });

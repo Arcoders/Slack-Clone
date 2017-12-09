@@ -42,6 +42,15 @@ Route::get('/getCurrentUser', function() {
     ];
 });
 
+Route::get('/getProfile/{user_id}', function($user_id) {
+    $user = User::find($user_id);
+    return [
+        'id' => $user->id,
+        'name' => $user->name,
+        'avatar' => $user->avatar
+    ];
+});
+
 Route::post('/UploadAvatar', 'UserController@UploadAvatar');
 
 Route::get('/users', function () {
