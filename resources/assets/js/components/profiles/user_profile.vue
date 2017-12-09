@@ -16,7 +16,7 @@
                         </avatar>
                     </div>
                     <div class="panel-footer">
-                        <friend></friend>
+                        <friend :profile_user_id="user_id"></friend>
                     </div>
                 </div>
             </div>
@@ -60,7 +60,7 @@
                 }, response => {
                     // ...
                 });
-            }
+            },
         }
     }
 </script>

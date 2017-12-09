@@ -88922,8 +88922,27 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['profile_user_id'],
     mounted: function mounted() {
-        console.log('Component mounted.');
+        this.relationShipStatus();
+    },
+
+    methods: {
+        relationShipStatus: function relationShipStatus() {
+            var _this = this;
+
+            this.$http.get('/check_relationship_status/' + this.profile_user_id).then(function (response) {
+
+                if (response.status == 200) {
+                    _this.currentUserName = response.body.name;
+                    _this.image = response.body.avatar;
+                } else {
+                    // ...
+                }
+            }, function (response) {
+                // ...
+            });
+        }
     }
 });
 
@@ -89291,7 +89310,12 @@ var render = function() {
             1
           ),
           _vm._v(" "),
-          _c("div", { staticClass: "panel-footer" }, [_c("friend")], 1)
+          _c(
+            "div",
+            { staticClass: "panel-footer" },
+            [_c("friend", { attrs: { profile_user_id: _vm.user_id } })],
+            1
+          )
         ])
       ])
     ])
