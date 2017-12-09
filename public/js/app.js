@@ -88956,6 +88956,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }, function (response) {
                 // ...
             });
+        },
+        add_friend: function add_friend() {
+            var _this2 = this;
+
+            this.loading = true;
+            this.$http.get('/add_friend/' + this.profile_user_id).then(function (response) {
+
+                if (response.status == 200) {
+
+                    if (response.body == 1) _this2.status = 'waiting';
+                    if (response.body == 0) _this2.status = 0;
+
+                    _this2.loading = false;
+                } else {
+                    // ...
+                }
+            }, function (response) {
+                // ...
+            });
         }
     }
 });
@@ -88978,9 +88997,14 @@ var render = function() {
     !_vm.loading
       ? _c("p", { staticClass: "text-center" }, [
           _vm.status == 0
-            ? _c("button", { staticClass: "btn btn-success" }, [
-                _vm._v("Add Friend")
-              ])
+            ? _c(
+                "button",
+                {
+                  staticClass: "btn btn-success",
+                  on: { click: _vm.add_friend }
+                },
+                [_vm._v("Add Friend")]
+              )
             : _vm._e(),
           _vm._v(" "),
           _vm.status == "pending"
@@ -88989,13 +89013,13 @@ var render = function() {
               ])
             : _vm._e(),
           _vm._v(" "),
-          (_vm.status = "waiting")
+          _vm.status == "waiting"
             ? _c("span", { staticClass: "text-success" }, [
                 _vm._v("Waiting for response")
               ])
             : _vm._e(),
           _vm._v(" "),
-          (_vm.status = "friends")
+          _vm.status == "friends"
             ? _c("span", { staticClass: "text-success" }, [_vm._v("Friends")])
             : _vm._e()
         ])
@@ -89335,7 +89359,7 @@ var render = function() {
     _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col-md-8 col-md-offset-2" }, [
         _c("div", { staticClass: "panel panel-default" }, [
-          _c("div", { staticClass: "panel-heading" }, [
+          _c("div", { staticClass: "panel-heading text-center" }, [
             _c("h4", [_vm._v(_vm._s(_vm.currentUserName))])
           ]),
           _vm._v(" "),

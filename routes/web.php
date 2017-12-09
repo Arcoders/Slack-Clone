@@ -52,6 +52,7 @@ Route::get('/getProfile/{user_id}', function($user_id) {
 });
 
 Route::get('/check_relationship_status/{user_id}', 'FriendshipsController@check');
+Route::get('/add_friend/{user_id}', 'FriendshipsController@add_friend');
 
 
 Route::post('/UploadAvatar', 'UserController@UploadAvatar');
