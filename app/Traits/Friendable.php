@@ -148,13 +148,13 @@ trait Friendable
 
     public function has_pending_friend_request_from($user_id)
     {
-        if (in_array($user_id, $this->pending_friend_requests_sent_ids()))
+        if (in_array($user_id, $this->pending_friend_requests_ids()))
         {
-            return response()->json('true', 200);
+            return 1;
         }
         else
         {
-            return response()->json('false', 200);
+            return 0;
         }
     }
 

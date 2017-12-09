@@ -89008,7 +89008,7 @@ var render = function() {
             : _vm._e(),
           _vm._v(" "),
           _vm.status == "pending"
-            ? _c("button", { staticClass: "btn btn-success" }, [
+            ? _c("button", { staticClass: "btn btn-info" }, [
                 _vm._v("Accept Friend")
               ])
             : _vm._e(),

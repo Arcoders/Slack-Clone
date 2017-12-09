@@ -13,12 +13,12 @@ class FriendshipsController extends Controller
             return ['status' => 'friends'];
         }
 
-        if(Auth::user()->has_pending_friend_request_from($id) === 'true')
+        if(Auth::user()->has_pending_friend_request_from($id))
         {
             return ['status' => 'pending'];
         }
 
-        if(Auth::user()->has_pending_friend_request_sent_to($id) === 1)
+        if(Auth::user()->has_pending_friend_request_sent_to($id))
         {
             return ['status' => 'waiting'];
         }
