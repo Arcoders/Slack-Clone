@@ -88975,6 +88975,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }, function (response) {
                 // ...
             });
+        },
+        accept_friend: function accept_friend() {
+            var _this3 = this;
+
+            this.loading = true;
+            this.$http.get('/accept_friend/' + this.profile_user_id).then(function (response) {
+
+                if (response.status == 200) {
+
+                    if (response.body == 1) _this3.status = 'friends';
+                    if (response.body == 0) _this3.status = 'pending';
+
+                    _this3.loading = false;
+                } else {
+                    // ...
+                }
+            }, function (response) {
+                // ...
+            });
         }
     }
 });
@@ -89008,9 +89027,14 @@ var render = function() {
             : _vm._e(),
           _vm._v(" "),
           _vm.status == "pending"
-            ? _c("button", { staticClass: "btn btn-info" }, [
-                _vm._v("Accept Friend")
-              ])
+            ? _c(
+                "button",
+                {
+                  staticClass: "btn btn-info",
+                  on: { click: _vm.accept_friend }
+                },
+                [_vm._v("Accept Friend")]
+              )
             : _vm._e(),
           _vm._v(" "),
           _vm.status == "waiting"

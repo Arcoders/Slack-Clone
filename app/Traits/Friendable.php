@@ -54,10 +54,10 @@ trait Friendable
                 'status' => 1
             ]);
 
-            return response()->json($Friendship, 200);
+            return 1;
         }
 
-        return response()->json('fail', 501);
+        return 0;
     }
 
     public function friends()
