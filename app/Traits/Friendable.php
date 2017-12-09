@@ -8,6 +8,11 @@ use App\User;
 trait Friendable
 {
 
+    public function all_users()
+    {
+        return User::all();
+    }
+
     public function add_friend($user_requested_id)
     {
         if ($this->id === $user_requested_id) return 0;

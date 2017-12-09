@@ -31,7 +31,7 @@ Route::get('/getMeOnline/{room_id}', 'RoomsController@GetMeOnline');
 Route::get('/getAllRooms', 'RoomsController@GetAllRooms');
 Route::get('/getMyRooms', 'RoomsController@GetMyRooms');
 Route::delete('/deleteRoom/{room_id}', 'RoomsController@DeleteRoom');
-Route::get('/leaving/{room_id}', 'RoomsController@Leaving');
+Route::get('/leaving', 'RoomsController@Leaving');
 
 Route::get('/getCurrentUser', function() {
     $user = Auth::user();
@@ -44,11 +44,6 @@ Route::get('/getCurrentUser', function() {
 
 Route::post('/UploadAvatar', 'UserController@UploadAvatar');
 
-Route::get('/add', function () {
-    return Auth::user(1)->add_friend(4);
-});
-
-
-Route::get('/check', function () {
-    return User::find(1)->add_friend(2);
+Route::get('/users', function () {
+    return Auth::user()->all_users();
 });

@@ -1,5 +1,5 @@
 <template>
-    <div id="chat_box">
+    <div id="chat_box"  @mouseleave="mouseleave" @mouseout="mouseout">
 
         <div class="row">
 
@@ -63,7 +63,8 @@
                 room_id: this.$route.params.room_id,
                 onlineUsers: [],
                 onlineUserCount: '',
-                actions:[]
+                actions:[],
+                hover: true,
             }
         },
         created() {
@@ -82,6 +83,21 @@
           userTyping() {
              // console.log(this.typing);
           },
+          mouseleave: function() {
+              this.$http.get('/leaving').then(response => {
+
+                  this.hover = true;
+
+              }, response =>{
+                  //...
+              });
+           },
+           mouseout: function() {
+               if (this.hover) {
+                   this.GetMeOnline();
+                   this.hover = false;
+               }
+            },
           BindEvents(name, action, array) {
               this.channel = this.$pusher.subscribe(name);
               this.channel.bind(action, (data) => {

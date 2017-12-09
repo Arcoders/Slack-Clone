@@ -62,9 +62,11 @@ class RoomsController extends Controller
         return 'done';
     }
 
-    public function Leaving($room_id)
+    public function Leaving()
     {
-        leave($room_id);
+        $room_id = room_id();
+        Online::where('user_id', Auth::user()->id)->delete();
+        triggerPusher($room_id, 'leaveUser', "leave room");
     }
 
     protected function insertOnline($user, $room)

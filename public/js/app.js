@@ -86713,7 +86713,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             room_id: this.$route.params.room_id,
             onlineUsers: [],
             onlineUserCount: '',
-            actions: []
+            actions: [],
+            hover: true
         };
     },
     created: function created() {
@@ -86733,6 +86734,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         userTyping: function userTyping() {
             // console.log(this.typing);
         },
+
+        mouseleave: function mouseleave() {
+            var _this = this;
+
+            this.$http.get('/leaving').then(function (response) {
+
+                _this.hover = true;
+            }, function (response) {
+                //...
+            });
+        },
+        mouseout: function mouseout() {
+            if (this.hover) {
+                this.GetMeOnline();
+                this.hover = false;
+            }
+        },
         BindEvents: function BindEvents(name, action, array) {
             this.channel = this.$pusher.subscribe(name);
             this.channel.bind(action, function (data) {
@@ -86749,29 +86767,29 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
         },
         updateCount: function updateCount() {
-            var _this = this;
+            var _this2 = this;
 
             this.channel = this.$pusher.subscribe(this.room_id + 'onlineUser');
             this.channel.bind('onlineUser', function (data) {
-                _this.onlineUserCount = data.count;
-                _this.onlineUsers = data.conected;
-                _this.actions.push(data.actions);
+                _this2.onlineUserCount = data.count;
+                _this2.onlineUsers = data.conected;
+                _this2.actions.push(data.actions);
             });
 
             this.channel = this.$pusher.subscribe(this.room_id + 'leaveUser');
             this.channel.bind('leaveUser', function (data) {
-                _this.onlineUserCount = data.count;
-                _this.onlineUsers = data.conected;
-                _this.actions.push(data.actions);
+                _this2.onlineUserCount = data.count;
+                _this2.onlineUsers = data.conected;
+                _this2.actions.push(data.actions);
             });
         },
         getLatest: function getLatest() {
-            var _this2 = this;
+            var _this3 = this;
 
             this.$http.get('/GetLatest/' + this.room_id).then(function (response) {
 
                 if (response.status == 200) {
-                    _this2.latest = response.data;
+                    _this3.latest = response.data;
                 } else {
                     // ...
                 }
@@ -87616,60 +87634,67 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { attrs: { id: "chat_box" } }, [
-    _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-lg-8" }, [
+  return _c(
+    "div",
+    {
+      attrs: { id: "chat_box" },
+      on: { mouseleave: _vm.mouseleave, mouseout: _vm.mouseout }
+    },
+    [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-lg-8" }, [
+          _c(
+            "div",
+            { staticClass: "chat_window" },
+            [
+              _c("div", { staticClass: "top_menu" }, [
+                _vm._m(0, false, false),
+                _vm._v(" "),
+                _c("div", { staticClass: "title" }, [
+                  _vm._v(
+                    _vm._s(_vm.room_name) +
+                      " online Users " +
+                      _vm._s(_vm.onlineUserCount)
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("all_messages", {
+                attrs: {
+                  all_messages: _vm.messages,
+                  usersTyping: _vm.typing,
+                  latest: _vm.latest
+                }
+              }),
+              _vm._v(" "),
+              _c("add_messages", {
+                on: {
+                  updateMessages: function($event) {
+                    _vm.pushMessage($event)
+                  },
+                  typing: function($event) {
+                    _vm.userTyping($event)
+                  }
+                }
+              })
+            ],
+            1
+          )
+        ]),
+        _vm._v(" "),
         _c(
           "div",
-          { staticClass: "chat_window" },
+          { staticClass: "col-lg-4" },
           [
-            _c("div", { staticClass: "top_menu" }, [
-              _vm._m(0, false, false),
-              _vm._v(" "),
-              _c("div", { staticClass: "title" }, [
-                _vm._v(
-                  _vm._s(_vm.room_name) +
-                    " online Users " +
-                    _vm._s(_vm.onlineUserCount)
-                )
-              ])
-            ]),
+            _c("activity", { attrs: { actions: _vm.actions } }),
             _vm._v(" "),
-            _c("all_messages", {
-              attrs: {
-                all_messages: _vm.messages,
-                usersTyping: _vm.typing,
-                latest: _vm.latest
-              }
-            }),
-            _vm._v(" "),
-            _c("add_messages", {
-              on: {
-                updateMessages: function($event) {
-                  _vm.pushMessage($event)
-                },
-                typing: function($event) {
-                  _vm.userTyping($event)
-                }
-              }
-            })
+            _c("online", { attrs: { onlineUsers: _vm.onlineUsers } })
           ],
           1
         )
-      ]),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "col-lg-4" },
-        [
-          _c("activity", { attrs: { actions: _vm.actions } }),
-          _vm._v(" "),
-          _c("online", { attrs: { onlineUsers: _vm.onlineUsers } })
-        ],
-        1
-      )
-    ])
-  ])
+      ])
+    ]
+  )
 }
 var staticRenderFns = [
   function() {
