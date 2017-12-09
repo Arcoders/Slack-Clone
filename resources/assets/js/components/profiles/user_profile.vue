@@ -4,18 +4,18 @@
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
                     <div class="panel-heading text-center">
-                        <h4>{{ currentUserName }}</h4>
+                        <h4>{{ profileUserName }}</h4>
                     </div>
 
                     <div class="panel-body">
-                        <avatar :username="currentUserName"
+                        <avatar :username="profileUserName"
                                 color="#fff"
                                 class="avatar"
                                 :src="image"
                                 :size="100">
                         </avatar>
                     </div>
-                    <div class="panel-footer">
+                    <div v-if="currentUserId != user_id"  class="panel-footer">
                         <friend :profile_user_id="user_id"></friend>
                     </div>
                 </div>
@@ -39,19 +39,21 @@
         data(){
             return {
                 image: null,
-                currentUserName: '',
+                profileUserName: '',
+                currentUserId: '',
                 user_id: this.$route.params.user_id
             }
         },
         created() {
             this.getCurrentUser();
+            this.getProfileUser();
         },
         methods: {
-            getCurrentUser() {
+            getProfileUser() {
                 this.$http.get('/getProfile/'+this.user_id).then(response => {
 
                     if (response.status == 200) {
-                        this.currentUserName = response.body.name;
+                        this.profileUserName = response.body.name;
                         this.image = response.body.avatar;
                     } else {
                         // ...
@@ -61,6 +63,19 @@
                     // ...
                 });
             },
+            getCurrentUser() {
+                this.$http.get('/getCurrentUser').then(response => {
+
+                    if (response.status == 200) {
+                        this.currentUserId = response.body.id;
+                    } else {
+                        // ...
+                    }
+
+                }, response => {
+                    // ...
+                });
+            }
         }
     }
 </script>

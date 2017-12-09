@@ -89137,23 +89137,39 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             image: null,
-            currentUserName: '',
+            profileUserName: '',
+            currentUserId: '',
             user_id: this.$route.params.user_id
         };
     },
     created: function created() {
         this.getCurrentUser();
+        this.getProfileUser();
     },
 
     methods: {
-        getCurrentUser: function getCurrentUser() {
+        getProfileUser: function getProfileUser() {
             var _this = this;
 
             this.$http.get('/getProfile/' + this.user_id).then(function (response) {
 
                 if (response.status == 200) {
-                    _this.currentUserName = response.body.name;
+                    _this.profileUserName = response.body.name;
                     _this.image = response.body.avatar;
+                } else {
+                    // ...
+                }
+            }, function (response) {
+                // ...
+            });
+        },
+        getCurrentUser: function getCurrentUser() {
+            var _this2 = this;
+
+            this.$http.get('/getCurrentUser').then(function (response) {
+
+                if (response.status == 200) {
+                    _this2.currentUserId = response.body.id;
                 } else {
                     // ...
                 }
@@ -89360,7 +89376,7 @@ var render = function() {
       _c("div", { staticClass: "col-md-8 col-md-offset-2" }, [
         _c("div", { staticClass: "panel panel-default" }, [
           _c("div", { staticClass: "panel-heading text-center" }, [
-            _c("h4", [_vm._v(_vm._s(_vm.currentUserName))])
+            _c("h4", [_vm._v(_vm._s(_vm.profileUserName))])
           ]),
           _vm._v(" "),
           _c(
@@ -89370,7 +89386,7 @@ var render = function() {
               _c("avatar", {
                 staticClass: "avatar",
                 attrs: {
-                  username: _vm.currentUserName,
+                  username: _vm.profileUserName,
                   color: "#fff",
                   src: _vm.image,
                   size: 100
@@ -89380,12 +89396,14 @@ var render = function() {
             1
           ),
           _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "panel-footer" },
-            [_c("friend", { attrs: { profile_user_id: _vm.user_id } })],
-            1
-          )
+          _vm.currentUserId != _vm.user_id
+            ? _c(
+                "div",
+                { staticClass: "panel-footer" },
+                [_c("friend", { attrs: { profile_user_id: _vm.user_id } })],
+                1
+              )
+            : _vm._e()
         ])
       ])
     ])
