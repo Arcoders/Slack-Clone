@@ -51,6 +51,12 @@ Route::get('/getProfile/{user_id}', function($user_id) {
     ];
 });
 
+Route::get('/check_relationship_status/{user_id}', [
+    'uses' => 'FriendshipsController',
+    'as' => 'check'
+]);
+
+
 Route::post('/UploadAvatar', 'UserController@UploadAvatar');
 
 Route::get('/users', function () {

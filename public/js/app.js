@@ -88929,13 +88929,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         relationShipStatus: function relationShipStatus() {
-            var _this = this;
-
             this.$http.get('/check_relationship_status/' + this.profile_user_id).then(function (response) {
 
                 if (response.status == 200) {
-                    _this.currentUserName = response.body.name;
-                    _this.image = response.body.avatar;
+                    console.log(response);
                 } else {
                     // ...
                 }

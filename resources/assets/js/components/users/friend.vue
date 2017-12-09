@@ -15,8 +15,7 @@
                 this.$http.get('/check_relationship_status/'+this.profile_user_id).then(response => {
 
                     if (response.status == 200) {
-                        this.currentUserName = response.body.name;
-                        this.image = response.body.avatar;
+                        console.log(response);
                     } else {
                         // ...
                     }
