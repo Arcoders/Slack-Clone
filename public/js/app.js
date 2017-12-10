@@ -89049,7 +89049,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['profile_user_id', 'my_id'],
+    props: ['my_id', 'profile_user_id'],
     data: function data() {
         return {
             status: '',
@@ -89066,11 +89066,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         updtateStatus: function updtateStatus() {
             var _this = this;
 
-            console.log(this.my_id);
             this.channel = this.$pusher.subscribe('user' + this.my_id);
             this.channel.bind('updateStatus', function (data) {
-                _this.changeStatus = data;
-                console.log(data);
+                _this.relationShipStatus();
             });
         },
         relationShipStatus: function relationShipStatus() {
@@ -89334,7 +89332,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             image: null,
             profileUserName: '',
             currentUserId: '',
-            user_id: this.$route.params.user_id
+            user_id: this.$route.params.user_id,
+            load: false
         };
     },
     created: function created() {
@@ -89365,6 +89364,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
                 if (response.status == 200) {
                     _this2.currentUserId = response.body.id;
+                    _this2.load = true;
                 } else {
                     // ...
                 }
@@ -89383,50 +89383,52 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
-    _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-8 col-md-offset-2" }, [
-        _c("div", { staticClass: "panel panel-default" }, [
-          _c("div", { staticClass: "panel-heading text-center" }, [
-            _c("h4", [_vm._v(_vm._s(_vm.profileUserName))])
-          ]),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "panel-body" },
-            [
-              _c("avatar", {
-                staticClass: "avatar",
-                attrs: {
-                  username: _vm.profileUserName,
-                  color: "#fff",
-                  src: _vm.image,
-                  size: 100
-                }
-              })
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _vm.currentUserId != _vm.user_id
-            ? _c(
+  return _vm.load
+    ? _c("div", { staticClass: "container" }, [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-md-8 col-md-offset-2" }, [
+            _c("div", { staticClass: "panel panel-default" }, [
+              _c("div", { staticClass: "panel-heading text-center" }, [
+                _c("h4", [_vm._v(_vm._s(_vm.profileUserName))])
+              ]),
+              _vm._v(" "),
+              _c(
                 "div",
-                { staticClass: "panel-footer" },
+                { staticClass: "panel-body" },
                 [
-                  _c("friend", {
+                  _c("avatar", {
+                    staticClass: "avatar",
                     attrs: {
-                      my_id: _vm.currentUserId,
-                      profile_user_id: _vm.user_id
+                      username: _vm.profileUserName,
+                      color: "#fff",
+                      src: _vm.image,
+                      size: 100
                     }
                   })
                 ],
                 1
-              )
-            : _vm._e()
+              ),
+              _vm._v(" "),
+              _vm.currentUserId != _vm.user_id
+                ? _c(
+                    "div",
+                    { staticClass: "panel-footer" },
+                    [
+                      _c("friend", {
+                        attrs: {
+                          my_id: _vm.currentUserId,
+                          profile_user_id: _vm.user_id
+                        }
+                      })
+                    ],
+                    1
+                  )
+                : _vm._e()
+            ])
+          ])
         ])
       ])
-    ])
-  ])
+    : _vm._e()
 }
 var staticRenderFns = []
 render._withStripped = true

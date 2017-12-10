@@ -14,12 +14,12 @@
 
 <script>
     export default {
-        props: ['profile_user_id', 'my_id'],
+        props: ['my_id', 'profile_user_id'],
         data() {
             return {
                 status: '',
                 loading: true,
-                changeStatus: [],
+                changeStatus: []
             }
         },
         mounted() {
@@ -28,11 +28,9 @@
         },
         methods: {
             updtateStatus() {
-                console.log(this.my_id);
                 this.channel = this.$pusher.subscribe('user' + this.my_id);
                 this.channel.bind('updateStatus', (data) => {
-                    this.changeStatus = data;
-                    console.log(data);
+                    this.relationShipStatus();
                 });
             },
             relationShipStatus() {

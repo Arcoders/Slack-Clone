@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div v-if="load" class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
@@ -41,7 +41,8 @@
                 image: null,
                 profileUserName: '',
                 currentUserId: '',
-                user_id: this.$route.params.user_id
+                user_id: this.$route.params.user_id,
+                load: false
             }
         },
         created() {
@@ -68,6 +69,7 @@
 
                     if (response.status == 200) {
                         this.currentUserId = response.body.id;
+                        this.load = true;
                     } else {
                         // ...
                     }
