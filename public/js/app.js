@@ -89049,38 +89049,29 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['profile_user_id', 'my_id'],
+    props: ['profile_user_id'],
     data: function data() {
         return {
             status: '',
             loading: true,
-            changeStatus: []
+            changeStatus: [],
+            my_id: ''
         };
     },
     mounted: function mounted() {
+        this.getCurrentUser();
         this.relationShipStatus();
         this.updtateStatus();
-        console.log(this.my_id);
     },
 
     methods: {
-        updtateStatus: function updtateStatus() {
+        getCurrentUser: function getCurrentUser() {
             var _this = this;
 
-            this.channel = this.$pusher.subscribe('user' + this.my_id);
-            this.channel.bind('updateStatus', function (data) {
-                _this.changeStatus = data;
-                console.log(data);
-            });
-        },
-        relationShipStatus: function relationShipStatus() {
-            var _this2 = this;
-
-            this.$http.get('/check_relationship_status/' + this.profile_user_id).then(function (response) {
+            this.$http.get('/getCurrentUser').then(function (response) {
 
                 if (response.status == 200) {
-                    _this2.status = response.body.status;
-                    _this2.loading = false;
+                    _this.my_id = response.body.id;
                 } else {
                     // ...
                 }
@@ -89088,17 +89079,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 // ...
             });
         },
-        add_friend: function add_friend() {
+        updtateStatus: function updtateStatus() {
+            var _this2 = this;
+
+            this.channel = this.$pusher.subscribe('user' + this.my_id);
+            this.channel.bind('updateStatus', function (data) {
+                _this2.changeStatus = data;
+                console.log(data);
+            });
+        },
+        relationShipStatus: function relationShipStatus() {
             var _this3 = this;
 
-            this.loading = true;
-            this.$http.get('/add_friend/' + this.profile_user_id).then(function (response) {
+            this.$http.get('/check_relationship_status/' + this.profile_user_id).then(function (response) {
 
                 if (response.status == 200) {
-
-                    if (response.body == 1) _this3.status = 'waiting';
-                    if (response.body == 0) _this3.status = 0;
-
+                    _this3.status = response.body.status;
                     _this3.loading = false;
                 } else {
                     // ...
@@ -89107,18 +89103,37 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 // ...
             });
         },
-        accept_friend: function accept_friend() {
+        add_friend: function add_friend() {
             var _this4 = this;
+
+            this.loading = true;
+            this.$http.get('/add_friend/' + this.profile_user_id).then(function (response) {
+
+                if (response.status == 200) {
+
+                    if (response.body == 1) _this4.status = 'waiting';
+                    if (response.body == 0) _this4.status = 0;
+
+                    _this4.loading = false;
+                } else {
+                    // ...
+                }
+            }, function (response) {
+                // ...
+            });
+        },
+        accept_friend: function accept_friend() {
+            var _this5 = this;
 
             this.loading = true;
             this.$http.get('/accept_friend/' + this.profile_user_id).then(function (response) {
 
                 if (response.status == 200) {
 
-                    if (response.body == 1) _this4.status = 'friends';
-                    if (response.body == 0) _this4.status = 'pending';
+                    if (response.body == 1) _this5.status = 'friends';
+                    if (response.body == 0) _this5.status = 'pending';
 
-                    _this4.loading = false;
+                    _this5.loading = false;
                 } else {
                     // ...
                 }

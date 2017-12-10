@@ -14,20 +14,34 @@
 
 <script>
     export default {
-        props: ['profile_user_id', 'my_id'],
+        props: ['profile_user_id'],
         data() {
             return {
                 status: '',
                 loading: true,
                 changeStatus: [],
+                my_id: ''
             }
         },
         mounted() {
+            this.getCurrentUser();
             this.relationShipStatus();
             this.updtateStatus();
-            console.log(this.my_id);
         },
         methods: {
+            getCurrentUser() {
+                this.$http.get('/getCurrentUser').then(response => {
+
+                    if (response.status == 200) {
+                        this.my_id = response.body.id;
+                    } else {
+                        // ...
+                    }
+
+                }, response => {
+                    // ...
+                });
+            },
             updtateStatus() {
                 this.channel = this.$pusher.subscribe('user' + this.my_id);
                 this.channel.bind('updateStatus', (data) => {
