@@ -89049,7 +89049,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['profile_user_id', 'current_user_id'],
+    props: ['profile_user_id', 'my_id'],
     data: function data() {
         return {
             status: '',
@@ -89060,13 +89060,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     mounted: function mounted() {
         this.relationShipStatus();
         this.updtateStatus();
+        console.log(this.my_id);
     },
 
     methods: {
         updtateStatus: function updtateStatus() {
             var _this = this;
 
-            this.channel = this.$pusher.subscribe('user' + this.current_user_id);
+            this.channel = this.$pusher.subscribe('user' + this.my_id);
             this.channel.bind('updateStatus', function (data) {
                 _this.changeStatus = data;
                 console.log(data);
@@ -89414,7 +89415,7 @@ var render = function() {
                 [
                   _c("friend", {
                     attrs: {
-                      current_user_id: _vm.currentUserId,
+                      my_id: _vm.currentUserId,
                       profile_user_id: _vm.user_id
                     }
                   })

@@ -30,7 +30,7 @@ class FriendshipsController extends Controller
     {
 
         $add = Auth::user()->add_friend($id);
-        trigger_pusher('user'.Auth::user()->id, 'updateStatus', ['update' => true]);
+        trigger_pusher('user'.$id, 'updateStatus', ['update' => true]);
         return $add;
     }
 
