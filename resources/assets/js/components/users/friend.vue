@@ -14,17 +14,26 @@
 
 <script>
     export default {
-        props: ['profile_user_id'],
+        props: ['profile_user_id', 'current_user_id'],
         data() {
             return {
                 status: '',
-                loading: true
+                loading: true,
+                changeStatus: []
             }
         },
         mounted() {
             this.relationShipStatus();
+            this.updtateStatus();
         },
         methods: {
+            updtateStatus() {
+                this.channel = this.$pusher.subscribe('user' + this.current_user_id);
+                this.channel.bind('updateStatus', (data) => {
+                    this.changeStatus = data;
+                    console.log(data);
+                });
+            },
             relationShipStatus() {
                 this.$http.get('/check_relationship_status/'+this.profile_user_id).then(response => {
 

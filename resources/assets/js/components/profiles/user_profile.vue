@@ -16,7 +16,7 @@
                         </avatar>
                     </div>
                     <div v-if="currentUserId != user_id"  class="panel-footer">
-                        <friend :profile_user_id="user_id"></friend>
+                        <friend :current_user_id="currentUserId" :profile_user_id="user_id"></friend>
                     </div>
                 </div>
             </div>
