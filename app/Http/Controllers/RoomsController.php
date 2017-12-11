@@ -26,8 +26,7 @@ class RoomsController extends Controller
 
     public function GetAllRooms()
     {
-        return Rooms::where('type', 'public')
-                      ->with('user')
+        return Rooms::with('user')
                       ->get()
                       ->toArray();
     }
@@ -36,7 +35,6 @@ class RoomsController extends Controller
     {
         $user_id = Auth::user()->id;
         return Rooms::where('user_id', $user_id)
-                    ->orWhere('friend_id', $user_id)
                     ->get()
                     ->toArray();
     }
@@ -78,13 +76,12 @@ class RoomsController extends Controller
 
     public function checkPrivateRoom($room_id)
     {
-        $access = 0;
-        $user_id = Auth::user()->id;
-        $room = Rooms::find($room_id);
-        if ($room->user_id == $user_id) $access = 1;
-        if ($room->friend_id == $user_id) $access = 1;
+//        $access = 0;
+//        $user_id = Auth::user()->id;
+//        $room = Rooms::find($room_id);
+//        if ($room->user_id == $user_id || $room->friend_id == $user_id) $access = 1;
 
-        return $access;
+        return 1;
 
     }
 
