@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="friends">
         <p class="text-center" v-if="loading">
             Loading
         </p>
