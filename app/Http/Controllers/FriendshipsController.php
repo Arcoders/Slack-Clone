@@ -41,8 +41,9 @@ class FriendshipsController extends Controller
 
         $room = new Rooms();
         $room->user_id = $user->id;
-        $room->name = 'private_'.$user->id.'_'.$id;
+        $room->name = $user->id.'_'.$id;
         $room->friend_id = $id;
+        $room->type = 'private';
 
         if ($room->save())
         {

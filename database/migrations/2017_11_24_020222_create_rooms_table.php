@@ -18,6 +18,7 @@ class CreateRoomsTable extends Migration
             $table->string('name');
             $table->integer('user_id');
             $table->integer('friend_id')->nullable();
+            $table->enum('type', ['public', 'private'])->default('public');
             $table->timestamps();
         });
     }

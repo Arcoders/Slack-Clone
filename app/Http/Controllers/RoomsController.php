@@ -26,12 +26,19 @@ class RoomsController extends Controller
 
     public function GetAllRooms()
     {
-        return Rooms::with('user')->get()->toArray();
+        return Rooms::where('type', 'public')
+                      ->with('user')
+                      ->get()
+                      ->toArray();
     }
 
     public function GetMyRooms()
     {
-        return Rooms::where('user_id', Auth::user()->id)->get()->toArray();
+        $user_id = Auth::user()->id;
+        return Rooms::where('user_id', $user_id)
+                    ->orWhere('friend_id', $user_id)
+                    ->get()
+                    ->toArray();
     }
 
     public function DeleteRoom($room_id)
