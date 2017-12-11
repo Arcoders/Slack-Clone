@@ -77,6 +77,9 @@
             this.GetMeOnline();
         },
         methods: {
+          checkPrivateRoom($room_id) {
+
+          },
           pushMessage() {
              // console.log(this.messages);
           },

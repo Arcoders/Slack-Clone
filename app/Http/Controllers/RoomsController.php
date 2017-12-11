@@ -76,6 +76,11 @@ class RoomsController extends Controller
         triggerPusher($room_id, 'leaveUser', "leave room");
     }
 
+    public function checkPrivateRoom($room_id)
+    {
+
+    }
+
     protected function insertOnline($user, $room)
     {
         $online = new Online();

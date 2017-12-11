@@ -86779,6 +86779,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     methods: {
+        checkPrivateRoom: function checkPrivateRoom($room_id) {},
         pushMessage: function pushMessage() {
             // console.log(this.messages);
         },
