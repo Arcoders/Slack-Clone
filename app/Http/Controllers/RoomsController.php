@@ -78,6 +78,13 @@ class RoomsController extends Controller
 
     public function checkPrivateRoom($room_id)
     {
+        $access = 0;
+        $user_id = Auth::user()->id;
+        $room = Rooms::find($room_id);
+        if ($room->user_id == $user_id) $access = 1;
+        if ($room->friend_id == $user_id) $access = 1;
+
+        return $access;
 
     }
 
