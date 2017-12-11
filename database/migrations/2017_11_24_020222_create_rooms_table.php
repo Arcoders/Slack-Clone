@@ -17,6 +17,7 @@ class CreateRoomsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->integer('user_id');
+            $table->integer('friend_id')->nullable();
             $table->timestamps();
         });
     }

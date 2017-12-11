@@ -27,8 +27,7 @@
                        v-model="room_name"
                        id="name"
                        class="form-control"
-                       placeholder="Search for..."
-                       aria-label="Search for...">
+                       placeholder="Room name...">
 
                 <span class="input-group-btn">
                     <button class="btn btn-primary"

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Rooms;
 use Illuminate\Support\Facades\Auth;
 
 class FriendshipsController extends Controller
@@ -35,8 +36,22 @@ class FriendshipsController extends Controller
 
     public function accept_friend($id)
     {
-        $acc = Auth::user()->accept_friends($id);
-        trigger_pusher('user'.$id, 'updateStatus', ['update' => true]);
-        return $acc;
+
+        $user = Auth::user();
+
+        $room = new Rooms();
+        $room->user_id = $user->id;
+        $room->name = 'private_'.$user->id.'_'.$id;
+        $room->friend_id = $id;
+
+        if ($room->save())
+        {
+            $acc = Auth::user()->accept_friends($id);
+            trigger_pusher('user'.$id, 'updateStatus', ['update' => true]);
+            return $acc;
+        } else {
+            return 0;
+        }
+
     }
 }

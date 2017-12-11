@@ -87869,7 +87869,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -87997,12 +87996,7 @@ var render = function() {
                 }
               ],
               staticClass: "form-control",
-              attrs: {
-                type: "text",
-                id: "name",
-                placeholder: "Search for...",
-                "aria-label": "Search for..."
-              },
+              attrs: { type: "text", id: "name", placeholder: "Room name..." },
               domProps: { value: _vm.room_name },
               on: {
                 input: function($event) {
