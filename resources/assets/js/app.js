@@ -58,9 +58,11 @@ const router = new VueRouter({
         { path: '/addrooms', component: add_rooms },
         { path: '/allrooms', component: all_rooms },
         { path: '/myrooms', component: my_rooms },
+        { path: '/private', component: private_rooms },
         { path: '/friend', component: friend },
         { path: '/user/:user_id/:user_name', component: user_profile, name: 'userProfile' },
-        { path: '/room/:room_id/:room_name', component: chat_box, name: 'chatbox' }
+        { path: '/room/:room_id/:room_name', component: chat_box, name: 'chatbox' },
+        { path: '/private/room_id', component: chat_box, name: 'privatebox' }
     ]
 });
 
