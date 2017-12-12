@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\AddRoomsRequest;
 use App\Online;
+use App\PrivateChat;
 use App\Rooms;
 use Illuminate\Support\Facades\Auth;
 
@@ -35,6 +36,15 @@ class RoomsController extends Controller
     {
         $user_id = Auth::user()->id;
         return Rooms::where('user_id', $user_id)
+                    ->get()
+                    ->toArray();
+    }
+
+    public function getPrivate()
+    {
+        $user_id = Auth::user()->id;
+        return PrivateChat::where('user_id', $user_id)
+                    ->orWhere('friend_id', $user_id)
                     ->get()
                     ->toArray();
     }
@@ -76,12 +86,12 @@ class RoomsController extends Controller
 
     public function checkPrivateRoom($room_id)
     {
-//        $access = 0;
-//        $user_id = Auth::user()->id;
-//        $room = Rooms::find($room_id);
-//        if ($room->user_id == $user_id || $room->friend_id == $user_id) $access = 1;
 
-        return 1;
+        $user_id = Auth::user()->id;
+        $room = PrivateChat::find($room_id);
+        if ($room->user_id == $user_id || $room->friend_id == $user_id) return 1;
+
+        return 0;
 
     }
 

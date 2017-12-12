@@ -71,20 +71,21 @@
         created() {
             this.checkPrivateRoom();
         },
-        mounted() {
-            this.updateCount();
-            this.GetMeOnline();
-            this.getLatest();
-            this.BindEvents(this.room_id+'room', 'pushMessage', this.messages);
-            this.BindEvents(this.room_id+'typing', 'userTyping', this.typing);
-        },
         methods: {
+          getChatInfo() {
+              this.updateCount();
+              this.GetMeOnline();
+              this.getLatest();
+              this.BindEvents(this.room_id+'room', 'pushMessage', this.messages);
+              this.BindEvents(this.room_id+'typing', 'userTyping', this.typing);
+          },
           checkPrivateRoom() {
               this.$http.get('/checkPrivateRoom/'+this.room_id).then(response => {
                   if (response.body == 1) {
+                      this.getChatInfo();
                       this.show = true;
                   } else {
-                      // ...
+                      this.$router.push('/');
                   }
 
               }, response => {

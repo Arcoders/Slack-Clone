@@ -29,6 +29,7 @@ Route::get('/typingUsers/{room_id}', 'MessagesController@typingUsers');
 
 Route::get('/getMeOnline/{room_id}', 'RoomsController@GetMeOnline');
 Route::get('/getAllRooms', 'RoomsController@GetAllRooms');
+Route::get('/getPrivate', 'RoomsController@getPrivate');
 Route::get('/getMyRooms', 'RoomsController@GetMyRooms');
 Route::delete('/deleteRoom/{room_id}', 'RoomsController@DeleteRoom');
 Route::get('/leaving', 'RoomsController@Leaving');

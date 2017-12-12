@@ -46,6 +46,7 @@ Vue.component('avatar', Avatar);
 import chat_box from './components/chatBox/chatbox.vue';
 import add_rooms from './components/rooms/add_rooms.vue';
 import all_rooms from './components/rooms/all_rooms.vue';
+import private_rooms from './components/rooms/private_rooms.vue';
 import my_rooms from './components/rooms/my_rooms.vue';
 import my_profile from './components/profiles/my_profile.vue';
 import friend from './components/users/friend.vue';

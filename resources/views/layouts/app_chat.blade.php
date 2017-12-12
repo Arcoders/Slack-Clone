@@ -37,6 +37,11 @@
                         My Rooms
                     </router-link>
 
+                    <router-link to="/private"  exact-active-class="active">
+                        <i class="fa fa-comments-o"></i>
+                        Private
+                    </router-link>
+
                     <router-link to="/allrooms"  exact-active-class="active">
                         <i class="fa fa-globe"></i>
                         All Rooms
