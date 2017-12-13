@@ -19,11 +19,6 @@ class Online extends Model
         return $this->belongsTo(Rooms::class, 'room_id');
     }
 
-    public function privateChat()
-    {
-        return $this->belongsTo(PrivateChat::class, 'private_id');
-    }
-
     public function online()
     {
         return $this->hasOne(Online::class, 'room_id');

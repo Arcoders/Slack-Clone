@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTableWhoisOnline extends Migration
+class CreateOnlinePrivate extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateTableWhoisOnline extends Migration
      */
     public function up()
     {
-        Schema::create('Online', function (Blueprint $table) {
+        Schema::create('online_private', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id');
-            $table->integer('room_id')->nullable();
+            $table->integer('private_id')->nullable();
             $table->string('timelogin');
             $table->string('timelogout')->nullable();
             $table->timestamps();
