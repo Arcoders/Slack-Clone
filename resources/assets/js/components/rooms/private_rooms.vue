@@ -17,7 +17,7 @@
             <tbody>
             <tr v-for="(room, index) in rooms">
                 <td>
-                    <router-link :to="{ name: 'chatbox', params: { room_id: room.id, room_name: checkUser(room.user_id, room.user.name, room.friend.name) }}">
+                    <router-link :to="{ name: 'privatebox', params: { room_id: room.id, room_name: checkUser(room.user_id, room.user.name, room.friend.name) }}">
                         {{ checkUser(room.user_id, room.user.name, room.friend.name) }}
                     </router-link>
                 </td>

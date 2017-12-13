@@ -44,6 +44,7 @@ Vue.component('vue-simple-spinner', require('./components/spinner/spinner.vue'))
 Vue.component('avatar', Avatar);
 
 import chat_box from './components/chatBox/chatbox.vue';
+import private_box from './components/chatBox/privatebox.vue';
 import add_rooms from './components/rooms/add_rooms.vue';
 import all_rooms from './components/rooms/all_rooms.vue';
 import private_rooms from './components/rooms/private_rooms.vue';
@@ -63,7 +64,7 @@ const router = new VueRouter({
         { path: '/friend', component: friend },
         { path: '/user/:user_id/:user_name', component: user_profile, name: 'userProfile' },
         { path: '/room/:room_id/:room_name', component: chat_box, name: 'chatbox' },
-        { path: '/private/room_id', component: chat_box, name: 'privatebox' }
+        { path: '/private/:room_id/:room_name', component: private_box, name: 'privatebox' }
     ]
 });
 

@@ -23667,20 +23667,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vue_chat_scroll___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_vue_chat_scroll__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_chatBox_chatbox_vue__ = __webpack_require__(372);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_chatBox_chatbox_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__components_chatBox_chatbox_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_rooms_add_rooms_vue__ = __webpack_require__(387);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_rooms_add_rooms_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__components_rooms_add_rooms_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_rooms_all_rooms_vue__ = __webpack_require__(390);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_rooms_all_rooms_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__components_rooms_all_rooms_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_rooms_private_rooms_vue__ = __webpack_require__(393);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_rooms_private_rooms_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__components_rooms_private_rooms_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_rooms_my_rooms_vue__ = __webpack_require__(396);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_rooms_my_rooms_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8__components_rooms_my_rooms_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_profiles_my_profile_vue__ = __webpack_require__(399);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_profiles_my_profile_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9__components_profiles_my_profile_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_users_friend_vue__ = __webpack_require__(176);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_users_friend_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10__components_users_friend_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_profiles_user_profile_vue__ = __webpack_require__(406);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_profiles_user_profile_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11__components_profiles_user_profile_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_chatBox_privatebox_vue__ = __webpack_require__(428);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_chatBox_privatebox_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__components_chatBox_privatebox_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_rooms_add_rooms_vue__ = __webpack_require__(387);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_rooms_add_rooms_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__components_rooms_add_rooms_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_rooms_all_rooms_vue__ = __webpack_require__(390);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_rooms_all_rooms_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__components_rooms_all_rooms_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_rooms_private_rooms_vue__ = __webpack_require__(393);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_rooms_private_rooms_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8__components_rooms_private_rooms_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_rooms_my_rooms_vue__ = __webpack_require__(396);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_rooms_my_rooms_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9__components_rooms_my_rooms_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_profiles_my_profile_vue__ = __webpack_require__(399);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_profiles_my_profile_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10__components_profiles_my_profile_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_users_friend_vue__ = __webpack_require__(176);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_users_friend_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11__components_users_friend_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_profiles_user_profile_vue__ = __webpack_require__(406);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_profiles_user_profile_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12__components_profiles_user_profile_vue__);
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -23735,8 +23737,9 @@ Vue.component('avatar', __WEBPACK_IMPORTED_MODULE_2_vue_avatar___default.a);
 
 
 
+
 var router = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
-    routes: [{ path: '/', component: __WEBPACK_IMPORTED_MODULE_6__components_rooms_all_rooms_vue___default.a }, { path: '/myprofile', component: __WEBPACK_IMPORTED_MODULE_9__components_profiles_my_profile_vue___default.a }, { path: '/addrooms', component: __WEBPACK_IMPORTED_MODULE_5__components_rooms_add_rooms_vue___default.a }, { path: '/allrooms', component: __WEBPACK_IMPORTED_MODULE_6__components_rooms_all_rooms_vue___default.a }, { path: '/myrooms', component: __WEBPACK_IMPORTED_MODULE_8__components_rooms_my_rooms_vue___default.a }, { path: '/private', component: __WEBPACK_IMPORTED_MODULE_7__components_rooms_private_rooms_vue___default.a }, { path: '/friend', component: __WEBPACK_IMPORTED_MODULE_10__components_users_friend_vue___default.a }, { path: '/user/:user_id/:user_name', component: __WEBPACK_IMPORTED_MODULE_11__components_profiles_user_profile_vue___default.a, name: 'userProfile' }, { path: '/room/:room_id/:room_name', component: __WEBPACK_IMPORTED_MODULE_4__components_chatBox_chatbox_vue___default.a, name: 'chatbox' }, { path: '/private/room_id', component: __WEBPACK_IMPORTED_MODULE_4__components_chatBox_chatbox_vue___default.a, name: 'privatebox' }]
+    routes: [{ path: '/', component: __WEBPACK_IMPORTED_MODULE_7__components_rooms_all_rooms_vue___default.a }, { path: '/myprofile', component: __WEBPACK_IMPORTED_MODULE_10__components_profiles_my_profile_vue___default.a }, { path: '/addrooms', component: __WEBPACK_IMPORTED_MODULE_6__components_rooms_add_rooms_vue___default.a }, { path: '/allrooms', component: __WEBPACK_IMPORTED_MODULE_7__components_rooms_all_rooms_vue___default.a }, { path: '/myrooms', component: __WEBPACK_IMPORTED_MODULE_9__components_rooms_my_rooms_vue___default.a }, { path: '/private', component: __WEBPACK_IMPORTED_MODULE_8__components_rooms_private_rooms_vue___default.a }, { path: '/friend', component: __WEBPACK_IMPORTED_MODULE_11__components_users_friend_vue___default.a }, { path: '/user/:user_id/:user_name', component: __WEBPACK_IMPORTED_MODULE_12__components_profiles_user_profile_vue___default.a, name: 'userProfile' }, { path: '/room/:room_id/:room_name', component: __WEBPACK_IMPORTED_MODULE_4__components_chatBox_chatbox_vue___default.a, name: 'chatbox' }, { path: '/private/:room_id/:room_name', component: __WEBPACK_IMPORTED_MODULE_5__components_chatBox_privatebox_vue___default.a, name: 'privatebox' }]
 });
 
 new Vue({
@@ -86768,36 +86771,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             onlineUsers: [],
             onlineUserCount: '',
             actions: [],
-            hover: true,
-            show: false
+            hover: true
         };
     },
     created: function created() {
-        this.checkPrivateRoom();
+        this.updateCount();
+        this.GetMeOnline();
+        this.getLatest();
+        this.BindEvents(this.room_id + 'room', 'pushMessage', this.messages);
+        this.BindEvents(this.room_id + 'typing', 'userTyping', this.typing);
     },
 
     methods: {
-        getChatInfo: function getChatInfo() {
-            this.updateCount();
-            this.GetMeOnline();
-            this.getLatest();
-            this.BindEvents(this.room_id + 'room', 'pushMessage', this.messages);
-            this.BindEvents(this.room_id + 'typing', 'userTyping', this.typing);
-        },
-        checkPrivateRoom: function checkPrivateRoom() {
-            var _this = this;
-
-            this.$http.get('/checkPrivateRoom/' + this.room_id).then(function (response) {
-                if (response.body == 1) {
-                    _this.getChatInfo();
-                    _this.show = true;
-                } else {
-                    _this.$router.push('/');
-                }
-            }, function (response) {
-                _this.$router.push('/');
-            });
-        },
         pushMessage: function pushMessage() {
             // console.log(this.messages);
         },
@@ -86806,11 +86791,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
 
         mouseleave: function mouseleave() {
-            var _this2 = this;
+            var _this = this;
 
             this.$http.get('/leaving').then(function (response) {
 
-                _this2.hover = true;
+                _this.hover = true;
             }, function (response) {
                 //...
             });
@@ -86828,7 +86813,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
         },
         GetMeOnline: function GetMeOnline() {
-            console.log(this.room_id);
             this.$http.get('/getMeOnline/' + this.room_id).then(function (response) {
 
                 //...
@@ -86838,29 +86822,29 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
         },
         updateCount: function updateCount() {
-            var _this3 = this;
+            var _this2 = this;
 
             this.channel = this.$pusher.subscribe(this.room_id + 'onlineUser');
             this.channel.bind('onlineUser', function (data) {
-                _this3.onlineUserCount = data.count;
-                _this3.onlineUsers = data.conected;
-                _this3.actions.push(data.actions);
+                _this2.onlineUserCount = data.count;
+                _this2.onlineUsers = data.conected;
+                _this2.actions.push(data.actions);
             });
 
             this.channel = this.$pusher.subscribe(this.room_id + 'leaveUser');
             this.channel.bind('leaveUser', function (data) {
-                _this3.onlineUserCount = data.count;
-                _this3.onlineUsers = data.conected;
-                _this3.actions.push(data.actions);
+                _this2.onlineUserCount = data.count;
+                _this2.onlineUsers = data.conected;
+                _this2.actions.push(data.actions);
             });
         },
         getLatest: function getLatest() {
-            var _this4 = this;
+            var _this3 = this;
 
             this.$http.get('/GetLatest/' + this.room_id).then(function (response) {
 
                 if (response.status == 200) {
-                    _this4.latest = response.data;
+                    _this3.latest = response.data;
                 } else {
                     // ...
                 }
@@ -87705,69 +87689,67 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm.show
-    ? _c(
-        "div",
-        {
-          attrs: { id: "chat_box" },
-          on: { mouseleave: _vm.mouseleave, mouseout: _vm.mouseout }
-        },
-        [
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col-lg-8" }, [
-              _c(
-                "div",
-                { staticClass: "chat_window" },
-                [
-                  _c("div", { staticClass: "top_menu" }, [
-                    _vm._m(0, false, false),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "title" }, [
-                      _vm._v(
-                        _vm._s(_vm.room_name) +
-                          " online Users " +
-                          _vm._s(_vm.onlineUserCount)
-                      )
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("all_messages", {
-                    attrs: {
-                      all_messages: _vm.messages,
-                      usersTyping: _vm.typing,
-                      latest: _vm.latest
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("add_messages", {
-                    on: {
-                      updateMessages: function($event) {
-                        _vm.pushMessage($event)
-                      },
-                      typing: function($event) {
-                        _vm.userTyping($event)
-                      }
-                    }
-                  })
-                ],
-                1
-              )
-            ]),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "col-lg-4" },
-              [
-                _c("activity", { attrs: { actions: _vm.actions } }),
+  return _c(
+    "div",
+    {
+      attrs: { id: "chat_box" },
+      on: { mouseleave: _vm.mouseleave, mouseout: _vm.mouseout }
+    },
+    [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-lg-8" }, [
+          _c(
+            "div",
+            { staticClass: "chat_window" },
+            [
+              _c("div", { staticClass: "top_menu" }, [
+                _vm._m(0, false, false),
                 _vm._v(" "),
-                _c("online", { attrs: { onlineUsers: _vm.onlineUsers } })
-              ],
-              1
-            )
-          ])
-        ]
-      )
-    : _vm._e()
+                _c("div", { staticClass: "title" }, [
+                  _vm._v(
+                    _vm._s(_vm.room_name) +
+                      " online Users " +
+                      _vm._s(_vm.onlineUserCount)
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("all_messages", {
+                attrs: {
+                  all_messages: _vm.messages,
+                  usersTyping: _vm.typing,
+                  latest: _vm.latest
+                }
+              }),
+              _vm._v(" "),
+              _c("add_messages", {
+                on: {
+                  updateMessages: function($event) {
+                    _vm.pushMessage($event)
+                  },
+                  typing: function($event) {
+                    _vm.userTyping($event)
+                  }
+                }
+              })
+            ],
+            1
+          )
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "col-lg-4" },
+          [
+            _c("activity", { attrs: { actions: _vm.actions } }),
+            _vm._v(" "),
+            _c("online", { attrs: { onlineUsers: _vm.onlineUsers } })
+          ],
+          1
+        )
+      ])
+    ]
+  )
 }
 var staticRenderFns = [
   function() {
@@ -88571,7 +88553,7 @@ var render = function() {
                     {
                       attrs: {
                         to: {
-                          name: "chatbox",
+                          name: "privatebox",
                           params: {
                             room_id: room.id,
                             room_name: _vm.checkUser(
@@ -89770,6 +89752,347 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 412 */,
+/* 413 */,
+/* 414 */,
+/* 415 */,
+/* 416 */,
+/* 417 */,
+/* 418 */,
+/* 419 */,
+/* 420 */,
+/* 421 */,
+/* 422 */,
+/* 423 */,
+/* 424 */,
+/* 425 */,
+/* 426 */,
+/* 427 */,
+/* 428 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(5)
+/* script */
+var __vue_script__ = __webpack_require__(429)
+/* template */
+var __vue_template__ = __webpack_require__(430)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\chatBox\\privatebox.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-8db126b0", Component.options)
+  } else {
+    hotAPI.reload("data-v-8db126b0", Component.options)
+' + '  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 429 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__add_messages_vue__ = __webpack_require__(374);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__add_messages_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__add_messages_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__all_messages_vue__ = __webpack_require__(377);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__all_messages_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__all_messages_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__activity_vue__ = __webpack_require__(380);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__activity_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__activity_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__online_vue__ = __webpack_require__(383);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__online_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__online_vue__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    components: {
+        add_messages: __WEBPACK_IMPORTED_MODULE_0__add_messages_vue___default.a,
+        all_messages: __WEBPACK_IMPORTED_MODULE_1__all_messages_vue___default.a,
+        activity: __WEBPACK_IMPORTED_MODULE_2__activity_vue___default.a,
+        online: __WEBPACK_IMPORTED_MODULE_3__online_vue___default.a
+    },
+    data: function data() {
+        return {
+            messages: [],
+            latest: [],
+            typing: [],
+            channel: '',
+            room_name: this.$route.params.room_name,
+            room_id: this.$route.params.room_id,
+            onlineUsers: [],
+            onlineUserCount: '',
+            actions: [],
+            hover: true,
+            show: false
+        };
+    },
+    created: function created() {
+        this.checkPrivateRoom();
+    },
+
+    methods: {
+        getChatInfo: function getChatInfo() {
+            this.updateCount();
+            this.GetMeOnline();
+            this.getLatest();
+            this.BindEvents(this.room_id + 'room', 'pushMessage', this.messages);
+            this.BindEvents(this.room_id + 'typing', 'userTyping', this.typing);
+        },
+        checkPrivateRoom: function checkPrivateRoom() {
+            var _this = this;
+
+            this.$http.get('/checkPrivateRoom/' + this.room_id).then(function (response) {
+                if (response.body == 1) {
+                    _this.getChatInfo();
+                    _this.show = true;
+                } else {
+                    _this.$router.push('/');
+                }
+            }, function (response) {
+                _this.$router.push('/');
+            });
+        },
+        pushMessage: function pushMessage() {
+            // console.log(this.messages);
+        },
+        userTyping: function userTyping() {
+            // console.log(this.typing);
+        },
+
+        mouseleave: function mouseleave() {
+            var _this2 = this;
+
+            this.$http.get('/leaving').then(function (response) {
+
+                _this2.hover = true;
+            }, function (response) {
+                //...
+            });
+        },
+        mouseout: function mouseout() {
+            if (this.hover) {
+                this.GetMeOnline();
+                this.hover = false;
+            }
+        },
+        BindEvents: function BindEvents(name, action, array) {
+            this.channel = this.$pusher.subscribe(name);
+            this.channel.bind(action, function (data) {
+                array.push(data);
+            });
+        },
+        GetMeOnline: function GetMeOnline() {
+            console.log(this.room_id);
+            this.$http.get('/getMeOnline/' + this.room_id).then(function (response) {
+
+                //...
+
+            }, function (response) {
+                //...
+            });
+        },
+        updateCount: function updateCount() {
+            var _this3 = this;
+
+            this.channel = this.$pusher.subscribe(this.room_id + 'onlineUser');
+            this.channel.bind('onlineUser', function (data) {
+                _this3.onlineUserCount = data.count;
+                _this3.onlineUsers = data.conected;
+                _this3.actions.push(data.actions);
+            });
+
+            this.channel = this.$pusher.subscribe(this.room_id + 'leaveUser');
+            this.channel.bind('leaveUser', function (data) {
+                _this3.onlineUserCount = data.count;
+                _this3.onlineUsers = data.conected;
+                _this3.actions.push(data.actions);
+            });
+        },
+        getLatest: function getLatest() {
+            var _this4 = this;
+
+            this.$http.get('/GetLatest/' + this.room_id).then(function (response) {
+
+                if (response.status == 200) {
+                    _this4.latest = response.data;
+                } else {
+                    // ...
+                }
+            }, function (response) {
+                // ...
+            });
+        }
+    }
+});
+
+/***/ }),
+/* 430 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm.show
+    ? _c(
+        "div",
+        {
+          attrs: { id: "chat_box" },
+          on: { mouseleave: _vm.mouseleave, mouseout: _vm.mouseout }
+        },
+        [
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col-lg-8" }, [
+              _c(
+                "div",
+                { staticClass: "chat_window" },
+                [
+                  _c("div", { staticClass: "top_menu" }, [
+                    _vm._m(0, false, false),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "title" }, [
+                      _vm._v(
+                        _vm._s(_vm.room_name) +
+                          " online Users " +
+                          _vm._s(_vm.onlineUserCount)
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("all_messages", {
+                    attrs: {
+                      all_messages: _vm.messages,
+                      usersTyping: _vm.typing,
+                      latest: _vm.latest
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("add_messages", {
+                    on: {
+                      updateMessages: function($event) {
+                        _vm.pushMessage($event)
+                      },
+                      typing: function($event) {
+                        _vm.userTyping($event)
+                      }
+                    }
+                  })
+                ],
+                1
+              )
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "col-lg-4" },
+              [
+                _c("activity", { attrs: { actions: _vm.actions } }),
+                _vm._v(" "),
+                _c("online", { attrs: { onlineUsers: _vm.onlineUsers } })
+              ],
+              1
+            )
+          ])
+        ]
+      )
+    : _vm._e()
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "buttons" }, [
+      _c("div", { staticClass: "button close" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "button minimize" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "button maximize" })
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-8db126b0", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

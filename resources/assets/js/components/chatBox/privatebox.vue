@@ -1,5 +1,5 @@
 <template>
-    <div id="chat_box"  @mouseleave="mouseleave" @mouseout="mouseout">
+    <div v-if="show" id="chat_box"  @mouseleave="mouseleave" @mouseout="mouseout">
 
         <div class="row">
 
@@ -65,16 +65,33 @@
                 onlineUserCount: '',
                 actions:[],
                 hover: true,
+                show: false
             }
         },
         created() {
-            this.updateCount();
-            this.GetMeOnline();
-            this.getLatest();
-            this.BindEvents(this.room_id+'room', 'pushMessage', this.messages);
-            this.BindEvents(this.room_id+'typing', 'userTyping', this.typing);
+            this.checkPrivateRoom();
         },
         methods: {
+          getChatInfo() {
+              this.updateCount();
+              this.GetMeOnline();
+              this.getLatest();
+              this.BindEvents(this.room_id+'room', 'pushMessage', this.messages);
+              this.BindEvents(this.room_id+'typing', 'userTyping', this.typing);
+          },
+          checkPrivateRoom() {
+              this.$http.get('/checkPrivateRoom/'+this.room_id).then(response => {
+                  if (response.body == 1) {
+                      this.getChatInfo();
+                      this.show = true;
+                  } else {
+                      this.$router.push('/');
+                  }
+
+              }, response => {
+                  this.$router.push('/');
+              });
+          },
           pushMessage() {
              // console.log(this.messages);
           },
@@ -103,6 +120,7 @@
               });
           },
           GetMeOnline() {
+              console.log(this.room_id);
               this.$http.get('/getMeOnline/'+this.room_id).then(response => {
 
                   //...

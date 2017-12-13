@@ -51,4 +51,9 @@ class User extends Authenticatable
         return $this->hasOne(Online::class, 'user_id');
     }
 
+    public function PrivateChat()
+    {
+        return $this->hasOne(PrivateChat::class, 'user_id');
+    }
+
 }
