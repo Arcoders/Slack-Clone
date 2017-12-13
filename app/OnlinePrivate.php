@@ -11,13 +11,13 @@ class OnlinePrivate extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    public function room()
+    public function privateChat()
     {
-        return $this->belongsTo(Rooms::class, 'room_id');
+        return $this->belongsTo(PrivateChat::class, 'private_id');
     }
 
-    public function online()
+    public function onlinePrivate()
     {
-        return $this->hasOne(Online::class, 'room_id');
+        return $this->hasOne(OnlinePrivate::class, 'private_id');
     }
 }

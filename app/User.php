@@ -41,11 +41,6 @@ class User extends Authenticatable
         return $this->hasMany(Rooms::class, 'user_id');
     }
 
-    public function privateChats()
-    {
-        return $this->hasMany(PrivateChat::class, 'user_id');
-    }
-
     public function online()
     {
         return $this->hasOne(Online::class, 'user_id');

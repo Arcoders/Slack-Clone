@@ -11,7 +11,7 @@
                             <div class="button minimize"></div>
                             <div class="button maximize"></div>
                         </div>
-                        <div class="title">{{ room_name }} online Users {{ onlineUserCount }}</div>
+                        <div class="title">{{ room_name }}  {{ onlineUserCount }}</div>
                     </div>
 
                     <all_messages :all_messages="messages"

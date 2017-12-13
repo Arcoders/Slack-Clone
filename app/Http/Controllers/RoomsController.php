@@ -89,7 +89,7 @@ class RoomsController extends Controller
 
     public function LeavingPrivate()
     {
-        $room_id = room_id();
+        $room_id = room_id_private();
         OnlinePrivate::where('user_id', Auth::user()->id)->delete();
         triggerPrivate($room_id, 'leaveUser', "leave room");
     }
@@ -116,7 +116,7 @@ class RoomsController extends Controller
             $leaveRoom = OnlinePrivate::where('user_id', $user->id)->get()[0];
             OnlinePrivate::where('user_id', $user->id)->delete();
 
-            triggerPrivate($leaveRoom->room->id, 'leaveUser', "leave room");
+            triggerPrivate($leaveRoom->privateChat->id, 'leaveUser', "leave room");
             $this->insertPrivate($user->id, $room_id);
         }
 

@@ -90026,7 +90026,7 @@ var render = function() {
                     _c("div", { staticClass: "title" }, [
                       _vm._v(
                         _vm._s(_vm.room_name) +
-                          " online Users " +
+                          "  " +
                           _vm._s(_vm.onlineUserCount)
                       )
                     ])

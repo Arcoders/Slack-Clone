@@ -32,8 +32,8 @@ function triggerPublic($room_id, $event, $indicatedRoom)
 
  function triggerPrivate($room_id, $event, $indicatedRoom)
  {
-     $room = PrivateChat::where('id', $room_id)->withCount('onlinePrivates')->get()[0]->online_count;
-     $onlineUsers = OnlinePrivate::where('room_id', $room_id)->with('user')->get();
+     $room = PrivateChat::where('id', $room_id)->withCount('onlinePrivate')->get()[0]->online_private_count;
+     $onlineUsers = OnlinePrivate::where('private_id', $room_id)->with('user')->get();
      $array = [
          'count' => $room,
          'conected' => $onlineUsers,
@@ -45,4 +45,9 @@ function triggerPublic($room_id, $event, $indicatedRoom)
 function room_id()
  {
      return Online::where('user_id', Auth::user()->id)->get()[0]->room_id;
+ }
+
+ function room_id_private()
+ {
+     return OnlinePrivate::where('user_id', Auth::user()->id)->get()[0]->private_id;
  }
