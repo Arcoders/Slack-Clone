@@ -17,8 +17,8 @@
             <tbody>
             <tr v-for="(room, index) in rooms">
                 <td>
-                    <router-link :to="{ name: 'chatbox', params: { room_id: room.id, room_name: room.name }}">
-                        {{ room.friend.name }}
+                    <router-link :to="{ name: 'chatbox', params: { room_id: room.id, room_name: checkUser(room.user_id, room.user.name, room.friend.name) }}">
+                        {{ checkUser(room.user_id, room.user.name, room.friend.name) }}
                     </router-link>
                 </td>
                 <td>{{ room.created_at | moment("from", "now") }}</td>
@@ -52,6 +52,7 @@
 <script>
     export default {
         mounted() {
+            this.getCurrentUser();
             this.getMyRooms();
         },
         data() {
@@ -59,18 +60,25 @@
                 isLoading: true,
                 notFound: false,
                 error: false,
-                rooms: []
+                rooms: [],
+                currentUserId: ''
             };
         },
         methods: {
+            checkUser(userId, userName, friendName) {
+                if (userId == this.currentUserId) {
+                    return friendName;
+                } else {
+                    return userName;
+                }
+            },
             getMyRooms: function () {
 
                 this.$http.get('/getPrivate').then(response => {
 
                     this.isLoading = false;
-                    this.rooms = response.data;
 
-                    if (this.rooms.length > 0) {
+                    if (response.data.length > 0) {
                         this.rooms = response.data;
                     } else {
                         this.notFound = true;
@@ -81,6 +89,19 @@
                     this.error = true;
                 });
 
+            },
+            getCurrentUser() {
+                this.$http.get('/getCurrentUser').then(response => {
+
+                    if (response.status == 200) {
+                        this.currentUserId = response.body.id;
+                    } else {
+                        // ...
+                    }
+
+                }, response => {
+                    // ...
+                });
             }
         }
     }

@@ -88479,6 +88479,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     mounted: function mounted() {
+        this.getCurrentUser();
         this.getMyRooms();
     },
     data: function data() {
@@ -88486,20 +88487,28 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             isLoading: true,
             notFound: false,
             error: false,
-            rooms: []
+            rooms: [],
+            currentUserId: ''
         };
     },
 
     methods: {
+        checkUser: function checkUser(userId, userName, friendName) {
+            if (userId == this.currentUserId) {
+                return friendName;
+            } else {
+                return userName;
+            }
+        },
+
         getMyRooms: function getMyRooms() {
             var _this = this;
 
             this.$http.get('/getPrivate').then(function (response) {
 
                 _this.isLoading = false;
-                _this.rooms = response.data;
 
-                if (_this.rooms.length > 0) {
+                if (response.data.length > 0) {
                     _this.rooms = response.data;
                 } else {
                     _this.notFound = true;
@@ -88507,6 +88516,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }, function (response) {
                 _this.isLoading = false;
                 _this.error = true;
+            });
+        },
+        getCurrentUser: function getCurrentUser() {
+            var _this2 = this;
+
+            this.$http.get('/getCurrentUser').then(function (response) {
+
+                if (response.status == 200) {
+                    _this2.currentUserId = response.body.id;
+                } else {
+                    // ...
+                }
+            }, function (response) {
+                // ...
             });
         }
     }
@@ -88548,14 +88571,27 @@ var render = function() {
                       attrs: {
                         to: {
                           name: "chatbox",
-                          params: { room_id: room.id, room_name: room.name }
+                          params: {
+                            room_id: room.id,
+                            room_name: _vm.checkUser(
+                              room.user_id,
+                              room.user.name,
+                              room.friend.name
+                            )
+                          }
                         }
                       }
                     },
                     [
                       _vm._v(
                         "\n                    " +
-                          _vm._s(room.friend.name) +
+                          _vm._s(
+                            _vm.checkUser(
+                              room.user_id,
+                              room.user.name,
+                              room.friend.name
+                            )
+                          ) +
                           "\n                "
                       )
                     ]
