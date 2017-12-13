@@ -89,7 +89,7 @@
                   }
 
               }, response => {
-                  // ...
+                  this.$router.push('/');
               });
           },
           pushMessage() {
@@ -120,6 +120,7 @@
               });
           },
           GetMeOnline() {
+              console.log(this.room_id);
               this.$http.get('/getMeOnline/'+this.room_id).then(response => {
 
                   //...

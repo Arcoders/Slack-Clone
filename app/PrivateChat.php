@@ -23,6 +23,6 @@ class PrivateChat extends Model
 
     public function online()
     {
-        return $this->hasOne(Online::class, 'private_id');
+        return $this->hasMany(Online::class, 'private_id');
     }
 }

@@ -86795,7 +86795,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     _this.$router.push('/');
                 }
             }, function (response) {
-                // ...
+                _this.$router.push('/');
             });
         },
         pushMessage: function pushMessage() {
@@ -86828,6 +86828,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
         },
         GetMeOnline: function GetMeOnline() {
+            console.log(this.room_id);
             this.$http.get('/getMeOnline/' + this.room_id).then(function (response) {
 
                 //...
