@@ -17,8 +17,8 @@
             <tbody>
             <tr v-for="(room, index) in rooms">
                 <td>
-                    <router-link :to="{ name: 'chatbox', params: { room_id: room.id, room_name: 'private' }}">
-                        private
+                    <router-link :to="{ name: 'chatbox', params: { room_id: room.id, room_name: room.name }}">
+                        {{ room.friend.name }}
                     </router-link>
                 </td>
                 <td>{{ room.created_at | moment("from", "now") }}</td>

@@ -43,7 +43,9 @@ class RoomsController extends Controller
     public function getPrivate()
     {
         $user_id = Auth::user()->id;
-        return PrivateChat::where('user_id', $user_id)
+        return PrivateChat::with('user')
+                    ->with('friend')
+                    ->where('user_id', $user_id)
                     ->orWhere('friend_id', $user_id)
                     ->get()
                     ->toArray();
