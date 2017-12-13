@@ -13,7 +13,7 @@ class CreateOnlinePrivate extends Migration
      */
     public function up()
     {
-        Schema::create('online_private', function (Blueprint $table) {
+        Schema::create('online_privates', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id');
             $table->integer('private_id')->nullable();

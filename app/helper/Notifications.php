@@ -1,6 +1,8 @@
  <?php
 
  use App\Online;
+ use App\OnlinePrivate;
+ use App\PrivateChat;
  use App\Rooms;
  use Illuminate\Support\Facades\Auth;
  use Pusher\Pusher;
@@ -16,10 +18,22 @@
      $pusher->trigger($roomChannel, $event, $data);
  }
 
-function triggerPusher($room_id, $event, $indicatedRoom)
+function triggerPublic($room_id, $event, $indicatedRoom)
  {
      $room = Rooms::where('id', $room_id)->withCount('online')->get()[0]->online_count;
      $onlineUsers = Online::where('room_id', $room_id)->with('user')->get();
+     $array = [
+         'count' => $room,
+         'conected' => $onlineUsers,
+         'actions' => Auth::user()->name.' '.$indicatedRoom
+     ];
+     trigger_pusher( $room_id.$event, $event, $array);
+ }
+
+ function triggerPrivate($room_id, $event, $indicatedRoom)
+ {
+     $room = PrivateChat::where('id', $room_id)->withCount('onlinePrivates')->get()[0]->online_count;
+     $onlineUsers = OnlinePrivate::where('room_id', $room_id)->with('user')->get();
      $array = [
          'count' => $room,
          'conected' => $onlineUsers,

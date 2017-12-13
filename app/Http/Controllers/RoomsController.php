@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\AddRoomsRequest;
 use App\Online;
+use App\OnlinePrivate;
 use App\PrivateChat;
 use App\Rooms;
 use Illuminate\Support\Facades\Auth;
@@ -71,11 +72,11 @@ class RoomsController extends Controller
             $leaveRoom = Online::where('user_id', $user->id)->get()[0];
             Online::where('user_id', $user->id)->delete();
 
-            triggerPusher($leaveRoom->room->id, 'leaveUser', "leave room");
+            triggerPublic($leaveRoom->room->id, 'leaveUser', "leave room");
             $this->insertOnline($user->id, $room_id);
         }
 
-        triggerPusher($room_id, 'onlineUser', "login to room");
+        triggerPublic($room_id, 'onlineUser', "login to room");
         return 'done';
     }
 
@@ -83,7 +84,14 @@ class RoomsController extends Controller
     {
         $room_id = room_id();
         Online::where('user_id', Auth::user()->id)->delete();
-        triggerPusher($room_id, 'leaveUser', "leave room");
+        triggerPublic($room_id, 'leaveUser', "leave room");
+    }
+
+    public function LeavingPrivate()
+    {
+        $room_id = room_id();
+        OnlinePrivate::where('user_id', Auth::user()->id)->delete();
+        triggerPrivate($room_id, 'leaveUser', "leave room");
     }
 
     public function checkPrivateRoom($room_id)
@@ -97,11 +105,39 @@ class RoomsController extends Controller
 
     }
 
+    public function getPrivateOnline($room_id) {
+        $user = Auth::user();
+
+        if (OnlinePrivate::where('user_id', $user->id)->count() == 0) {
+
+            $this->insertPrivate($user->id, $room_id);
+
+        } else {
+            $leaveRoom = OnlinePrivate::where('user_id', $user->id)->get()[0];
+            OnlinePrivate::where('user_id', $user->id)->delete();
+
+            triggerPrivate($leaveRoom->room->id, 'leaveUser', "leave room");
+            $this->insertPrivate($user->id, $room_id);
+        }
+
+        triggerPrivate($room_id, 'onlineUser', "login to room");
+        return 'done';
+    }
+
     protected function insertOnline($user, $room)
     {
         $online = new Online();
         $online->user_id = $user;
         $online->room_id = $room;
+        $online->timelogin = time();
+        $online->save();
+    }
+
+    protected function insertPrivate($user, $room)
+    {
+        $online = new OnlinePrivate();
+        $online->user_id = $user;
+        $online->private_id = $room;
         $online->timelogin = time();
         $online->save();
     }

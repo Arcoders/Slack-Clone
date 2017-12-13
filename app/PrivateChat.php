@@ -21,4 +21,9 @@ class PrivateChat extends Model
         return $this->belongsTo(User::class, 'friend_id');
     }
 
+    public function onlinePrivates()
+    {
+        return $this->hasMany(OnlinePrivate::class, 'private_id');
+    }
+
 }

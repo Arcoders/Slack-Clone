@@ -89936,7 +89936,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         mouseleave: function mouseleave() {
             var _this2 = this;
 
-            this.$http.get('/leaving').then(function (response) {
+            this.$http.get('/LeavingPrivate').then(function (response) {
 
                 _this2.hover = true;
             }, function (response) {
@@ -89956,8 +89956,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
         },
         GetMeOnline: function GetMeOnline() {
-            console.log(this.room_id);
-            this.$http.get('/getMeOnline/' + this.room_id).then(function (response) {
+            this.$http.get('/getPrivateOnline/' + this.room_id).then(function (response) {
 
                 //...
 

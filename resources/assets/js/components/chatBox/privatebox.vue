@@ -99,7 +99,7 @@
              // console.log(this.typing);
           },
           mouseleave: function() {
-              this.$http.get('/leaving').then(response => {
+              this.$http.get('/LeavingPrivate').then(response => {
 
                   this.hover = true;
 
@@ -120,8 +120,7 @@
               });
           },
           GetMeOnline() {
-              console.log(this.room_id);
-              this.$http.get('/getMeOnline/'+this.room_id).then(response => {
+              this.$http.get('/getPrivateOnline/'+this.room_id).then(response => {
 
                   //...
 
