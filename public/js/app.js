@@ -87914,8 +87914,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.updateCount();
             this.GetMeOnline();
             this.getLatest();
-            this.BindEvents(this.room_id + 'room_private', 'pushMessage', this.messages);
-            this.BindEvents(this.room_id + 'typing_private', 'userTyping', this.typing);
+            this.BindEvents(this.room_id + 'room', 'pushMessage', this.messages);
+            this.BindEvents(this.room_id + 'typing', 'userTyping', this.typing);
         },
         checkPrivateRoom: function checkPrivateRoom() {
             var _this = this;
@@ -87972,14 +87972,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         updateCount: function updateCount() {
             var _this3 = this;
 
-            this.channel = this.$pusher.subscribe(this.room_id + 'onlineUser_private');
+            this.channel = this.$pusher.subscribe(this.room_id + 'onlineUser');
             this.channel.bind('onlineUser', function (data) {
                 _this3.onlineUserCount = data.count;
                 _this3.onlineUsers = data.conected;
                 _this3.actions.push(data.actions);
             });
 
-            this.channel = this.$pusher.subscribe(this.room_id + 'leaveUser_private');
+            this.channel = this.$pusher.subscribe(this.room_id + 'leaveUser');
             this.channel.bind('leaveUser', function (data) {
                 _this3.onlineUserCount = data.count;
                 _this3.onlineUsers = data.conected;
