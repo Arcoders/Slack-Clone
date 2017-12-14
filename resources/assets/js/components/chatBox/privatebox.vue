@@ -76,8 +76,8 @@
               this.updateCount();
               this.GetMeOnline();
               this.getLatest();
-              this.BindEvents(this.room_id+'room', 'pushMessage', this.messages);
-              this.BindEvents(this.room_id+'typing', 'userTyping', this.typing);
+              this.BindEvents(this.room_id+'room_private', 'pushMessage', this.messages);
+              this.BindEvents(this.room_id+'typing_private', 'userTyping', this.typing);
           },
           checkPrivateRoom() {
               this.$http.get('/checkPrivateRoom/'+this.room_id).then(response => {
@@ -129,14 +129,14 @@
               });
           },
           updateCount() {
-              this.channel = this.$pusher.subscribe(this.room_id+'onlineUser');
+              this.channel = this.$pusher.subscribe(this.room_id+'onlineUser_private');
               this.channel.bind('onlineUser', (data) => {
                   this.onlineUserCount = data.count;
                   this.onlineUsers = data.conected;
                   this.actions.push(data.actions);
               });
 
-              this.channel = this.$pusher.subscribe(this.room_id+'leaveUser');
+              this.channel = this.$pusher.subscribe(this.room_id+'leaveUser_private');
               this.channel.bind('leaveUser', (data) => {
                   this.onlineUserCount = data.count;
                   this.onlineUsers = data.conected;
